@@ -1,0 +1,33 @@
+.row-custom {
+    display: flex;
+    flex-direction: row;
+
+    height: 100px;
+    width: 500px;
+    background-color: green;
+}
+
+.row-custom-1 {
+ width: 100%;
+    border: 1px solid black;
+}
+
+.row-custom-1 .left-col {
+    background-color: red;
+    width: 180px;
+    height: 100%;
+    border-radius: 180px;
+    overflow: hidden;
+}
+
+.row-custom-1 .left-col img {
+    height: 100%;
+    width: 100%;
+}
+
+
+.row-custom-1 .right-col {
+    height: 100%;
+    width: 320px;
+    background-color: aquamarine;
+}

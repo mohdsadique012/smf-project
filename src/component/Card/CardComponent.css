@@ -1,0 +1,168 @@
+.row {
+    margin-left: unset;
+    margin-right: unset;
+}
+
+.home-card-layout {
+    margin-bottom: 1.4%;
+    /* margin-top: 1.1%; */
+    padding: 0.3% 1%;
+}
+.category-card .card {
+    width: 465px;
+}
+
+.card {
+    height: 335px !important;
+}
+
+.card img {
+    display: block;
+    margin: auto;
+    height: 100%;
+    /* border-radius: 12px 12px 0 0; */
+    object-fit: cover;
+    position: relative;
+    /* border-radius: 20px; */
+}
+
+.cardContent {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    width: 99.7%;
+    /* font-size: 25px; */
+    margin: auto;
+    /* border-radius: 0px 0px 12px 12px; */
+    position: absolute;
+    bottom: 0;
+    /* border-radius: 10px; */
+    font-size: 1.3rem;
+}
+
+.home-card-layout .best_sell_card_highlighter {
+    border-radius: 5px;
+    background-color: rgba(123,97,255,.16);
+    padding: 4px 8px;
+    text-align: center;
+    font-size: 10px;
+    color: #7b61ff !important;
+    font-family: Montserrat-Medium;
+    position: relative;
+    top: 1px!important;
+    right: 0!important;
+    margin: 0;
+}
+
+.customCenterContent {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    width: 103%;
+    background-color: rgba(0, 0, 0, 0.8);
+    background-image: url('https://cdn.thewirecutter.com/wp-content/media/2021/01/online-flowers-2048px-0469-2x1-1.jpg?auto=webp&quality=75&crop=2:1&width=1024');
+    background-blend-mode: color;
+    /* background-image: url(''); */
+}
+
+.borderDesign:first-child .Green-card .customCenterContent h2 {
+    position: absolute;
+    bottom: -3%;
+    left: 50%;
+    width: 75%;
+    transform: translate(-50%, -20%);
+    text-align: center;
+    color: white;
+    padding: 46px 0px;
+    border: 1px solid white;
+    font-family: 'Oleo Script', cursive;
+}
+
+.borderDesign:not(:first-child) .Green-card .customCenterContent h2 {
+    position: absolute;
+    bottom: 9%;
+    left: 50%;
+    width: 75%;
+    transform: translate(-50%, -20%);
+    text-align: center;
+    color: white;
+    padding: 46px 0px;
+    border: 1px solid white;
+    font-family: 'Oleo Script', cursive;
+}
+
+
+.btn.btn-danger {
+    position: absolute;
+    top: 11px;
+    right: 3%;
+    padding: 0px 7px;
+    border-radius: 9px;
+    color: wheat;
+    font-weight: bolder;
+    font-size: 1.3rem;
+}
+
+.trending-main-row {
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
+}
+
+/* /////////// */
+
+.card .card-custom {
+    max-height: 100% !important;
+    max-width: 100% !important;
+    height: auto;
+    /* margin-bottom: 0 !important; */
+}
+.cardContent-new p {
+    font-weight: bold;
+
+}
+
+.cardContent-new {
+    position: absolute !important;
+    /* bottom: -10% !important; */
+    left: 0%;
+    font-size: 10px;
+    right: 0%;
+    padding: 3px 0;
+    font-weight: 500;
+    color: #000;
+    font-size: 18px;
+}
+
+
+
+.ribbon {
+    position: absolute;
+    height: 20px;
+    width: 27%;
+    bottom: 29%;
+    background-color: red;
+    font-size: 10px;
+    color: white;
+    text-align: center;
+    font-weight: 700;
+    left: -5px;
+    line-height: 20px;
+}
+
+.ribbon::before {
+    content: "";
+    left: 0;
+    border-right: 10px solid red;
+    position: absolute;
+    top: 100%;
+    border-bottom: 10px solid transparent;
+}
+
+.wishList svg {
+    position: absolute;
+    top: 4%;
+    right: 6%;
+    font-size: 30px;
+}

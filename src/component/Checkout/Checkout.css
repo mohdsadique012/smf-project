@@ -1,0 +1,13 @@
+.bg-secondary-light {
+    background-color: #eeeeee69 !important;
+    font-weight: 700;
+    box-shadow: 4px 4px 15px grey;
+}
+.img-thumbnail-custom{
+height: 100px !important;
+width: 100px !important;
+}
+
+p{
+    margin-bottom: 0.5rem !important;
+}

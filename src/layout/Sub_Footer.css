@@ -1,0 +1,35 @@
+.subFooter {
+    text-transform: uppercase;
+}
+
+.big-wallpaper {
+    min-height: 600px;
+    overflow: hidden;
+    background-position: center 50%;
+    background-size: cover;
+    background-image: url('https://img.freepik.com/premium-photo/worldwide-shipping-concept-world-globe-map-express-delivery-concept-fast-shipping-3d-illustration_250043-366.jpg');
+}
+
+hr {
+    margin: unset;
+}
+
+.subFooter span {
+    font-size: 17.4px;
+    color: black;
+    font-weight: 600;
+}
+
+.subFooter p {
+    font-size: 16px;
+    /* word-spacing: 2px; */
+    color: #cacaca;
+}
+
+
+
+.oo { 
+    color: #cacaca !important;
+    font-size: 13px !important;
+    text-transform:capitalize;
+}

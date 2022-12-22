@@ -1,0 +1,31 @@
+.col-xl-1.col {
+    padding: 10px;
+    border: 1px solid #cacaca;
+    margin: 9px 0px 9px 10px;
+    text-align: center;
+    width: 13.5%;
+    border-radius: 15px;
+    box-shadow: 0px 0px 3px 1px rgb(227, 226, 226);
+}
+
+.menu-upper-icon {
+    height: 51px;
+    width: 51px;
+    margin: auto;
+}
+
+.menu-upper-icon img {
+    display: block;
+    margin: auto;
+    width: 100%;
+}
+
+.menu-bottom-title {
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'Oleo Script', cursive;
+    
+}
+.menu-bottom-title small{
+    font-size: 1.3rem;
+}

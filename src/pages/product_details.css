@@ -1,0 +1,361 @@
+/* Product Details */
+.product_details {
+    display: flex;
+    /* flex-wrap: wrap; */
+}
+
+.left_image_details {
+    flex: 0 0 20%;
+    display: flex;
+    padding: 20px;
+}
+.left_image_details_2 {
+    flex: 0 0 60%;
+    padding: 16px 41px;
+    text-align: justify;
+    overflow: scroll;
+    max-height: 80vh;
+}
+.left_image_details_2::-webkit-scrollbar {
+    width: unset;
+}
+.product_details .image_slider_vertical {
+    flex: 0 0 20%;
+    overflow: hidden;
+}
+.product_details .image_slider_vertical .slick-list{
+    height: 450px !important;
+}
+
+.product_details .image_slider_vertical .small_image_div {
+    height: 71px;
+    width: 71px;
+}
+
+.product_details .image_slider_vertical .slick-prev {
+    top: 3.3%;
+    width: 100%;
+    height: 30px;
+    background: gray;
+    left: 0;
+    z-index: 99;
+}
+
+.product_details .image_slider_vertical  .slick-next {
+    /* z-index: 1111; */
+    width: 100%;
+    height: 30px;
+    background: gray;
+    bottom: -3.5%;
+    top: unset;
+    right: unset;
+}
+
+.product_details .image_slider_vertical .small_image_div img {
+    height: 100%;
+    width: 100%;
+}
+
+.product_details .image_slider_hightlight_image {
+    flex: 0 0 80%;
+}
+
+
+.product_pricing_button_heading {
+    display: inline-block !important;
+    width: auto;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+}
+
+#product-description ul li::marker {
+    color: #ccc !important;
+}
+.socialIcon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.socialIcon i{
+    font-size: 1.9rem;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.socialIcon a:nth-of-type(1) i{
+    width: 40px;
+    height: 40px;
+    background: #3d3d92;
+    color: white;
+    border-radius: 50%;
+}
+.socialIcon a:nth-of-type(2) i{
+    background: green;
+    border-radius: 50%;
+    color: white;
+    width: 40px;
+    height: 40px;
+}
+.socialIcon a:nth-of-type(3) i{
+    background: #b80707;
+    border-radius: 50%;
+    color: white;
+    width: 40px;
+    height: 40px;
+}
+.socialIcon a:nth-of-type(4) i{
+    background: #1484a6;
+    border-radius: 50%;
+    color: white;
+    width: 40px;
+    height: 40px;
+}
+.detail-flex-column{
+    display: flex;
+    flex-direction: column;
+}
+.detail-flex-row{
+    display: flex;
+    flex-direction: row;
+}
+.product-detail-container{
+    padding: 2rem;
+}
+
+.Product-detail-flower{
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+     
+     margin-left:1rem ;
+     /* width:  22.875rem; */
+     height:31.9375rem;
+}
+.flower-container{
+    width: 30%;
+}
+.flower-img-box{
+    width: 20rem;
+    height: 25rem; 
+    margin-left: 1rem;
+  
+}
+.flower-img{
+    width: 20rem;
+    height: 25rem;
+    object-fit: contain;
+}
+.small-img{
+    object-fit: contain;
+    width: 5rem;
+    height: 5rem;
+}
+.small-img-box{
+    border: 1px solid black;
+    margin-left: 1.2rem;
+    padding: .2rem;
+ 
+}
+.detail-icon-size{
+ font-size: xx-large;
+ margin-left: 1rem;
+}
+.product-detail-share-icon{
+    padding: 1rem;
+}
+.detail-share{
+    font-size: x-large;
+    margin-left: 2rem;
+}
+.facebook-color{
+    color: blue;
+}
+.whatsap-color{
+    color: green;
+}
+.insta-color{
+
+    color: rgb(232, 89, 50);
+}
+.detail-redrose{
+    font-size: 2rem;
+}
+.detail-rating{
+    font-weight: bolder;
+}
+.detail-star{
+    color: yellow;
+}
+.detail-rs{
+    font-size: 2.5rem;
+    margin-left: 1rem;
+    font-weight: 700;
+}
+.detail-Rs{
+    font-weight: 700;
+    font-size: 4rem;
+    margin-left: 1rem;
+}
+.detail-view{
+    font-weight: 300;
+    color: rgb(15, 205, 205);
+}
+.down-arrow{
+    font-weight: 300;
+    font-size: x-large;
+    color: rgb(15, 205, 205);
+}
+
+.detail-enter{
+    color: red;
+}
+.detail-input{
+    padding: .3125rem;
+    margin-left: 0.625rem;
+    width: 11rem;
+}
+.detail-button{
+    padding: 0.3125rem;
+    width: 12.5rem;
+    margin-left: .625rem;
+    border-radius: 0.625rem;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+}
+.detail-background-color-grey{
+    background-color: rgb(59, 54, 54);
+}
+
+.detail-background-color-red{
+    background-color: rgb(184, 24, 24);
+}
+.detail-button-icon{
+color: white;
+font-size: x-large;
+margin-right:0.625rem ;
+}
+.detail-button-name{
+    color: white;
+}
+.detail-button-box{
+    margin-top: 0.625rem;
+}
+.detail-color-rate{
+    color: gray;
+    font-weight: bolder;
+    margin-left: 1.25rem;
+}
+.detail-color-rates{
+    color: red;
+    margin-left: .625rem;
+    font-weight: bolder;
+   
+}
+.detail-space{
+    display: flex;
+    justify-content: space-between;
+}
+
+.small-img-box1{
+    border: 1px solid black;
+    margin-left: 1.2rem;
+    padding: .2rem;
+}
+.small-img1{
+    
+    width: 7rem;
+    height: 5rem;
+}
+.detail-margin{
+    margin-top: 1.25rem;
+}
+.product-detail-pricing-container{
+    padding: 3rem;
+    width: 40%;
+}
+/* .detail-lf{
+    margin-left: 10px;
+} */
+.detail-small-igm{
+    width: 6.25rem;
+    height: 7.5rem;
+  
+    border: 1px solid black;
+
+}
+.detail-two{
+    font-size: xx-small;
+    margin-left: 0.25rem;
+}
+.rs-p{
+    font-size: small; 
+    color: red;
+    padding: 0.1875rem;
+}
+.rspe{
+    color: white;
+    background-color: red;
+    margin-bottom: 2px;
+    font-size: small; 
+}
+.background-black{
+    border: 1px solid black;
+    padding: .25rem;
+    /* width: 102px; */
+    margin-bottom: 1rem;
+    margin-right: 2.5rem;
+}
+.last-container{
+  
+    width: 30%;
+
+}
+.detail-grid{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.last-box-container{
+    /* width: 18.125rem; */
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    padding: 1.3125rem;
+
+}
+.detail-mini-box{
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    width: 8.125rem;
+    padding: 0.3125rem;
+    margin-bottom: 0.5rem;
+    margin-right: 0.375rem;
+    margin-top: 0.3125rem;
+  
+
+}
+.boldee{
+    font-weight: bolder;
+    margin-left:.3125rem ;
+    font-size: small;
+}
+.ic-color{
+    color: red;
+    margin-left: 3rem;
+}
+.mini-box-size{
+    margin-top: 2rem;
+}
+.detail-specification-main{
+    font-weight: bolder;
+    font-size: x-large;
+    color: gray;
+}
+.detail-specification-list{
+    color: gray;
+    font-weight: bolder;
+    font-size: large;
+}
+.detail-specification{
+    padding: 3rem;
+    margin: 3rem 3rem 3rem 3rem;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    border-radius: 5px;
+}

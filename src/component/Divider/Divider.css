@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap');
+.divider {
+    background-color: hsl(207deg 27% 94%);
+    text-align: center;
+    padding: 16px;
+    border-radius: 10px;
+    /* margin: 30px 0 10px 0; */
+    margin: 2% 0%;
+}
+
+.divider h2 {
+    font-size: 38px;
+    font-family: 'Oleo Script', cursive;
+}

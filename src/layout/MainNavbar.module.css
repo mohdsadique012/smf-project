@@ -1,0 +1,48 @@
+.Navbar  {
+    background-color: #000000 !important;
+    color: white !important;
+    position: sticky !important;
+    top: 0px !important;
+    z-index: 1111;
+}
+
+
+.SubNavbar  {
+    background-color: #1f1f1f !important;
+    color: white !important;
+    position: sticky !important;
+    top: 13%;
+    z-index: 1111;
+}
+
+.Navbar a{ 
+    color: white !important;
+    font-weight: 600;
+}
+
+#subNavbarScroll {
+    align-items: unset !important;
+    justify-content: flex-end !important;
+}
+
+#Brand {
+    height: 94px !important;
+    width: 175px;
+}
+
+#SubBrand {
+    height: 35px;
+}
+
+#Brand img {
+    height: 100%;
+    width: 100%;
+}
+.navbar h5{
+    font-weight: 600;
+}
+/* .icons-navbar a{
+    font-weight: 600;
+} */
+
+/* Collapsed Menu */

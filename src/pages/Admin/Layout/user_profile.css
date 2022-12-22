@@ -1,0 +1,143 @@
+.profile-flex{
+    display: flex;
+    flex-direction: row;
+  
+}
+.profile-color{
+    color: gray;
+}
+.profile-firstletter{
+    height: 7rem;
+    width: 7rem;
+    background-color: red;
+    display: flex;
+    align-content: center;
+    align-content: center;
+ 
+}
+.profileletter{
+    color: white;
+    font-size: 5rem;
+    margin-top: 9px;
+    margin-left: 30px;
+    
+
+    
+}
+.profile-flex {
+    margin: 34px;
+}
+.profile-info {
+    /* padding-top: 25px;
+    padding-left: 16px; */
+}
+.profile-flex-coloumn{
+    display: flex;
+    flex-direction: column;
+}
+.profile-check{
+    margin-left: 8rem;
+    margin-right: 2rem;
+}
+.profile-input{
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: black;
+   
+    margin-top:.3rem;
+    
+}
+.profile-input:focus{
+    border-color: orange;
+
+}
+.profile-span{
+    margin-right: 3rem;
+          
+}
+.email{
+    margin-left: 7rem;
+    margin-bottom: .5rem;
+}
+.password{
+   margin-left: 4.6rem;
+}
+.country{
+    margin-left: 10rem;
+}
+.mobile{
+    margin-left: 10rem;
+}
+.alternate{
+    margin-left: 5.6rem;
+}
+.date{
+    margin-left: 7rem;
+    margin-top: .3rem;
+    border-color: black;
+    width: 10rem;
+}
+.unsuscribe{
+    margin-left: 8rem;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+.boder-color{
+    border-bottom: 3px solid red;
+    margin-bottom: 1rem;
+}
+.bodercl{
+    border-bottom: 3px solid rgb(192, 186, 186);
+    height: 1.5rem;
+    margin-left: 2rem;
+}
+.border-line{
+    border-bottom: 3px solid rgb(192, 186, 186);
+    height: 2.5rem;
+}
+.boderuns{
+    border-bottom: 3px solid black;
+    height: 2.8rem;
+}
+.color{
+    color: red;
+    cursor: pointer;
+}
+.color:hover{
+    background-color: black;
+    color: white;
+}
+.profile-img{
+    width: 100%;
+    height: 300px;
+   
+}
+.position{
+    position: absolute;
+    top: 22rem;
+    margin-left: 6rem;
+}
+/* .positionrelative{
+    position: absolute;
+} */
+.width{
+    width: 70%;
+}
+.widthe{
+    width: 100%;
+    margin-top: -2rem;
+}
+.profilemargintop{
+    margin-top: 4rem;
+}
+.profile-icon-size{
+    font-size: xx-large;
+}
+.profile-button{
+    color:black;
+    width: 8rem;
+    margin-top: 1.5rem;
+    background-color: rgb(192, 186, 186);
+    padding: 5px;
+    border-radius: 3px;
+}
