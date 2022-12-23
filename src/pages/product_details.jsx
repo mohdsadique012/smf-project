@@ -125,7 +125,7 @@ function Home(props) {
                        <span><i className="fa fa-star detail-star" aria-hidden="true"></i></span>
                        <span><i className="fa fa-star detail-star" aria-hidden="true"></i></span>
                        <span><i className="fa fa-star " aria-hidden="true"></i></span>
-                       <span className='detail-rating'> 4 star | 551 ratings</span>
+                       <span className='detail-rating'> 4 Star | 551 ratings</span>
                      </p>
                      <p>
                        <span className='detail-rs'>Rs</span>
