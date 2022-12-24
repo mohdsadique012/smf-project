@@ -7,6 +7,10 @@ function about() {
     <p>hrllo</p>
     <p>hrllo</p>
     <p>hrllo</p>
+    <p>hello</p>
+    <p>hrllo</p>
+    <p>hrllo</p>
+    <p>hrllo</p>
     </div>
   )
 }
