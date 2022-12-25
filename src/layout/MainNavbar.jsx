@@ -64,7 +64,7 @@ function MainNavbar({ cartOpen }) {
               >
                 <Nav.Link href="#action1">
                   <AiFillHeart />
-                  <p>WishList</p>
+                  {/* <p>WishList</p> */}
                 </Nav.Link>
                 <Nav.Link href="#action1">
                   <BiMailSend />
