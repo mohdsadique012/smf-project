@@ -12,7 +12,8 @@ jobs:
     - name: Run react build script
       uses: actions/checkout@v2
           
-    - run: npm && npm build
+    - run: npm i
+    - run: npm run build
   
       env:
         CI: false
