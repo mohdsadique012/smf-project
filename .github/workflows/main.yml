@@ -20,9 +20,11 @@ jobs:
       with:
         target_branch: gh-pages
         build_dir: build
+      env:
+        GITHUB_TOKEN: ${{ secrets.FTP_GITHUB_TOKEN }}
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.3
       with:
         server: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME }}
+        username: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PASSWORD }}
