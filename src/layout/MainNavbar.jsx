@@ -68,7 +68,7 @@ function MainNavbar({ cartOpen }) {
                 </Nav.Link>
                 <Nav.Link href="#action1">
                   <BiMailSend />
-                  <p>Mail</p>
+                  <p>Mail us</p>
                 </Nav.Link>
                 <NavDropdown
                   title={<FaRupeeSign />}
