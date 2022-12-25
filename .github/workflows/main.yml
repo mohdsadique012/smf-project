@@ -5,26 +5,21 @@ on:
 
 name: Deploy website on push
 jobs:
-  web-deploy:
-    name: Deploy
+  build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Get latest code
+    - name: Run react build script
       uses: actions/checkout@v2
-      with:
-          node-version: "v14.17.0"
-    - run: npm i
-    - run: npm run build
-    - name: Deploy
-      uses: crazy-max/ghaction-github-pages@v1
-      with:
-        target_branch: gh-pages
-        build_dir: build
+          
+    - run: npm && npm build
+  
       env:
-        GITHUB_TOKEN: ${{ secrets.FTP_GITHUB_TOKEN }}
+        CI: false
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.3
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: build/
