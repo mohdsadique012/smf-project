@@ -89,6 +89,7 @@ function App() {
   // }
   return (
     <>
+    <h1>i won</h1>
       <MainNavbar cartOpen={drawerToggleClickHandler} />
       <Sidebar addCart={addcart} cartCount={cartCount} show={toggle} flipcart={flipcart}  />
       {backdrop}
