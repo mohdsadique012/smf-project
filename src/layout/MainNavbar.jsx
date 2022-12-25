@@ -64,11 +64,11 @@ function MainNavbar({ cartOpen }) {
               >
                 <Nav.Link href="#action1">
                   <AiFillHeart />
-                  {/* <p>WishList</p> */}
+                  <p>WishList</p>
                 </Nav.Link>
                 <Nav.Link href="#action1">
                   <BiMailSend />
-                  <p>Mail us</p>
+                  <p>Mail</p>
                 </Nav.Link>
                 <NavDropdown
                   title={<FaRupeeSign />}
