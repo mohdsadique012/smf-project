@@ -67,7 +67,7 @@ function App() {
     setCartCount((current) => [...current, 1]);
     console.log(cartCount);
   }
-
+  // .....
   // function checkpath() {
   //   if (window.location.pathname == '/login') {
   //     check = false;
