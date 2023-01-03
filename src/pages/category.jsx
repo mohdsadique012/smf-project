@@ -18,6 +18,7 @@ const settings = {
     autoplaySpeed: 2000,
     arrows: true,
   };
+  //any thing add
 function category() {
   return (
     <>
