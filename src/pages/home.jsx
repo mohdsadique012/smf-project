@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CardComponent from "../component/Card/CardComponent";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -18,6 +18,7 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 import TrendingCards from "../component/Card/TrendingCards";
 import SimpleCardComponent from "../component/Card/SimpleCardComponent";
+import axios from "axios";
 
 const arrCount = [1, 2, 3, 4, 5, 6];
 const CardFirst = [
@@ -40,16 +41,7 @@ const menuTitle = [
   { icon: "official/Icons/Pant_Gifts.webp", title: "Plants Gift" },
   { icon: "official/Icons/International_Gifts.jpeg", title: "International" },
 ];
-const bestSelling = [
-  { icon: "official/Best_Selling_Gifts/1.png", title: "Birthday Gift" },
-  { icon: "official/Best_Selling_Gifts/2.png", title: "Annivesary Gift" },
-  { icon: "official/Best_Selling_Gifts/3.png", title: "Flowers Gift" },
-  { icon: "official/Best_Selling_Gifts/4.png", title: "Cakes Gift" },
-  { icon: "official/Best_Selling_Gifts/1.png", title: "Birthday Gift" },
-  { icon: "official/Best_Selling_Gifts/2.png", title: "Annivesary Gift" },
-  { icon: "official/Best_Selling_Gifts/3.png", title: "Flowers Gift" },
-  { icon: "official/Best_Selling_Gifts/4.png", title: "Cakes Gift" },
-];
+
 
 const trendingCards = [
   { icon: "official/Best_Selling_Gifts/1.png", title: "Birthday Gift" },
@@ -57,13 +49,6 @@ const trendingCards = [
   { icon: "official/Best_Selling_Gifts/3.png", title: "Flowers Gift" },
   { icon: "official/Best_Selling_Gifts/4.png", title: "Cakes Gift" },
   { icon: "official/Best_Selling_Gifts/3.png", title: "Flowers Gift" },
-];
-
-const Personalized_Gifts = [
-  { icon: "official/Best_Selling_Gifts/1.png", title: "Birthday Gift" },
-  { icon: "official/Personalized_Gifts/1_copy.png", title: "Printed Mugs" },
-  { icon: "official/Personalized_Gifts/2.png", title: "Magic Pillow" },
-  { icon: "official/Personalized_Gifts/3.png", title: "Stationary" },
 ];
 
 const cakesGifts = [
@@ -95,10 +80,6 @@ const Plants_Gifts = [
 ];
 
 const Home = ({ cartCount, addCart }) => {
-  useEffect(() => {
-    // 👇️ scroll to top on page load
-    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-  }, [])
   const settings = {
     infinite: true,
     dots: true,
@@ -130,6 +111,63 @@ const Home = ({ cartCount, addCart }) => {
     arrows: true,
   };
 
+
+  /* Best Selling API */
+  /* useState => Initilize To variable , array or object for the first time
+  Syntax useState(variable, updateFunction)
+  */
+  const [bestSelling, updateBestSelling] = useState([]);
+  const [Personalized_Gifts, updatePersonalized_Gifts] = useState([]);
+  /* useEffect */
+  useEffect(() => {
+    axios.get('http://localhost:7600/bestselling_lists')
+      .then((result) => {
+        let listOfBestProducts = result.data.bestSellingLists;
+        if (listOfBestProducts) {
+
+          listOfBestProducts.map((el, key) => {
+
+            if (el.name) {
+              updateBestSelling([{
+                icon: el.image ? el.image : "images/cake2.jpg",
+                title: el.name
+              }])
+            }
+          })
+        }
+      })
+      .catch(err => console.warn(err));
+
+    /* Personalized Gift API */
+    
+    axios.get("http://localhost:7600/personalized_list")
+      .then((result) => {
+        let personalizedProduct = result.data.personalizedLists;
+        var tempvar = [];
+        if (personalizedProduct) {
+          personalizedProduct.map((el, key) => {
+            if (el.name) {
+              tempvar.push({
+                icon: el.image ? 'http://localhost:7600/' + el.image : "images/cgift.jpg",
+                title: el.name,
+              })
+            }
+          })
+
+          updatePersonalized_Gifts(...Personalized_Gifts, tempvar)
+          console.log(Personalized_Gifts)
+
+        }
+      })
+      .catch(err => console.warn(err));
+  }, []);
+
+
+
+
+
+
+
   return (
     <>
       <Row>
@@ -146,7 +184,7 @@ const Home = ({ cartCount, addCart }) => {
             lg={4}
             xl={4}
           >
-           
+
             <CardComponent
               addCart={addCart}
               source={el.image}
@@ -154,14 +192,14 @@ const Home = ({ cartCount, addCart }) => {
               showContent={false}
               value="200"
             />
-          
+
           </Col>
         ))}
       </Row>
       <Divider content="Best Selling Gift" />
       <Row style={{ marginBottom: "2.8%" }}>
         <Slider {...settingsBestSelling}>
-          {bestSelling.map((el, key) => (
+          {bestSelling ? bestSelling.map((el, key) => (
             <Col
               key={key}
               className="home-card-layout"
@@ -175,10 +213,10 @@ const Home = ({ cartCount, addCart }) => {
                 cardContent={"Product details here........"}
                 cardClass="auto-height-cust"
                 showContent={true}
-                value="200"
+                value={el.price}
               />
             </Col>
-          ))}
+          )) : ''}
         </Slider>
       </Row>
       <Divider content="Trending Now" />
@@ -187,7 +225,7 @@ const Home = ({ cartCount, addCart }) => {
                     trendingCards.map((el, key) => <Col key={key} className='home-card-layout' xs={12} sm={6} lg={4} xl={2}><TrendingCards source={el.icon} cardContent={"Timeless Love Red Roses Bouquet"} cardClass="auto-height-cust" showContent={true} value="200" /></Col>)
                 } */}
         <Slider {...settingsBestSelling}>
-          {bestSelling.map((el, key) => (
+          {bestSelling ? bestSelling.map((el, key) => (
             <Col
               key={key}
               className="home-card-layout"
@@ -204,14 +242,15 @@ const Home = ({ cartCount, addCart }) => {
                 value="200"
               />
             </Col>
-          ))}
+          )) : ''}
         </Slider>
       </Row>
 
       <div className="container-fluid" style={{ marginTop: "2%" }}>
         <div className="borderDesign">
           <Row className={["position-relative"]}>
-            {Personalized_Gifts.slice(0, 4).map((el, key) => (
+            
+          {Personalized_Gifts ? Personalized_Gifts.slice(0, 4).map((el, key) => (
               <Col
                 key={key}
                 className="Green-card home-card-layout"
@@ -226,11 +265,11 @@ const Home = ({ cartCount, addCart }) => {
                   custContent={"Personalized Gifts"}
                   source={el.icon}
                   cardContent={el.title}
-                  showContent={false}
+                  showContent={true}
                   value="200"
                 />
               </Col>
-            ))}
+            )) : <h1>Hello Rajat </h1>}
             <span className={"view_all_btn"}>View All</span>
           </Row>
         </div>
@@ -301,7 +340,6 @@ const Home = ({ cartCount, addCart }) => {
                 <SimpleCardComponent
                   checker={key}
                   custContentImg={true}
-                  
                   custContent={"Combos"}
                   source={el.icon}
                   cardContent={el.title}
@@ -653,7 +691,7 @@ const Home = ({ cartCount, addCart }) => {
             </Container> */}
       <div style={{ marginBottom: "3%" }}>
         <Slider {...settingsBestSelling}>
-          {bestSelling.map((el, key) => (
+          {bestSelling ? bestSelling.map((el, key) => (
             <Col
               key={key}
               className="home-card-layout"
@@ -670,7 +708,7 @@ const Home = ({ cartCount, addCart }) => {
                 value="200"
               />
             </Col>
-          ))}
+          )) : ''}
         </Slider>
       </div>
 
