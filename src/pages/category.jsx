@@ -18,7 +18,7 @@ const settings = {
     autoplaySpeed: 2000,
     arrows: true,
   };
-  //any thing add
+  //any thing add fdssdfg
 function category() {
   return (
     <>
