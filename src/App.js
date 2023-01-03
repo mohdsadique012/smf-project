@@ -43,7 +43,7 @@ function App() {
   const [toggle, setToggle] = useState(false);
 
   const flipcart = (props)=>{
-    console.log("flipcart")
+    console.log("flipcart" , "rajat")
     setToggle(props)
   }
 
