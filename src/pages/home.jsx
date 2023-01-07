@@ -124,209 +124,243 @@ const Home = ({ cartCount, addCart }) => {
   const [Pant_Gifts, updatePant_Gifts]=useState([])
   // console.log(bestSelling,"best");
   /* useEffect */
-  useEffect(() => {
-    axios.get('http://localhost:7600/bestselling_lists')
-      .then((result) => {
+  const [data , setData]= useState([])
+
+   useEffect(()=>{
+    axios.get("http://admin.thesoftwarecompany.in/bestselling_lists")
+      .then((result) =>{
         let listOfBestProducts = result.data.bestSellingLists;
-        if (listOfBestProducts) {
-
-          listOfBestProducts.map((el, key) => {
-
-            if (el.name) {
-              updateBestSelling([{
-                icon: el.image ? el.image : "images/cake2.jpg",
-                title: el.name
-              }])
-            }
-          })
-        }
+          setData(listOfBestProducts);
       })
       .catch(err => console.warn(err));
 
-    /* Personalized Gift API */
+   },[])
+     console.log(data,"data123");
+
+     const catogries={}
+     data.forEach(product=>{
+     catogries[product['category']]=1
+     })
+     console.log(catogries, 'catogries')
+
+
+
+  //    let [category,setCategory]=useState('all')
+  //    useEffect(()=>{
+  //      filterSearch("")
+  //  },[category])
+  //  const handleclick=(e)=>{
+  //   console.log(e.target.value,'..handlesele');
+  //   setCategory(e.target.value)
+    
+
+  // }
+
+
+
+  // useEffect(() => {
+  //   axios.get('http://localhost:7600/bestselling_lists')
+  //     .then((result) => {
+  //       let listOfBestProducts = result.data.bestSellingLists;
+  //       if (listOfBestProducts) {
+
+  //         listOfBestProducts.map((el, key) => {
+
+  //           if (el.name) {
+  //             updateBestSelling([{
+  //               icon: el.image ? el.image : "images/cake2.jpg",
+  //               title: el.name
+  //             }])
+  //           }
+  //         })
+  //       }
+  //     })
+  //     .catch(err => console.warn(err));
+
+  //   /* Personalized Gift API */
    
     
-    axios.get("https://thesoftwarecompany.in/personalized_list")
-      .then((result) => {
-        let personalizedProduct = result.data.personalizedLists;
-        console.log(result.data , "personal");
-        var tempvar = [];
-        let personalcategory=[];
-        if (personalizedProduct) {
+  //   axios.get("http://admin.thesoftwarecompany.in/personalized_list")
+  //     .then((result) => {
+  //       let personalizedProduct = result.data.personalizedLists;
+  //       console.log(result.data , "personal");
+  //       var tempvar = [];
+  //       let personalcategory=[];
+  //       if (personalizedProduct) {
 
-          let personal = personalizedProduct.filter((el,key)=>{
-            console.log(el,"vnvnv")
-                return el.categorytype=='Personalized Gifts'
+  //         let personal = personalizedProduct.filter((el,key)=>{
+  //           console.log(el,"vnvnv")
+  //               return el.categorytype=='Personalized Gifts'
          
-        })
-        personalcategory=personal
-        console.log(personal,"mmmmmm")
+  //       })
+  //       personalcategory=personal
+  //       console.log(personal,"mmmmmm")
 
-        personalcategory.map((el, key) => {
-            if (el.name) {
-              tempvar.push({
-                icon: el.image ? 'https://thesoftwarecompany.in/' + el.image : "images/cgift.jpg",
-                title: el.name, value :el.regularprice,
-              })
-            }
-          })
+  //       personalcategory.map((el, key) => {
+  //           if (el.name) {
+  //             tempvar.push({
+  //               icon: el.image ? 'http://admin.thesoftwarecompany.in/' + el.image : "images/cgift.jpg",
+  //               title: el.name, value :el.regularprice,
+  //             })
+  //           }
+  //         })
 
-          updatePersonalized_Gifts(...Personalized_Gifts, tempvar)
-          // console.log(Personalized_Gifts ,"1111")
+  //         updatePersonalized_Gifts(...Personalized_Gifts, tempvar)
+  //         // console.log(Personalized_Gifts ,"1111")
 
-        }
-      })
+  //       }
+  //     })
 
-      //Flower_Gift_list
+  //     //Flower_Gift_list
 
-    axios.get("https://thesoftwarecompany.in/Flower_Gift_list")
-      .then((result) => {
-      //   console.log(result,'result');
-        let Flower_Gift_list = result.data.flowergiftslist;
-        // console.log(Flower_Gift_list,"flower")
-        var temp = [];
-        let flowercategory=[]
-        if (Flower_Gift_list) {
-          let flower = Flower_Gift_list.filter((el,key)=>{
-            console.log(el,"vnvnv")
-                return el.categorytype=='Flowers gift'
+  //   axios.get("http://admin.thesoftwarecompany.in/Flower_Gift_list")
+  //     .then((result) => {
+  //     //   console.log(result,'result');
+  //       let Flower_Gift_list = result.data.flowergiftslist;
+  //       // console.log(Flower_Gift_list,"flower")
+  //       var temp = [];
+  //       let flowercategory=[]
+  //       if (Flower_Gift_list) {
+  //         let flower = Flower_Gift_list.filter((el,key)=>{
+  //           console.log(el,"vnvnv")
+  //               return el.categorytype=='Flowers gift'
          
-        })
-        flowercategory=flower
+  //       })
+  //       flowercategory=flower
 
-        flowercategory.map((el, key) => {
-            // console.log(el,"el")
-            if (el.name) {
-              temp.push({
-                icon: el.image ? 'https://thesoftwarecompany.in/' + el.image : "images/cgift.jpg",
-                title: el.name, value :el.regularprice,
-              })
-            }
-        })
-        // console.log(temp,"temp")
+  //       flowercategory.map((el, key) => {
+  //           // console.log(el,"el")
+  //           if (el.name) {
+  //             temp.push({
+  //               icon: el.image ? 'http://admin.thesoftwarecompany.in/' + el.image : "images/cgift.jpg",
+  //               title: el.name, value :el.regularprice,
+  //             })
+  //           }
+  //       })
+  //       // console.log(temp,"temp")
 
-        updateFlower_Gifts(...Flower_Gifts, temp)
+  //       updateFlower_Gifts(...Flower_Gifts, temp)
        
 
-      }
-    })
+  //     }
+  //   })
 
-    .catch(err => console.warn(err,"ggggg"));
+  //   .catch(err => console.warn(err,"ggggg"));
 
 
 
-    // plant gift
+  //   // plant gift
      
     
-    axios.get("https://thesoftwarecompany.in/cake_Gifts_lists")
-      .then((result) => {
-        console.log(result,'plant1212');
-        let Pant_Gifts_lists = result.data.bestSellingLists;
-        console.log(Pant_Gifts_lists,"Pant_Gifts_lists22222")
-        var temp = [];
-        let plantsubcategory=[]
-        if (Pant_Gifts_lists) {
-          let plant = Pant_Gifts_lists.filter((el,key)=>{
-            console.log(el,"vnvnv")
-                return el.categorytype=='Plants Gift'
+  //   axios.get("http://admin.thesoftwarecompany.in/cake_Gifts_lists")
+  //     .then((result) => {
+  //       console.log(result,'plant1212');
+  //       let Pant_Gifts_lists = result.data.bestSellingLists;
+  //       console.log(Pant_Gifts_lists,"Pant_Gifts_lists22222")
+  //       var temp = [];
+  //       let plantsubcategory=[]
+  //       if (Pant_Gifts_lists) {
+  //         let plant = Pant_Gifts_lists.filter((el,key)=>{
+  //           console.log(el,"vnvnv")
+  //               return el.categorytype=='Plants Gift'
          
-        })
-        plantsubcategory=plant
+  //       })
+  //       plantsubcategory=plant
 
 
-        plantsubcategory.map((el, key) => {
-            // console.log(el,"el")
-            if (el.name) {
-              temp.push({
-                icon: el.image ? 'https://thesoftwarecompany.in/' + el.image : "images/cgift.jpg",
-                title: el.name, value :el.regularprice,
-              })
-            }
-        })
-        console.log(temp,"plant temp")
+  //       plantsubcategory.map((el, key) => {
+  //           // console.log(el,"el")
+  //           if (el.name) {
+  //             temp.push({
+  //               icon: el.image ? 'http://admin.thesoftwarecompany.in/' + el.image : "images/cgift.jpg",
+  //               title: el.name, value :el.regularprice,
+  //             })
+  //           }
+  //       })
+  //       console.log(temp,"plant temp")
 
-        updatePant_Gifts(...Pant_Gifts, temp)
+  //       updatePant_Gifts(...Pant_Gifts, temp)
        
 
-      }
-    })
+  //     }
+  //   })
 
-    .catch(err => console.warn(err,"ggggg"));
+  //   .catch(err => console.warn(err,"ggggg"));
 
 
-    //combos
+  //   //combos
 
-    axios.get("https://thesoftwarecompany.in/combos_lists")
-      .then((result) => {
-        let combos_lists = result.data.cakegiftlist;
-        
-        var tempvar = [];
-        var tcs = [];
-        if (combos_lists) {
-             let combo = combos_lists.filter((el,key)=>{
-              console.log(el,"vnvnv")
-                  return el.categorytype=='combos'
+  //   axios.get("http://admin.thesoftwarecompany.in/bestselling_lists")
+  //     .then((result) => {
+  //       let combos_lists = result.data.cakegiftlist;
+  //         console.log(result.data,"main data")
+  //       var tempvar = [];
+  //       var tcs = [];
+  //       if (combos_lists) {
+  //            let combo = combos_lists.filter((el,key)=>{
+  //             console.log(el,"vnvnv")
+  //                 return el.categorytype=='combos'
            
-          })
+  //         })
          
       
-          tcs=combo
+  //         tcs=combo
          
 
 
-          tcs.map((el, key) => {
-            if (el.name) {
-              tempvar.push({
-                icon: el.image ? 'https://thesoftwarecompany.in/' + el.image : "images/cgift.jpg",
-                title: el.name, value :el.regularprice,
-              })
-            }
-          })
-          updateCombos_Lists(...combos_Lists, tempvar)
+  //         tcs.map((el, key) => {
+  //           if (el.name) {
+  //             tempvar.push({
+  //               icon: el.image ? 'http://admin.thesoftwarecompany.in/' + el.image : "images/cgift.jpg",
+  //               title: el.name, value :el.regularprice,
+  //             })
+  //           }
+  //         })
+  //         updateCombos_Lists(...combos_Lists, tempvar)
          
 
-        }
-      })
+  //       }
+  //     })
         
       
 
-      // gift
-      axios.get("https://thesoftwarecompany.in/Pant_Gifts_lists")
-        .then((result) => {
-        //  console.log(result,'result');
-          let cakegift = result.data.plant_gifts;
-          console.log(result.data,"cake")
-          var temp = [];
-          let  cakesubcategory =[];
-          if (cakegift) {
-            let cake = cakegift.filter((el,key)=>{
-              console.log(el,"vnvnv")
-                  return el.categorytype=='Cakes Gift'
+  //     // gift
+  //     axios.get("http://admin.thesoftwarecompany.in/Pant_Gifts_lists")
+  //       .then((result) => {
+  //       //  console.log(result,'result');
+  //         let cakegift = result.data.plant_gifts;
+  //         console.log(result.data,"cake")
+  //         var temp = [];
+  //         let  cakesubcategory =[];
+  //         if (cakegift) {
+  //           let cake = cakegift.filter((el,key)=>{
+  //             console.log(el,"vnvnv")
+  //                 return el.categorytype=='Cakes Gift'
            
-          })
+  //         })
          
       
-          cakesubcategory=cake;
-          console.log( cakesubcategory,' cakesubcategory')
-          cakesubcategory.map((el, key) => {
-              // console.log(el,"el")
-              if (el.name) {
-                temp.push({
-                  icon: el.image ? 'https://thesoftwarecompany.in/' + el.image : "images/cgift.jpg",
-                  title: el.name, value :el.regularprice,
-                })
-              }
-          })
-          console.log(temp,"temp0000")
+  //         cakesubcategory=cake;
+  //         console.log( cakesubcategory,' cakesubcategory')
+  //         cakesubcategory.map((el, key) => {
+  //             // console.log(el,"el")
+  //             if (el.name) {
+  //               temp.push({
+  //                 icon: el.image ? 'http://admin.thesoftwarecompany.in/' + el.image : "images/cgift.jpg",
+  //                 title: el.name, value :el.regularprice,
+  //               })
+  //             }
+  //         })
+  //         console.log(temp,"temp0000")
 
-          updateCake_Gifts(...cake_Gifts, temp)
+  //         updateCake_Gifts(...cake_Gifts, temp)
          
 
-        }
-      })
+  //       }
+  //     })
 
-      .catch(err => console.warn(err,"ggggg"));
-  }, []);
+  //     .catch(err => console.warn(err,"ggggg"));
+  // }, []);
 
   
 
@@ -342,7 +376,7 @@ const Home = ({ cartCount, addCart }) => {
   return (
     <>
       <Row>
-        <HomeMenuCard menus={menuTitle} />
+        <HomeMenuCard menus={catogries} />
       </Row>
       <Jumbotron back_img={"official/Slider.png"} />
       <Row className={["second-section-images"]} style={{ marginBottom: "4%" }}>
@@ -421,7 +455,7 @@ const Home = ({ cartCount, addCart }) => {
         <div className="borderDesign">
           <Row className={["position-relative"]}>
             
-          {Personalized_Gifts ? Personalized_Gifts.slice(0, 4).map((el, key) => (
+          {Plants_Gifts.slice(0, 4).map((el, key) => (
               <Col
                 key={key}
                 className="Green-card home-card-layout"
@@ -440,7 +474,7 @@ const Home = ({ cartCount, addCart }) => {
                   value={el.value}
                 />
               </Col>
-            )) : <h1>Hello Rajat </h1>}
+            )) }
             <span className={"view_all_btn"}>View All</span>
           </Row>
         </div>

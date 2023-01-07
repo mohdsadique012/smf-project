@@ -37,8 +37,9 @@
 /* rupess icons */
 .dropdown-toggle::after {
     position: absolute;
-    right: 20%;
-    top: 24%;
+    /* right: 20%; */
+    top: 50%;
+ 
 }
 
 /* rupess icons */
