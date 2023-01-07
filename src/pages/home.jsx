@@ -146,7 +146,7 @@ const Home = ({ cartCount, addCart }) => {
     /* Personalized Gift API */
    
     
-    axios.get("http://localhost:7600/personalized_list")
+    axios.get("https://thesoftwarecompany.in/personalized_list")
       .then((result) => {
         let personalizedProduct = result.data.personalizedLists;
         console.log(result.data , "personal");
@@ -165,7 +165,7 @@ const Home = ({ cartCount, addCart }) => {
         personalcategory.map((el, key) => {
             if (el.name) {
               tempvar.push({
-                icon: el.image ? 'http://localhost:7600/' + el.image : "images/cgift.jpg",
+                icon: el.image ? 'https://thesoftwarecompany.in/' + el.image : "images/cgift.jpg",
                 title: el.name, value :el.regularprice,
               })
             }
@@ -179,7 +179,7 @@ const Home = ({ cartCount, addCart }) => {
 
       //Flower_Gift_list
 
-    axios.get("http://localhost:7600/Flower_Gift_list")
+    axios.get("https://thesoftwarecompany.in/Flower_Gift_list")
       .then((result) => {
       //   console.log(result,'result');
         let Flower_Gift_list = result.data.flowergiftslist;
@@ -198,7 +198,7 @@ const Home = ({ cartCount, addCart }) => {
             // console.log(el,"el")
             if (el.name) {
               temp.push({
-                icon: el.image ? 'http://localhost:7600/' + el.image : "images/cgift.jpg",
+                icon: el.image ? 'https://thesoftwarecompany.in/' + el.image : "images/cgift.jpg",
                 title: el.name, value :el.regularprice,
               })
             }
@@ -218,7 +218,7 @@ const Home = ({ cartCount, addCart }) => {
     // plant gift
      
     
-    axios.get("http://localhost:7600/cake_Gifts_lists")
+    axios.get("https://thesoftwarecompany.in/cake_Gifts_lists")
       .then((result) => {
         console.log(result,'plant1212');
         let Pant_Gifts_lists = result.data.bestSellingLists;
@@ -238,7 +238,7 @@ const Home = ({ cartCount, addCart }) => {
             // console.log(el,"el")
             if (el.name) {
               temp.push({
-                icon: el.image ? 'http://localhost:7600/' + el.image : "images/cgift.jpg",
+                icon: el.image ? 'https://thesoftwarecompany.in/' + el.image : "images/cgift.jpg",
                 title: el.name, value :el.regularprice,
               })
             }
@@ -256,7 +256,7 @@ const Home = ({ cartCount, addCart }) => {
 
     //combos
 
-    axios.get("http://localhost:7600/combos_lists")
+    axios.get("https://thesoftwarecompany.in/combos_lists")
       .then((result) => {
         let combos_lists = result.data.cakegiftlist;
         
@@ -277,7 +277,7 @@ const Home = ({ cartCount, addCart }) => {
           tcs.map((el, key) => {
             if (el.name) {
               tempvar.push({
-                icon: el.image ? 'http://localhost:7600/' + el.image : "images/cgift.jpg",
+                icon: el.image ? 'https://thesoftwarecompany.in/' + el.image : "images/cgift.jpg",
                 title: el.name, value :el.regularprice,
               })
             }
@@ -291,7 +291,7 @@ const Home = ({ cartCount, addCart }) => {
       
 
       // gift
-      axios.get("http://localhost:7600/Pant_Gifts_lists")
+      axios.get("https://thesoftwarecompany.in/Pant_Gifts_lists")
         .then((result) => {
         //  console.log(result,'result');
           let cakegift = result.data.plant_gifts;
@@ -312,7 +312,7 @@ const Home = ({ cartCount, addCart }) => {
               // console.log(el,"el")
               if (el.name) {
                 temp.push({
-                  icon: el.image ? 'http://localhost:7600/' + el.image : "images/cgift.jpg",
+                  icon: el.image ? 'https://thesoftwarecompany.in/' + el.image : "images/cgift.jpg",
                   title: el.name, value :el.regularprice,
                 })
               }
