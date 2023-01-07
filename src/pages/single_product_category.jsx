@@ -707,7 +707,8 @@ const Product_category = () => {
       </Container>
 
       <SubFooter />
-      <Footer />
+      <Footer />;
+      
     </>
   );
 };

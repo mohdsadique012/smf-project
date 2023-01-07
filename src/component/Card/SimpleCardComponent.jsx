@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 export default function SimpleCardComponent({ cardClass, source, showContent, value, cardContent, custContentImg, custContent, checker }) {
     return (
         <>
-            <div class="card justify-content-center bg-transparent border-0 text-center">
-                <img class="card-img-top  card-custom" src={source} alt="Card image cap" />
+            <div className="card justify-content-center bg-transparent border-0 text-center">
+                <img className="card-img-top  card-custom" style={{padding: "10px"}} src={source} alt="Card image cap" />
                   <Link to="/single_product_category">
                 {custContentImg && checker == 0 ? <div className="customCenterContent"><h2>{custContent}</h2></div> : ''}
                 </Link>  
@@ -16,13 +16,14 @@ export default function SimpleCardComponent({ cardClass, source, showContent, va
                         <>
                             {checker != 0 ? <Card.Body>
                                 <Card.Title>{cardContent}</Card.Title>
-                                <Card.Text>Rs {value}</Card.Text>
+                                <Card.Text></Card.Text>
                             </Card.Body> : ''}
                         </>
                         :
                         <>
                             {checker != 0 ? <div className='cardContent-new'>
-                              <p>  {cardContent}</p>
+                              <span>  {cardContent}</span>  
+                              
                             </div> : ''}
                         </>
                 }

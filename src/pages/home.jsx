@@ -118,6 +118,11 @@ const Home = ({ cartCount, addCart }) => {
   */
   const [bestSelling, updateBestSelling] = useState([]);
   const [Personalized_Gifts, updatePersonalized_Gifts] = useState([]);
+  const [cake_Gifts , updateCake_Gifts]= useState([]);
+  const [Flower_Gifts, updateFlower_Gifts] = useState([]);
+  const [combos_Lists ,updateCombos_Lists] = useState([]);
+  const [Pant_Gifts, updatePant_Gifts]=useState([])
+  // console.log(bestSelling,"best");
   /* useEffect */
   useEffect(() => {
     axios.get('http://localhost:7600/bestselling_lists')
@@ -139,30 +144,196 @@ const Home = ({ cartCount, addCart }) => {
       .catch(err => console.warn(err));
 
     /* Personalized Gift API */
+   
     
     axios.get("http://localhost:7600/personalized_list")
       .then((result) => {
         let personalizedProduct = result.data.personalizedLists;
+        console.log(result.data , "personal");
         var tempvar = [];
+        let personalcategory=[];
         if (personalizedProduct) {
-          personalizedProduct.map((el, key) => {
+
+          let personal = personalizedProduct.filter((el,key)=>{
+            console.log(el,"vnvnv")
+                return el.categorytype=='Personalized Gifts'
+         
+        })
+        personalcategory=personal
+        console.log(personal,"mmmmmm")
+
+        personalcategory.map((el, key) => {
             if (el.name) {
               tempvar.push({
                 icon: el.image ? 'http://localhost:7600/' + el.image : "images/cgift.jpg",
-                title: el.name,
+                title: el.name, value :el.regularprice,
               })
             }
           })
 
           updatePersonalized_Gifts(...Personalized_Gifts, tempvar)
-          console.log(Personalized_Gifts)
+          // console.log(Personalized_Gifts ,"1111")
 
         }
       })
-      .catch(err => console.warn(err));
+
+      //Flower_Gift_list
+
+    axios.get("http://localhost:7600/Flower_Gift_list")
+      .then((result) => {
+      //   console.log(result,'result');
+        let Flower_Gift_list = result.data.flowergiftslist;
+        // console.log(Flower_Gift_list,"flower")
+        var temp = [];
+        let flowercategory=[]
+        if (Flower_Gift_list) {
+          let flower = Flower_Gift_list.filter((el,key)=>{
+            console.log(el,"vnvnv")
+                return el.categorytype=='Flowers gift'
+         
+        })
+        flowercategory=flower
+
+        flowercategory.map((el, key) => {
+            // console.log(el,"el")
+            if (el.name) {
+              temp.push({
+                icon: el.image ? 'http://localhost:7600/' + el.image : "images/cgift.jpg",
+                title: el.name, value :el.regularprice,
+              })
+            }
+        })
+        // console.log(temp,"temp")
+
+        updateFlower_Gifts(...Flower_Gifts, temp)
+       
+
+      }
+    })
+
+    .catch(err => console.warn(err,"ggggg"));
+
+
+
+    // plant gift
+     
+    
+    axios.get("http://localhost:7600/cake_Gifts_lists")
+      .then((result) => {
+        console.log(result,'plant1212');
+        let Pant_Gifts_lists = result.data.bestSellingLists;
+        console.log(Pant_Gifts_lists,"Pant_Gifts_lists22222")
+        var temp = [];
+        let plantsubcategory=[]
+        if (Pant_Gifts_lists) {
+          let plant = Pant_Gifts_lists.filter((el,key)=>{
+            console.log(el,"vnvnv")
+                return el.categorytype=='Plants Gift'
+         
+        })
+        plantsubcategory=plant
+
+
+        plantsubcategory.map((el, key) => {
+            // console.log(el,"el")
+            if (el.name) {
+              temp.push({
+                icon: el.image ? 'http://localhost:7600/' + el.image : "images/cgift.jpg",
+                title: el.name, value :el.regularprice,
+              })
+            }
+        })
+        console.log(temp,"plant temp")
+
+        updatePant_Gifts(...Pant_Gifts, temp)
+       
+
+      }
+    })
+
+    .catch(err => console.warn(err,"ggggg"));
+
+
+    //combos
+
+    axios.get("http://localhost:7600/combos_lists")
+      .then((result) => {
+        let combos_lists = result.data.cakegiftlist;
+        
+        var tempvar = [];
+        var tcs = [];
+        if (combos_lists) {
+             let combo = combos_lists.filter((el,key)=>{
+              console.log(el,"vnvnv")
+                  return el.categorytype=='combos'
+           
+          })
+         
+      
+          tcs=combo
+         
+
+
+          tcs.map((el, key) => {
+            if (el.name) {
+              tempvar.push({
+                icon: el.image ? 'http://localhost:7600/' + el.image : "images/cgift.jpg",
+                title: el.name, value :el.regularprice,
+              })
+            }
+          })
+          updateCombos_Lists(...combos_Lists, tempvar)
+         
+
+        }
+      })
+        
+      
+
+      // gift
+      axios.get("http://localhost:7600/Pant_Gifts_lists")
+        .then((result) => {
+        //  console.log(result,'result');
+          let cakegift = result.data.plant_gifts;
+          console.log(result.data,"cake")
+          var temp = [];
+          let  cakesubcategory =[];
+          if (cakegift) {
+            let cake = cakegift.filter((el,key)=>{
+              console.log(el,"vnvnv")
+                  return el.categorytype=='Cakes Gift'
+           
+          })
+         
+      
+          cakesubcategory=cake;
+          console.log( cakesubcategory,' cakesubcategory')
+          cakesubcategory.map((el, key) => {
+              // console.log(el,"el")
+              if (el.name) {
+                temp.push({
+                  icon: el.image ? 'http://localhost:7600/' + el.image : "images/cgift.jpg",
+                  title: el.name, value :el.regularprice,
+                })
+              }
+          })
+          console.log(temp,"temp0000")
+
+          updateCake_Gifts(...cake_Gifts, temp)
+         
+
+        }
+      })
+
+      .catch(err => console.warn(err,"ggggg"));
   }, []);
 
+  
 
+  //  console.log(cake_Gifts,"chl")
+
+ console.log(Personalized_Gifts,"combolist" );
+ console.log(Pant_Gifts,'Pant_Gifts11111')
 
 
 
@@ -190,7 +361,7 @@ const Home = ({ cartCount, addCart }) => {
               source={el.image}
               cardContent={el.title}
               showContent={false}
-              value="200"
+              value={el.value}
             />
 
           </Col>
@@ -213,7 +384,7 @@ const Home = ({ cartCount, addCart }) => {
                 cardContent={"Product details here........"}
                 cardClass="auto-height-cust"
                 showContent={true}
-                value={el.price}
+                value={el.value}
               />
             </Col>
           )) : ''}
@@ -239,7 +410,7 @@ const Home = ({ cartCount, addCart }) => {
                 cardContent={"Product details here........"}
                 cardClass="auto-height-cust"
                 showContent={true}
-                value="200"
+                value={el.value}
               />
             </Col>
           )) : ''}
@@ -266,7 +437,7 @@ const Home = ({ cartCount, addCart }) => {
                   source={el.icon}
                   cardContent={el.title}
                   showContent={true}
-                  value="200"
+                  value={el.value}
                 />
               </Col>
             )) : <h1>Hello Rajat </h1>}
@@ -276,7 +447,7 @@ const Home = ({ cartCount, addCart }) => {
 
         <div className="borderDesign">
           <Row className={["position-relative"]}>
-            {cakesGifts.slice(0, 4).map((el, key) => (
+            {cake_Gifts ? cake_Gifts.slice(0, 4).map((el, key) => (
               <Col
                 key={key}
                 className="Green-card home-card-layout"
@@ -290,19 +461,19 @@ const Home = ({ cartCount, addCart }) => {
                   custContentImg={true}
                   custContent={"Cakes Gifts"}
                   source={el.icon}
-                  cardContent={el.title}
+                  cardContent={el.title} 
                   showContent={false}
-                  value="200"
+                  value={el.value}
                 />
               </Col>
-            ))}
+            ))  : <h1>Hello Rajat </h1>}
             <span className={"view_all_btn"}>View All</span>
           </Row>
         </div>
 
         <div className="borderDesign">
           <Row className={["position-relative"]}>
-            {flowerGifts.slice(0, 4).map((el, key) => (
+            {Flower_Gifts ? Flower_Gifts.slice(0, 4).map((el, key) => (
               <Col
                 key={key}
                 className="Green-card home-card-layout"
@@ -318,17 +489,17 @@ const Home = ({ cartCount, addCart }) => {
                   source={el.icon}
                   cardContent={el.title}
                   showContent={false}
-                  value="200"
+                  value={el.regularprice}
                 />
               </Col>
-            ))}
+            ))  : <h1>Hello Rajat </h1>}
             <span className={"view_all_btn"}>View All</span>
           </Row>
         </div>
 
         <div className="borderDesign">
           <Row className={["position-relative"]}>
-            {combos.slice(0, 4).map((el, key) => (
+            {combos_Lists ?combos_Lists.slice(0, 4).map((el, key) => (
               <Col
                 key={key}
                 className="Green-card home-card-layout"
@@ -347,14 +518,14 @@ const Home = ({ cartCount, addCart }) => {
                   value="200"
                 />
               </Col>
-            ))}
+            ))  : <h1>Hello Rajat </h1>}
             <span className={"view_all_btn"}>View All</span>
           </Row>
         </div>
 
         <div className="borderDesign">
           <Row className={["position-relative"]}>
-            {Plants_Gifts.slice(0, 4).map((el, key) => (
+            {Pant_Gifts ?Pant_Gifts.slice(0, 4).map((el, key) => (
               <Col
                 key={key}
                 className="Green-card home-card-layout"
@@ -373,7 +544,7 @@ const Home = ({ cartCount, addCart }) => {
                   value="200"
                 />
               </Col>
-            ))}
+            )) : <h1>Hello Rajat </h1>}
             <span className={"view_all_btn"}>View All</span>
           </Row>
         </div>
