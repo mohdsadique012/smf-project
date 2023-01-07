@@ -455,7 +455,7 @@ const Home = ({ cartCount, addCart }) => {
         <div className="borderDesign">
           <Row className={["position-relative"]}>
             
-          {Plants_Gifts.slice(0, 4).map((el, key) => (
+          {Personalized_Gifts ? Personalized_Gifts.slice(0, 4).map((el, key) => (
               <Col
                 key={key}
                 className="Green-card home-card-layout"
@@ -474,7 +474,7 @@ const Home = ({ cartCount, addCart }) => {
                   value={el.value}
                 />
               </Col>
-            )) }
+            )) : <h1>Hello Rajat </h1>}
             <span className={"view_all_btn"}>View All</span>
           </Row>
         </div>
