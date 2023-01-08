@@ -23,6 +23,7 @@ import ProductListing from "./pages/product_listing";
 import Cart from "./component/Cart/Cart";
 import AdminHeader from "./pages/Admin/Layout/admin_header";
 import UserProfile from "./pages/Admin/Layout/user_profile";
+import Axios from "axios"
 // import { event } from "jquery";
 
 function App() {
@@ -39,6 +40,16 @@ function App() {
       setAddcart(a) 
    
   } 
+
+  const [sdata,setData] = useState("")
+  const getData = async()=>{
+    const response = await Axios.get("http://localhost:7600/getData");
+    setData(response.data);
+  }
+
+    useEffect(() =>{
+      getData()
+    },[]);
 
   const [toggle, setToggle] = useState(false);
 

@@ -127,7 +127,7 @@ const Home = ({ cartCount, addCart }) => {
   const [data , setData]= useState([])
 
    useEffect(()=>{
-    axios.get("http://admin.thesoftwarecompany.in/bestselling_lists")
+    axios.get("https://admin.thesoftwarecompany.in/bestselling_lists")
       .then((result) =>{
         let listOfBestProducts = result.data.bestSellingLists;
           setData(listOfBestProducts);
@@ -136,12 +136,12 @@ const Home = ({ cartCount, addCart }) => {
 
    },[])
      console.log(data,"data123");
+     
 
-     const catogries={}
-     data.forEach(product=>{
-     catogries[product['category']]=1
-     })
-     console.log(catogries, 'catogries')
+     let uniquecategorykey = [
+      ...new Map(data.map((item)=>[item["category"],item])).values()
+     ]
+ console.log(uniquecategorykey,"uniquecategorykey")
 
 
 
@@ -376,7 +376,7 @@ const Home = ({ cartCount, addCart }) => {
   return (
     <>
       <Row>
-        <HomeMenuCard menus={catogries} />
+        <HomeMenuCard menus={uniquecategorykey} />
       </Row>
       <Jumbotron back_img={"official/Slider.png"} />
       <Row className={["second-section-images"]} style={{ marginBottom: "4%" }}>
