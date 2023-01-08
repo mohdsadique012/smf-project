@@ -125,6 +125,8 @@ const Home = ({ cartCount, addCart }) => {
   // console.log(bestSelling,"best");
   /* useEffect */
   const [data , setData]= useState([])
+  const [categories21 , setCategories21]= useState([]);
+
 
    useEffect(()=>{
     axios.get("https://admin.thesoftwarecompany.in/category_lists/")
@@ -132,17 +134,37 @@ const Home = ({ cartCount, addCart }) => {
         console.log(result,"CardFirst")
         let listOfBestProducts = result.data.category;
           setData(listOfBestProducts);
+          
       })
       .catch(err => console.warn(err));
-
+  
    },[])
      console.log(data,"data123");
- 
+       
+      let toprated=[];
+      toprated= data.filter((el)=>
+               el.categorytype=='Top rated Category'
+          );
 
      let uniquecategorykey = [
-      ...new Map(data.map((item)=>[item["description"],item])).values()
-     ]
- console.log(uniquecategorykey,"uniquecategorykey")
+      ...new Map(toprated.map((item)=>[item["description"],item])).values()
+     ];
+      
+
+      let categoryy=[];
+      categoryy= data.filter((el)=>
+               el.categorytype=='Category-2'
+          );
+ 
+  
+    
+     let uniquecategory2key = [
+      ...new Map(categoryy.map((item)=>[item["name"],item])).values()
+     ];
+ 
+    //  setCategories21(categoryy)
+        console.log(categories21,"categories2")
+
 
 
 
@@ -367,8 +389,6 @@ const Home = ({ cartCount, addCart }) => {
 
   //  console.log(cake_Gifts,"chl")
 
- console.log(Personalized_Gifts,"combolist" );
- console.log(Pant_Gifts,'Pant_Gifts11111')
 
 
 
@@ -381,7 +401,7 @@ const Home = ({ cartCount, addCart }) => {
       </Row>
       <Jumbotron back_img={"official/Slider.png"} />
       <Row className={["second-section-images"]} style={{ marginBottom: "4%" }}>
-        {CardFirst.map((el, key) => (
+        {uniquecategory2key.map((el, key) => (
           <Col
             key={key}
             className="home-card-layout category-card"
@@ -393,8 +413,8 @@ const Home = ({ cartCount, addCart }) => {
 
             <CardComponent
               addCart={addCart}
-              source={el.image}
-              cardContent={el.title}
+              source={'http://admin.thesoftwarecompany.in/' +el.image}
+              cardContent={el.name}
               showContent={false}
               value={el.value}
             />
