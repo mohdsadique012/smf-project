@@ -19,7 +19,7 @@ function HomeMenuCard({ menus }) {
               <img src={'http://admin.thesoftwarecompany.in/' + el.image} alt="" />
             </div>
             <div className="menu-bottom-title">
-              <small>{el.category}</small>
+              <small>{el.name}</small>
             </div>
             </Link>
           </Col>

@@ -127,19 +127,20 @@ const Home = ({ cartCount, addCart }) => {
   const [data , setData]= useState([])
 
    useEffect(()=>{
-    axios.get("https://admin.thesoftwarecompany.in/bestselling_lists")
+    axios.get("https://admin.thesoftwarecompany.in/category_lists/")
       .then((result) =>{
-        let listOfBestProducts = result.data.bestSellingLists;
+        console.log(result,"CardFirst")
+        let listOfBestProducts = result.data.category;
           setData(listOfBestProducts);
       })
       .catch(err => console.warn(err));
 
    },[])
      console.log(data,"data123");
-     
+ 
 
      let uniquecategorykey = [
-      ...new Map(data.map((item)=>[item["category"],item])).values()
+      ...new Map(data.map((item)=>[item["description"],item])).values()
      ]
  console.log(uniquecategorykey,"uniquecategorykey")
 
