@@ -14,13 +14,13 @@ const ProductReducer = (state, action) => {
             };
 
         case "SET_API_DATA":
-            let featureProducts = action.payload;
-            console.log(featureProducts);
+            let featureProducts = action.payload.category ;
+            console.log(featureProducts,"featureProducts");
             return {
                 ...state,
                 is_loading: false,
                 is_error: false,
-                products: action.payload,
+                products: action.payload.category,
                 featured_products: featureProducts,
                 
             };
@@ -37,11 +37,13 @@ const ProductReducer = (state, action) => {
                 is_single_error: true
             };
         case "SET_SINGLE_PRODUCT":
+            // let single_product = action.payload.category 
             return {
                 ...state,
                 is_single_loading: false,
                 is_single_error: false,
-                single_product: action.payload
+                single_product: action.payload.subcategory
+
             }
 
         default:

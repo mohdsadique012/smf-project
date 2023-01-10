@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , useContext } from "react";
 import CardComponent from "../component/Card/CardComponent";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -19,6 +19,8 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import TrendingCards from "../component/Card/TrendingCards";
 import SimpleCardComponent from "../component/Card/SimpleCardComponent";
 import axios from "axios";
+import {AppContext} from "../context/productcontext"
+import { GiConsoleController } from "react-icons/gi";
 
 const arrCount = [1, 2, 3, 4, 5, 6];
 const CardFirst = [
@@ -111,289 +113,87 @@ const Home = ({ cartCount, addCart }) => {
     arrows: true,
   };
 
+     let context_Data= useContext(AppContext)
+     console.log(context_Data.products,"context_Data")
+     let toprated_data_catogaries =context_Data.products
+     var category_third = context_Data.single_product
+    console.log(category_third,'category_third')
+
 
   /* Best Selling API */
   /* useState => Initilize To variable , array or object for the first time
   Syntax useState(variable, updateFunction)
   */
   const [bestSelling, updateBestSelling] = useState([]);
-  const [Personalized_Gifts, updatePersonalized_Gifts] = useState([]);
-  const [cake_Gifts , updateCake_Gifts]= useState([]);
-  const [Flower_Gifts, updateFlower_Gifts] = useState([]);
-  const [combos_Lists ,updateCombos_Lists] = useState([]);
-  const [Pant_Gifts, updatePant_Gifts]=useState([])
-  // console.log(bestSelling,"best");
-  /* useEffect */
-  const [data , setData]= useState([])
-  const [categories21 , setCategories21]= useState([]);
 
+// category--3 part =>
 
-   useEffect(()=>{
-    axios.get("https://admin.thesoftwarecompany.in/category_lists/")
-      .then((result) =>{
-        console.log(result,"CardFirst")
-        let listOfBestProducts = result.data.category;
-          setData(listOfBestProducts);
-          
-      })
-      .catch(err => console.warn(err));
-  
-   },[])
-     console.log(data,"data123");
-       
-      let toprated=[];
-      toprated= data.filter((el)=>
-               el.categorytype=='Top rated Category'
-          );
+let category_3 = [];
+  category_3=toprated_data_catogaries.filter((el)=>
+            el.categorytype=='Category-3'
+  );
+  console.log(category_3,'category_33333333333')
 
-     let uniquecategorykey = [
-      ...new Map(toprated.map((item)=>[item["description"],item])).values()
-     ];
-      
-
-      let categoryy=[];
-      categoryy= data.filter((el)=>
-               el.categorytype=='Category-2'
-          );
- 
-  
+  var categoriess =[]
     
-     let uniquecategory2key = [
-      ...new Map(categoryy.map((item)=>[item["name"],item])).values()
-     ];
- 
-    //  setCategories21(categoryy)
-        console.log(categories21,"categories2")
-
-
-
-
-  //    let [category,setCategory]=useState('all')
-  //    useEffect(()=>{
-  //      filterSearch("")
-  //  },[category])
-  //  const handleclick=(e)=>{
-  //   console.log(e.target.value,'..handlesele');
-  //   setCategory(e.target.value)
-    
-
-  // }
-
-
-
-  // useEffect(() => {
-  //   axios.get('http://localhost:7600/bestselling_lists')
-  //     .then((result) => {
-  //       let listOfBestProducts = result.data.bestSellingLists;
-  //       if (listOfBestProducts) {
-
-  //         listOfBestProducts.map((el, key) => {
-
-  //           if (el.name) {
-  //             updateBestSelling([{
-  //               icon: el.image ? el.image : "images/cake2.jpg",
-  //               title: el.name
-  //             }])
-  //           }
-  //         })
-  //       }
-  //     })
-  //     .catch(err => console.warn(err));
-
-  //   /* Personalized Gift API */
-   
-    
-  //   axios.get("http://admin.thesoftwarecompany.in/personalized_list")
-  //     .then((result) => {
-  //       let personalizedProduct = result.data.personalizedLists;
-  //       console.log(result.data , "personal");
-  //       var tempvar = [];
-  //       let personalcategory=[];
-  //       if (personalizedProduct) {
-
-  //         let personal = personalizedProduct.filter((el,key)=>{
-  //           console.log(el,"vnvnv")
-  //               return el.categorytype=='Personalized Gifts'
-         
-  //       })
-  //       personalcategory=personal
-  //       console.log(personal,"mmmmmm")
-
-  //       personalcategory.map((el, key) => {
-  //           if (el.name) {
-  //             tempvar.push({
-  //               icon: el.image ? 'http://admin.thesoftwarecompany.in/' + el.image : "images/cgift.jpg",
-  //               title: el.name, value :el.regularprice,
-  //             })
-  //           }
-  //         })
-
-  //         updatePersonalized_Gifts(...Personalized_Gifts, tempvar)
-  //         // console.log(Personalized_Gifts ,"1111")
-
-  //       }
-  //     })
-
-  //     //Flower_Gift_list
-
-  //   axios.get("http://admin.thesoftwarecompany.in/Flower_Gift_list")
-  //     .then((result) => {
-  //     //   console.log(result,'result');
-  //       let Flower_Gift_list = result.data.flowergiftslist;
-  //       // console.log(Flower_Gift_list,"flower")
-  //       var temp = [];
-  //       let flowercategory=[]
-  //       if (Flower_Gift_list) {
-  //         let flower = Flower_Gift_list.filter((el,key)=>{
-  //           console.log(el,"vnvnv")
-  //               return el.categorytype=='Flowers gift'
-         
-  //       })
-  //       flowercategory=flower
-
-  //       flowercategory.map((el, key) => {
-  //           // console.log(el,"el")
-  //           if (el.name) {
-  //             temp.push({
-  //               icon: el.image ? 'http://admin.thesoftwarecompany.in/' + el.image : "images/cgift.jpg",
-  //               title: el.name, value :el.regularprice,
-  //             })
-  //           }
-  //       })
-  //       // console.log(temp,"temp")
-
-  //       updateFlower_Gifts(...Flower_Gifts, temp)
-       
-
-  //     }
-  //   })
-
-  //   .catch(err => console.warn(err,"ggggg"));
-
-
-
-  //   // plant gift
-     
-    
-  //   axios.get("http://admin.thesoftwarecompany.in/cake_Gifts_lists")
-  //     .then((result) => {
-  //       console.log(result,'plant1212');
-  //       let Pant_Gifts_lists = result.data.bestSellingLists;
-  //       console.log(Pant_Gifts_lists,"Pant_Gifts_lists22222")
-  //       var temp = [];
-  //       let plantsubcategory=[]
-  //       if (Pant_Gifts_lists) {
-  //         let plant = Pant_Gifts_lists.filter((el,key)=>{
-  //           console.log(el,"vnvnv")
-  //               return el.categorytype=='Plants Gift'
-         
-  //       })
-  //       plantsubcategory=plant
-
-
-  //       plantsubcategory.map((el, key) => {
-  //           // console.log(el,"el")
-  //           if (el.name) {
-  //             temp.push({
-  //               icon: el.image ? 'http://admin.thesoftwarecompany.in/' + el.image : "images/cgift.jpg",
-  //               title: el.name, value :el.regularprice,
-  //             })
-  //           }
-  //       })
-  //       console.log(temp,"plant temp")
-
-  //       updatePant_Gifts(...Pant_Gifts, temp)
-       
-
-  //     }
-  //   })
-
-  //   .catch(err => console.warn(err,"ggggg"));
-
-
-  //   //combos
-
-  //   axios.get("http://admin.thesoftwarecompany.in/bestselling_lists")
-  //     .then((result) => {
-  //       let combos_lists = result.data.cakegiftlist;
-  //         console.log(result.data,"main data")
-  //       var tempvar = [];
-  //       var tcs = [];
-  //       if (combos_lists) {
-  //            let combo = combos_lists.filter((el,key)=>{
-  //             console.log(el,"vnvnv")
-  //                 return el.categorytype=='combos'
-           
-  //         })
-         
-      
-  //         tcs=combo
-         
-
-
-  //         tcs.map((el, key) => {
-  //           if (el.name) {
-  //             tempvar.push({
-  //               icon: el.image ? 'http://admin.thesoftwarecompany.in/' + el.image : "images/cgift.jpg",
-  //               title: el.name, value :el.regularprice,
-  //             })
-  //           }
-  //         })
-  //         updateCombos_Lists(...combos_Lists, tempvar)
-         
-
-  //       }
-  //     })
+  category_3.forEach(el=>{
+            let variable=category_third.filter(item=>item.categorytype.toLowerCase()== el.name.toLowerCase())
+            categoriess =  categoriess.concat(variable);    
+         })
         
-      
-
-  //     // gift
-  //     axios.get("http://admin.thesoftwarecompany.in/Pant_Gifts_lists")
-  //       .then((result) => {
-  //       //  console.log(result,'result');
-  //         let cakegift = result.data.plant_gifts;
-  //         console.log(result.data,"cake")
-  //         var temp = [];
-  //         let  cakesubcategory =[];
-  //         if (cakegift) {
-  //           let cake = cakegift.filter((el,key)=>{
-  //             console.log(el,"vnvnv")
-  //                 return el.categorytype=='Cakes Gift'
-           
-  //         })
+         console.log(categoriess,"888888888888")
+         const category_grouping = categoriess.reduce((category_grouping, item) => {
+          const group = (category_grouping[item.categorytype] || []);
+          group.push(item);
+          category_grouping[item.categorytype] = group;
+          return category_grouping;
+        }, {});
          
-      
-  //         cakesubcategory=cake;
-  //         console.log( cakesubcategory,' cakesubcategory')
-  //         cakesubcategory.map((el, key) => {
-  //             // console.log(el,"el")
-  //             if (el.name) {
-  //               temp.push({
-  //                 icon: el.image ? 'http://admin.thesoftwarecompany.in/' + el.image : "images/cgift.jpg",
-  //                 title: el.name, value :el.regularprice,
-  //               })
-  //             }
-  //         })
-  //         console.log(temp,"temp0000")
+        let a=[]
+        console.log(categoriess,"categoriessggggg11111g");
+        let   categoriesss = Object.keys(category_grouping)
+        console.log(categoriess,'total key')
+        categoriesss.forEach((gender) => {
+          category_grouping[gender].slice(0,4).map(el=>{
+            a.push(el)
+              
+          })
+ })
+      console.log(a,"ajabhai")
 
-  //         updateCake_Gifts(...cake_Gifts, temp)
-         
-
-  //       }
-  //     })
-
-  //     .catch(err => console.warn(err,"ggggg"));
-  // }, []);
+ let uniquecategorykey_3= [
+  ...new Map(a.map((item)=>[item["name"],item])).values()
+ ];
+  
+ console.log(uniquecategorykey_3,'uniquecategorykey_3ajajajaja')
 
   
+      // toprated category part
+       
+  let toprated=[];
+   toprated= toprated_data_catogaries.filter((el)=>
+    el.categorytype=='Top rated Category'
+     );
 
-  //  console.log(cake_Gifts,"chl")
+let uniquecategorykey = [
+  ...new Map(toprated.map((item)=>[item["description"],item])).values()
+     ];
+      
+     // category_3 part =>
 
-
-
-
-
-
+let categoryy=[];
+  categoryy= toprated_data_catogaries.filter((el)=>
+     el.categorytype=='Category-2'
+     );
+ 
+  
+    
+let uniquecategory2key = [
+    ...new Map(categoryy.map((item)=>[item["name"],item])).values()
+     ];
+  
+    //  setCategories21(categoryy)
+    
   return (
     <>
       <Row>
@@ -452,6 +252,7 @@ const Home = ({ cartCount, addCart }) => {
                 } */}
         <Slider {...settingsBestSelling}>
           {bestSelling ? bestSelling.map((el, key) => (
+       
             <Col
               key={key}
               className="home-card-layout"
@@ -473,10 +274,11 @@ const Home = ({ cartCount, addCart }) => {
       </Row>
 
       <div className="container-fluid" style={{ marginTop: "2%" }}>
-        <div className="borderDesign">
+        
+    
+            <div className="borderDesign">
           <Row className={["position-relative"]}>
-            
-          {Personalized_Gifts ? Personalized_Gifts.slice(0, 4).map((el, key) => (
+            {uniquecategorykey_3 ?uniquecategorykey_3.slice(0, 4).map((el, key) => (
               <Col
                 key={key}
                 className="Green-card home-card-layout"
@@ -488,37 +290,11 @@ const Home = ({ cartCount, addCart }) => {
                 <SimpleCardComponent
                   checker={key}
                   custContentImg={true}
-                  custContent={"Personalized Gifts"}
-                  source={el.icon}
-                  cardContent={el.title}
-                  showContent={true}
-                  value={el.value}
-                />
-              </Col>
-            )) : <h1>Hello Rajat </h1>}
-            <span className={"view_all_btn"}>View All</span>
-          </Row>
-        </div>
-
-        <div className="borderDesign">
-          <Row className={["position-relative"]}>
-            {cake_Gifts ? cake_Gifts.slice(0, 4).map((el, key) => (
-              <Col
-                key={key}
-                className="Green-card home-card-layout"
-                xs={12}
-                sm={6}
-                lg={4}
-                xl={3}
-              >
-                <SimpleCardComponent
-                  checker={key}
-                  custContentImg={true}
-                  custContent={"Cakes Gifts"}
-                  source={el.icon}
-                  cardContent={el.title} 
+                  custContent={el.categorytype}
+                  source={'http://admin.thesoftwarecompany.in/' + el.image}
+                  cardContent={el.name}
                   showContent={false}
-                  value={el.value}
+                  value="200"
                 />
               </Col>
             ))  : <h1>Hello Rajat </h1>}
@@ -526,9 +302,9 @@ const Home = ({ cartCount, addCart }) => {
           </Row>
         </div>
 
-        <div className="borderDesign">
+           <div className="borderDesign">
           <Row className={["position-relative"]}>
-            {Flower_Gifts ? Flower_Gifts.slice(0, 4).map((el, key) => (
+            {uniquecategorykey_3 ?uniquecategorykey_3.slice(4, 8).map((el, key) => (
               <Col
                 key={key}
                 className="Green-card home-card-layout"
@@ -540,35 +316,9 @@ const Home = ({ cartCount, addCart }) => {
                 <SimpleCardComponent
                   checker={key}
                   custContentImg={true}
-                  custContent={"Flowers Gifts"}
-                  source={el.icon}
-                  cardContent={el.title}
-                  showContent={false}
-                  value={el.regularprice}
-                />
-              </Col>
-            ))  : <h1>Hello Rajat </h1>}
-            <span className={"view_all_btn"}>View All</span>
-          </Row>
-        </div>
-
-        <div className="borderDesign">
-          <Row className={["position-relative"]}>
-            {combos_Lists ?combos_Lists.slice(0, 4).map((el, key) => (
-              <Col
-                key={key}
-                className="Green-card home-card-layout"
-                xs={12}
-                sm={6}
-                lg={4}
-                xl={3}
-              >
-                <SimpleCardComponent
-                  checker={key}
-                  custContentImg={true}
-                  custContent={"Combos"}
-                  source={el.icon}
-                  cardContent={el.title}
+                  custContent={el.categorytype}
+                  source={'http://admin.thesoftwarecompany.in/' + el.image}
+                  cardContent={el.name}
                   showContent={false}
                   value="200"
                 />
@@ -580,7 +330,7 @@ const Home = ({ cartCount, addCart }) => {
 
         <div className="borderDesign">
           <Row className={["position-relative"]}>
-            {Pant_Gifts ?Pant_Gifts.slice(0, 4).map((el, key) => (
+            {uniquecategorykey_3 ? uniquecategorykey_3.slice(8,12).map((el, key) => (
               <Col
                 key={key}
                 className="Green-card home-card-layout"
@@ -592,9 +342,62 @@ const Home = ({ cartCount, addCart }) => {
                 <SimpleCardComponent
                   checker={key}
                   custContentImg={true}
-                  custContent={"Plants Gifts"}
-                  source={el.icon}
-                  cardContent={el.title}
+                  custContent={el.categorytype}
+                  source={'http://admin.thesoftwarecompany.in/'+ el.image}
+                  cardContent={el.name}
+                  showContent={false}
+                  value={el.regularprice}
+                />
+              </Col>
+            ))  : <h1>Hello Rajat </h1>}
+            <span className={"view_all_btn"}>View All</span>
+          </Row>
+        </div>
+
+        <div className="borderDesign">
+          <Row className={["position-relative"]}>
+            {uniquecategorykey_3 ?uniquecategorykey_3.slice(12, 16).map((el, key) => (
+              <Col
+                key={key}
+                className="Green-card home-card-layout"
+                xs={12}
+                sm={6}
+                lg={4}
+                xl={3}
+              >
+                <SimpleCardComponent
+                  checker={key}
+                  custContentImg={true}
+                  custContent={el.categorytype}
+                  source={'http://admin.thesoftwarecompany.in/' + el.image}
+                  cardContent={el.name}
+                  showContent={false}
+                  value="200"
+                />
+              </Col>
+            ))  : <h1>Hello Rajat </h1>}
+            <span className={"view_all_btn"}>View All</span>
+          </Row>
+        </div>
+
+        <div className="borderDesign">
+          <Row className={["position-relative"]}>
+            {uniquecategorykey_3 ?uniquecategorykey_3.slice(16,20).map((el, key) => (
+                     
+              <Col
+                key={key}
+                className="Green-card home-card-layout"
+                xs={12}
+                sm={6}
+                lg={4}
+                xl={3}
+              >
+                <SimpleCardComponent
+                  checker={key}
+                  custContentImg={true}
+                  custContent={el.categorytype}
+                  source={'http://admin.thesoftwarecompany.in/' + el.image}
+                  cardContent={el.name}
                   showContent={false}
                   value="200"
                 />

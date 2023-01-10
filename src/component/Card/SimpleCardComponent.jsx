@@ -4,7 +4,9 @@ import Button from 'react-bootstrap/Button';
 import './CardComponent.css';
 import { Link } from 'react-router-dom';
 export default function SimpleCardComponent({ cardClass, source, showContent, value, cardContent, custContentImg, custContent, checker }) {
-   // {custContentImg && checker == 0 ? <div className="customCenterContent"><h2>{custContent}</h2></div> : ''}
+  
+    console.log(cardContent,"222222222222")
+    // {custContentImg && checker == 0 ? <div className="customCenterContent"><h2>{custContent}</h2></div> : ''}
     return (
         <>
             <div className="card justify-content-center bg-transparent border-0 text-center">

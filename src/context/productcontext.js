@@ -1,8 +1,9 @@
 import { useContext, createContext, useEffect, useReducer } from "react";
 import AllProducts from "../reducer/productReducer";
-import { axios } from 'axios';
+import  axios  from 'axios';
 /* API URL */
-const ALLPRODUCTURL = 'http://admin.thesoftwarecompany.in/bestselling_lists';
+const ALLPRODUCTURL = 'https://admin.thesoftwarecompany.in/category_lists/';
+const SingleURL = "https://admin.thesoftwarecompany.in/subcategory_lists/";
 const AppContext = createContext();
 
 /* Initial State */
@@ -13,7 +14,7 @@ const intialState = {
     featured_products: [],
     is_single_loading: false,
     is_single_error: false,
-    single_product: {},
+    single_product: [],
 
 };
 
@@ -26,7 +27,7 @@ const AppProvider = ({ children }) => {
         try {
             const res = await axios.get(url);
             const products = await res.data;
-            console.log(products ,"products")
+            console.log(products ,"product2111111s")
             dispatch({ type: "SET_API_DATA", payload: products });
         } catch (error) {
             dispatch({ type: "API_ERROR" });
@@ -36,10 +37,13 @@ const AppProvider = ({ children }) => {
 
      /* Fetch Single Product */
      const getSingleProduct = async (url) => {
+        
         dispatch({ type: "SET_SINGLE_LOADING" })
         try {
             const res = await axios.get(url);
             const singleProduct = await res.data;
+            console.log(singleProduct)
+            console.log(singleProduct,'singleProduct')
             dispatch({ type: "SET_SINGLE_PRODUCT", payload: singleProduct })
         } catch (error) {
             dispatch({ type: "SET_SINGLE_ERROR" })
@@ -48,9 +52,10 @@ const AppProvider = ({ children }) => {
 
     useEffect(() => {
         getProducts(ALLPRODUCTURL);
+        getSingleProduct(SingleURL)
     }, []);
-  console.log(state,"state" )
-  console.log(AllProducts,"AllProducts")
+  console.log(state,"statemmmmmmm" )
+
     return (
         <AppContext.Provider value={{ ...state, getSingleProduct }} >
             {children}
