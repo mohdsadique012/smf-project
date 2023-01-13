@@ -1,0 +1,19 @@
+.sub-category-button{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.sub-category-butt{
+ background-color:white;
+ color: black;
+ margin: 10px;
+ border-radius: 20px;
+ font-weight: bolder;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.sub-category-butt:hover{
+  transform: scale(1.05);
+  opacity: 1;
+}

@@ -81,7 +81,7 @@ const Plants_Gifts = [
   { icon: "official/Plants_Gifts/3.png", title: "Lucky Plant" },
 ];
 
-const Home = ({ cartCount, addCart }) => {
+const Home = ({ cartCount, datarroute,addCart }) => {
   const settings = {
     infinite: true,
     dots: true,
@@ -114,12 +114,27 @@ const Home = ({ cartCount, addCart }) => {
   };
 
      let context_Data= useContext(AppContext)
-     console.log(context_Data.products,"context_Data")
+     console.log(context_Data,"context_Data125356435")
      let toprated_data_catogaries =context_Data.products
      var category_third = context_Data.single_product
     console.log(category_third,'category_third')
 
 
+const [setroute ,setRoute]=useState({})
+ 
+
+    const dataroute = (passdata)=>{
+      setRoute(passdata)
+      } 
+      
+   useEffect(()=>{
+    datarroute(setroute)
+   },[setroute])
+       
+      console.log(setroute ,'setroute dggdgdgdgdgdg')
+
+      
+ // setProduct(product);
   /* Best Selling API */
   /* useState => Initilize To variable , array or object for the first time
   Syntax useState(variable, updateFunction)
@@ -193,11 +208,11 @@ let uniquecategory2key = [
      ];
   
     //  setCategories21(categoryy)
-    
+ //'http://admin.thesoftwarecompany.in/   
   return (
     <>
       <Row>
-        <HomeMenuCard menus={uniquecategorykey} />
+        <HomeMenuCard  dataroute={dataroute} menus={uniquecategorykey} />
       </Row>
       <Jumbotron back_img={"official/Slider.png"} />
       <Row className={["second-section-images"]} style={{ marginBottom: "4%" }}>
@@ -213,7 +228,7 @@ let uniquecategory2key = [
 
             <CardComponent
               addCart={addCart}
-              source={'http://admin.thesoftwarecompany.in/' +el.image}
+              source={'http:localhost7600/' +el.image}
               cardContent={el.name}
               showContent={false}
               value={el.value}
@@ -225,7 +240,7 @@ let uniquecategory2key = [
       <Divider content="Best Selling Gift" />
       <Row style={{ marginBottom: "2.8%" }}>
         <Slider {...settingsBestSelling}>
-          {bestSelling ? bestSelling.map((el, key) => (
+          {Plants_Gifts ? Plants_Gifts.map((el, key) => (
             <Col
               key={key}
               className="home-card-layout"
@@ -278,7 +293,7 @@ let uniquecategory2key = [
     
             <div className="borderDesign">
           <Row className={["position-relative"]}>
-            {uniquecategorykey_3 ?uniquecategorykey_3.slice(0, 4).map((el, key) => (
+            {flowerGifts ?flowerGifts.slice(0, 4).map((el, key) => (
               <Col
                 key={key}
                 className="Green-card home-card-layout"
@@ -291,7 +306,7 @@ let uniquecategory2key = [
                   checker={key}
                   custContentImg={true}
                   custContent={el.categorytype}
-                  source={'http://admin.thesoftwarecompany.in/' + el.image}
+                  source={  el.image}
                   cardContent={el.name}
                   showContent={false}
                   value="200"
@@ -317,7 +332,7 @@ let uniquecategory2key = [
                   checker={key}
                   custContentImg={true}
                   custContent={el.categorytype}
-                  source={'http://admin.thesoftwarecompany.in/' + el.image}
+                  source={ + el.image}
                   cardContent={el.name}
                   showContent={false}
                   value="200"
@@ -343,7 +358,7 @@ let uniquecategory2key = [
                   checker={key}
                   custContentImg={true}
                   custContent={el.categorytype}
-                  source={'http://admin.thesoftwarecompany.in/'+ el.image}
+                  source={ el.image}
                   cardContent={el.name}
                   showContent={false}
                   value={el.regularprice}
@@ -369,7 +384,7 @@ let uniquecategory2key = [
                   checker={key}
                   custContentImg={true}
                   custContent={el.categorytype}
-                  source={'http://admin.thesoftwarecompany.in/' + el.image}
+                  source={ el.image}
                   cardContent={el.name}
                   showContent={false}
                   value="200"
@@ -393,13 +408,13 @@ let uniquecategory2key = [
                 xl={3}
               >
                 <SimpleCardComponent
-                  checker={key}
-                  custContentImg={true}
-                  custContent={el.categorytype}
-                  source={'http://admin.thesoftwarecompany.in/' + el.image}
-                  cardContent={el.name}
-                  showContent={false}
-                  value="200"
+                    checker={key}
+                    custContentImg={true}
+                    custContent={el.categorytype}
+                    source={ el.image}
+                    cardContent={el.name}
+                    showContent={false}
+                    value="200"
                 />
               </Col>
             )) : <h1>Hello Rajat </h1>}

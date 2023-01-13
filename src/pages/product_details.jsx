@@ -508,6 +508,25 @@ function Home(props) {
         </div>
       </Container>
 
+      <div className="detail-flex-row">
+         <div className="detail-flex-column size1">
+         <h2>Let Customer Spokes for Us</h2>
+
+         <ul>
+         <li><h5>PRODUCT IS A VERY GOOD QUALITY </h5> </li>
+         <li><h5>SERVICE WAS VERY GOOD </h5></li>
+         </ul>
+
+          
+         
+         </div>
+         <div className="detail-flex-column size2">
+         <h2 > Share Your Review</h2>
+         <input  className="viewinput" ></input>
+         <button className="viewbutton">submit</button>
+         </div>
+      </div>
+
       <SubFooter />
       <Footer />
     </>

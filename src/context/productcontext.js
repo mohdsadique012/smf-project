@@ -2,8 +2,8 @@ import { useContext, createContext, useEffect, useReducer } from "react";
 import AllProducts from "../reducer/productReducer";
 import  axios  from 'axios';
 /* API URL */
-const ALLPRODUCTURL = 'https://admin.thesoftwarecompany.in/category_lists/';
-const SingleURL = "https://admin.thesoftwarecompany.in/subcategory_lists/";
+const ALLPRODUCTURL = 'http://localhost:7600/category_lists';
+const SingleURL = "http://localhost:7600/subcategory_lists";
 const AppContext = createContext();
 
 /* Initial State */
@@ -15,6 +15,7 @@ const intialState = {
     is_single_loading: false,
     is_single_error: false,
     single_product: [],
+    product_lists: []
 
 };
 
@@ -44,7 +45,21 @@ const AppProvider = ({ children }) => {
             const singleProduct = await res.data;
             console.log(singleProduct)
             console.log(singleProduct,'singleProduct')
-            dispatch({ type: "SET_SINGLE_PRODUCT", payload: singleProduct })
+            dispatch({ type: "SET_SINGLE_PRODUCT", payload:singleProduct })
+        } catch (error) {
+            dispatch({ type: "SET_SINGLE_ERROR" })
+        }
+    };
+
+     /* Fetch Single Product */
+     const getProductListByCategory = async (url) => {
+        
+        dispatch({ type: "SET_SINGLE_LOADING" })
+        try {
+            const res = await axios.get(url);
+            const productlists = await res.data;
+            console.log(productlists, "ProductList")
+            dispatch({ type: "SET_PRODUCT_LIST", payload:productlists })
         } catch (error) {
             dispatch({ type: "SET_SINGLE_ERROR" })
         }
@@ -57,7 +72,7 @@ const AppProvider = ({ children }) => {
   console.log(state,"statemmmmmmm" )
 
     return (
-        <AppContext.Provider value={{ ...state, getSingleProduct }} >
+        <AppContext.Provider value={{ ...state, getSingleProduct, getProductListByCategory }} >
             {children}
         </AppContext.Provider>
     );

@@ -5,6 +5,8 @@ import Card from "../component/Card/Card";
 import Divider from "../component/Divider/Divider";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import Slider from "react-slick";
+import "./singleproduct.css"
+import { useParams } from 'react-router-dom';
 import {
   Dropdown,
   DropdownButton,
@@ -14,18 +16,29 @@ import {
   Button,
   Col,
 } from "react-bootstrap";
+import { useProductGlobal } from "../context/productcontext";
 
+const CardFirst = [
+  { image: "official/9_Categories/1.jpg", title: "Flowers & Cakes" },
+  { image: "official/9_Categories/2.png", title: "Personlized Gift" },
+  { image: "official/9_Categories/3.png", title: "Find the Perfect Gift" },
+  { image: "official/9_Categories/4.png", title: "Birthday Gift" },
+  { image: "official/9_Categories/5.png", title: "Annivesary Gift" },
+  { image: "official/9_Categories/6.png", title: "Home and Living" },
+  { image: "official/9_Categories/7.png", title: "Gifts for Men" },
+  { image: "official/9_Categories/8.png", title: "Gifts for Women" },
+  { image: "official/9_Categories/9.png", title: "Gifts for Kids" },
+];
 // import Posts from "./Posts";
 
 // import Divider from "../component/Divider/Divider";
 // const arrCount = [
 //   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
 // ];
-
 const Product_category = () => {
-
-
-
+const { getProductListByCategory, product_lists } = useProductGlobal();
+const {product_list} = useParams();  
+const AllProductApi = 'http://localhost:7600/product_list';
   const mySelection = {
     btn: {
       color: "black",
@@ -48,6 +61,14 @@ const Product_category = () => {
       marginLeft: "16px",
     },
   };
+
+
+useEffect(() => {
+  getProductListByCategory(`${AllProductApi}?category_id=${product_list}`);
+},[]);
+
+console.log({"Type":typeof product_lists, "product list": product_lists})
+
   const settings = {
     infinite: true,
     dots: true,
@@ -66,32 +87,13 @@ const Product_category = () => {
   return (
     <>
       {/* <div className="container"> */}
+
+     
       <div
-        className="selection-part d-flex align-items-center"
-        style={mySelection.row}
+       
       >
-        <h5>Refine Selection:</h5>
-        <div className="selection-btn">
-          {[
-            "Select Recipient",
-            "Select Relationship",
-            "Birthday",
-            "Select Personality",
-          ].map((variant) => (
-            <DropdownButton
-              style={mySelection.btn}
-              as={ButtonGroup}
-              key={variant}
-              id={`dropdown-variants-${variant}`}
-              variant={variant.toLowerCase()}
-              title={variant}
-            >
-              <Dropdown.Item eventKey="1">Demo</Dropdown.Item>
-              <Dropdown.Item eventKey="2">Demo2</Dropdown.Item>
-              <Dropdown.Item eventKey="3">Demo3</Dropdown.Item>
-            </DropdownButton>
-          ))}
-        </div>
+        
+      
       </div>
       <Row>
         <div
@@ -119,7 +121,24 @@ const Product_category = () => {
             <span>(251 products)</span>
           </div>
         </Row>
+          <div className="sub-category-button"> 
+        
+           {
+             product_lists ?
+            product_lists.map(el =>{
+              {console.log(el.name,"55555555555555555555")}
+  
+                return <button className="sub-category-butt">{el.name}</button>
+             })
+             : ''
+           }
+           
+          
+          </div>
 
+            
+     
+       
         <Row>
           <div className="category-filter d-flex align-items-center mb-5">
             <h5>Quick Filter</h5>
@@ -150,7 +169,7 @@ const Product_category = () => {
         <div className="row">
           <Card
             title="Frosty Chocolate Cake (Half Kg)"
-            images="../official/Cake_Gifts/flowerwithchocolate.jpg"
+            // images="../official/Cake_Gifts/flowerwithchocolate.jpg"
             old_price="9,999"
             newPrice="9999"
             rupess="&#x20B9;"

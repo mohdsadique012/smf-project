@@ -44,7 +44,14 @@ const ProductReducer = (state, action) => {
                 is_single_error: false,
                 single_product: action.payload.subcategory
 
-            }
+            };
+        case "SET_PRODUCT_LIST":
+            return{
+                ...state,
+                product_lists: action.payload.category
+            };
+
+     
 
         default:
             return state;

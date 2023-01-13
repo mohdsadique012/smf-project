@@ -40,8 +40,14 @@ function App() {
       setAddcart(a) 
    
   } 
+  const [stateroute,setRRoute]=useState({})
+  const datarroute = (passdata)=>{
+    setRRoute(passdata)
+    } 
+console.log(stateroute,'qwertyuiop')
 
-  const [sdata,setData] = useState("")
+  const [sdata,setData] = useState({})
+
   const getData = async()=>{
     const response = await Axios.get("http://localhost:7600/getData");
     setData(response.data);
@@ -108,7 +114,7 @@ function App() {
         <Route
           exact
           path="/"
-          element={<Home cartCount={cartCount} flipcart={addCart} />}
+          element={<Home  datarroute={datarroute} cartCount={cartCount} flipcart={addCart} />}
         ></Route>
         <Route exact path="/login" element={<Login />}></Route>
         <Route exact path="/categories" element={<Category />}></Route>
@@ -134,7 +140,7 @@ function App() {
         ></Route>
         <Route
           exact
-          path="/single_product_category"
+          path="/single_product_category/:product_list"
           element={<ProductCategory />}
         ></Route>
         <Route
