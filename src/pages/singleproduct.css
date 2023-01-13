@@ -17,3 +17,15 @@
   transform: scale(1.05);
   opacity: 1;
 }
+.flex-11{
+  display: flex;
+  flex-direction: row;
+}
+.subcategory{
+  width: 11%;
+  padding: 1.5rem;
+}
+.bold{
+  font-size: x-large;
+  color: black;
+}

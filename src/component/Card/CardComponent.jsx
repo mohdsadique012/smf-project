@@ -3,10 +3,12 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import './CardComponent.css';
 import { Link } from 'react-router-dom';
-export default function CardComponent({ cardClass, source, showContent, value, cardContent, custContentImg, custContent, checker }) {
+export default function CardComponent({ slug,cardClass, source, showContent, value, cardContent, custContentImg, custContent, checker }) {
+      console.log(slug,"slug9999999999999999")
+    
     return (
         <Card id={cardClass}>
-            <Link to="single_product_category">
+            <Link to={`single_product_category/${slug}`}>
 
                 <>
                     <Card.Img variant="top" src={source} />

@@ -10,26 +10,26 @@ import { NavLink } from 'react-bootstrap';
 
 function HomeMenuCard({ menus,dataroute }) {
 
-  const intialState = {
-    is_loading: false,
-    is_error: false,
-    products: [],
-    featured_products: [],
-    is_single_loading: false,
-    is_single_error: false,
-    single_product: [],
-    route_data:[]
+//   const intialState = {
+//     is_loading: false,
+//     is_error: false,
+//     products: [],
+//     featured_products: [],
+//     is_single_loading: false,
+//     is_single_error: false,
+//     single_product: [],
+//     route_data:[]
 
-};
+// };
 
-  const [state, dispatch] = useReducer(AllProducts, intialState);
+//   const [state, dispatch] = useReducer(AllProducts, intialState);
 
-function route(data){
-  dispatch({type: "Transfer-Data-through-route", payload: data})
-}
+// function route(data){
+//   dispatch({type: "Transfer-Data-through-route", payload: data})
+// }
 
 
- console.log(state,"sarfextrtx")
+ console.log(menus,"sarfextrtx222222222222")
 
   if (menus !== undefined && menus !== "") {
     return (

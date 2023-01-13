@@ -120,18 +120,7 @@ const Home = ({ cartCount, datarroute,addCart }) => {
     console.log(category_third,'category_third')
 
 
-const [setroute ,setRoute]=useState({})
- 
 
-    const dataroute = (passdata)=>{
-      setRoute(passdata)
-      } 
-      
-   useEffect(()=>{
-    datarroute(setroute)
-   },[setroute])
-       
-      console.log(setroute ,'setroute dggdgdgdgdgdg')
 
       
  // setProduct(product);
@@ -190,11 +179,13 @@ let category_3 = [];
     el.categorytype=='Top rated Category'
      );
 
+     console.log( toprated_data_catogaries," toprated77777777777777")
+
 let uniquecategorykey = [
   ...new Map(toprated.map((item)=>[item["description"],item])).values()
      ];
       
-     // category_3 part =>
+     // category_2 part =>
 
 let categoryy=[];
   categoryy= toprated_data_catogaries.filter((el)=>
@@ -206,13 +197,14 @@ let categoryy=[];
 let uniquecategory2key = [
     ...new Map(categoryy.map((item)=>[item["name"],item])).values()
      ];
+     console.log(uniquecategory2key ,"uniquecategory2key111111222222222")
   
     //  setCategories21(categoryy)
  //'http://admin.thesoftwarecompany.in/   
   return (
     <>
       <Row>
-        <HomeMenuCard  dataroute={dataroute} menus={uniquecategorykey} />
+        <HomeMenuCard   menus={uniquecategorykey} />
       </Row>
       <Jumbotron back_img={"official/Slider.png"} />
       <Row className={["second-section-images"]} style={{ marginBottom: "4%" }}>
@@ -228,10 +220,11 @@ let uniquecategory2key = [
 
             <CardComponent
               addCart={addCart}
-              source={'http:localhost7600/' +el.image}
+              source={'http://admin.thesoftwarecompany.in/' +el.image}
               cardContent={el.name}
               showContent={false}
               value={el.value}
+              slug={el.slug}
             />
 
           </Col>
@@ -255,6 +248,7 @@ let uniquecategory2key = [
                 cardClass="auto-height-cust"
                 showContent={true}
                 value={el.value}
+                slug ={el.slug}
               />
             </Col>
           )) : ''}
@@ -293,7 +287,7 @@ let uniquecategory2key = [
     
             <div className="borderDesign">
           <Row className={["position-relative"]}>
-            {flowerGifts ?flowerGifts.slice(0, 4).map((el, key) => (
+            {uniquecategorykey_3 ?uniquecategorykey_3.slice(0, 4).map((el, key) => (
               <Col
                 key={key}
                 className="Green-card home-card-layout"
@@ -306,8 +300,8 @@ let uniquecategory2key = [
                   checker={key}
                   custContentImg={true}
                   custContent={el.categorytype}
-                  source={  el.image}
-                  cardContent={el.name}
+                  source={ 'http://admin.thesoftwarecompany.in'+ el.image}
+                  cardContent={ el.name}
                   showContent={false}
                   value="200"
                 />
@@ -332,7 +326,7 @@ let uniquecategory2key = [
                   checker={key}
                   custContentImg={true}
                   custContent={el.categorytype}
-                  source={ + el.image}
+                  source={'http://admin.thesoftwarecompany.in' + el.image}
                   cardContent={el.name}
                   showContent={false}
                   value="200"
@@ -358,7 +352,7 @@ let uniquecategory2key = [
                   checker={key}
                   custContentImg={true}
                   custContent={el.categorytype}
-                  source={ el.image}
+                  source={'http://admin.thesoftwarecompany.in'+ el.image}
                   cardContent={el.name}
                   showContent={false}
                   value={el.regularprice}
@@ -384,7 +378,7 @@ let uniquecategory2key = [
                   checker={key}
                   custContentImg={true}
                   custContent={el.categorytype}
-                  source={ el.image}
+                  source={ 'http://admin.thesoftwarecompany.in'+el.image}
                   cardContent={el.name}
                   showContent={false}
                   value="200"
@@ -411,7 +405,7 @@ let uniquecategory2key = [
                     checker={key}
                     custContentImg={true}
                     custContent={el.categorytype}
-                    source={ el.image}
+                    source={'http://admin.thesoftwarecompany.in'+ el.image}
                     cardContent={el.name}
                     showContent={false}
                     value="200"

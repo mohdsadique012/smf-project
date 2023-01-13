@@ -48,7 +48,8 @@ const ProductReducer = (state, action) => {
         case "SET_PRODUCT_LIST":
             return{
                 ...state,
-                product_lists: action.payload.category
+                product_lists: action.payload.bestSellingLists
+
             };
 
      

@@ -2,8 +2,8 @@ import { useContext, createContext, useEffect, useReducer } from "react";
 import AllProducts from "../reducer/productReducer";
 import  axios  from 'axios';
 /* API URL */
-const ALLPRODUCTURL = 'http://localhost:7600/category_lists';
-const SingleURL = "http://localhost:7600/subcategory_lists";
+const ALLPRODUCTURL = 'https://admin.thesoftwarecompany.in/category_lists';
+const SingleURL = "https://admin.thesoftwarecompany.in/subcategory_lists";
 const AppContext = createContext();
 
 /* Initial State */
@@ -44,7 +44,7 @@ const AppProvider = ({ children }) => {
             const res = await axios.get(url);
             const singleProduct = await res.data;
             console.log(singleProduct)
-            console.log(singleProduct,'singleProduct')
+            console.log(singleProduct,'singleProduct000000')
             dispatch({ type: "SET_SINGLE_PRODUCT", payload:singleProduct })
         } catch (error) {
             dispatch({ type: "SET_SINGLE_ERROR" })
@@ -58,7 +58,7 @@ const AppProvider = ({ children }) => {
         try {
             const res = await axios.get(url);
             const productlists = await res.data;
-            console.log(productlists, "ProductList")
+            console.log(productlists, "ProductList11111111111")
             dispatch({ type: "SET_PRODUCT_LIST", payload:productlists })
         } catch (error) {
             dispatch({ type: "SET_SINGLE_ERROR" })

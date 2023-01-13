@@ -29,16 +29,12 @@ const CardFirst = [
   { image: "official/9_Categories/8.png", title: "Gifts for Women" },
   { image: "official/9_Categories/9.png", title: "Gifts for Kids" },
 ];
-// import Posts from "./Posts";
 
-// import Divider from "../component/Divider/Divider";
-// const arrCount = [
-//   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-// ];
+//https://admin.thesoftwarecompany.in/product_list'
 const Product_category = () => {
 const { getProductListByCategory, product_lists } = useProductGlobal();
 const {product_list} = useParams();  
-const AllProductApi = 'http://localhost:7600/product_list';
+const AllProductApi = 'https://admin.thesoftwarecompany.in/bestselling_lists';
   const mySelection = {
     btn: {
       color: "black",
@@ -61,13 +57,14 @@ const AllProductApi = 'http://localhost:7600/product_list';
       marginLeft: "16px",
     },
   };
+  console.log(product_list,"product_list5555555")
 
 
 useEffect(() => {
   getProductListByCategory(`${AllProductApi}?category_id=${product_list}`);
 },[]);
 
-console.log({"Type":typeof product_lists, "product list": product_lists})
+console.log({"Type":typeof product_lists, "product list": product_lists} , "fddddddddddddddddddddddffffffffff")
 
   const settings = {
     infinite: true,
@@ -121,19 +118,25 @@ console.log({"Type":typeof product_lists, "product list": product_lists})
             <span>(251 products)</span>
           </div>
         </Row>
+        <div className="flex-11">
+
+         <div className="subcategory">
+           <p className="bold">subcategory</p>
+         </div>
           <div className="sub-category-button"> 
         
            {
              product_lists ?
             product_lists.map(el =>{
-              {console.log(el.name,"55555555555555555555")}
+              
   
-                return <button className="sub-category-butt">{el.name}</button>
+                return <button className="sub-category-butt">{el.subcategory}</button>
              })
              : ''
            }
            
           
+          </div>
           </div>
 
             
@@ -143,394 +146,45 @@ console.log({"Type":typeof product_lists, "product list": product_lists})
           <div className="category-filter d-flex align-items-center mb-5">
             <h5>Quick Filter</h5>
             <div className="filter-btn">
-              <Button variant="" style={mySelection.filterbtn}>
-                Bestseller
-              </Button>{" "}
-              <Button variant="" style={mySelection.filterbtn}>
-                Chocolate Cakes
-              </Button>{" "}
-              <Button variant="" style={mySelection.filterbtn}>
-                Exotic Cakes
-              </Button>{" "}
-              <Button variant="" style={mySelection.filterbtn}>
-                Designer Cakes
-              </Button>{" "}
-              <Button variant="" style={mySelection.filterbtn}>
-                Photo Cakes
-              </Button>{" "}
-              <Button variant="" style={mySelection.filterbtn}>
-                Kids Cakes
-              </Button>{" "}
+            {
+              product_lists ?
+             product_lists.map(el =>{
+               
+   
+                 return <Button variant="" style={mySelection.filterbtn}> {el.filtertype}</Button>
+              })
+              : ''
+            }
+            
+              
+             
             </div>
           </div>
         </Row>
       </Container>
       <Container fluid>
         <div className="row">
-          <Card
-            title="Frosty Chocolate Cake (Half Kg)"
-            // images="../official/Cake_Gifts/flowerwithchocolate.jpg"
-            old_price="9,999"
-            newPrice="9999"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="batman"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Pineapple Cake with Cerry Topings (Half Kg)"
-            images="../official/Cake_Gifts/chocolate.jpg"
-            old_price="599"
-            newPrice="500"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="blackpanter"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Frosty Chocolate Cake (Half Kg)"
-            images="../official/Cake_Gifts/flowerwithchocolate.jpg"
-            old_price="7999"
-            newPrice="7000"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="arthur"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Pineapple Cake with Cerry Topings (Half Kg)"
-            images="../official/Cake_Gifts/chocolate.jpg"
-            old_price="999"
-            newPrice="500"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="kashima"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Frosty Chocolate Cake (Half Kg)"
-            images="../official/Cake_Gifts/flowerwithchocolate.jpg"
-            old_price="7999"
-            newPrice="7000"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="arthur"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Pineapple Cake with Cerry Topings (Half Kg)"
-            images="../official/Cake_Gifts/chocolate.jpg"
-            old_price="999"
-            newPrice="500"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="kashima"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Frosty Chocolate Cake (Half Kg)"
-            images="../official/Cake_Gifts/flowerwithchocolate.jpg"
-            old_price="7999"
-            newPrice="7000"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="arthur"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Pineapple Cake with Cerry Topings (Half Kg)"
-            images="../official/Cake_Gifts/chocolate.jpg"
-            old_price="999"
-            newPrice="500"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="kashima"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Frosty Chocolate Cake (Half Kg)"
-            images="../official/Cake_Gifts/flowerwithchocolate.jpg"
-            old_price="7999"
-            newPrice="7000"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="arthur"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Pineapple Cake with Cerry Topings (Half Kg)"
-            images="../official/Cake_Gifts/chocolate.jpg"
-            old_price="999"
-            newPrice="500"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="kashima"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Frosty Chocolate Cake (Half Kg)"
-            images="../official/Cake_Gifts/flowerwithchocolate.jpg"
-            old_price="7999"
-            newPrice="7000"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="arthur"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Pineapple Cake with Cerry Topings (Half Kg)"
-            images="../official/Cake_Gifts/chocolate.jpg"
-            old_price="999"
-            newPrice="500"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="kashima"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Frosty Chocolate Cake (Half Kg)"
-            images="../official/Cake_Gifts/flowerwithchocolate.jpg"
-            old_price="9,999"
-            newPrice="9999"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="batman"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Pineapple Cake with Cerry Topings (Half Kg)"
-            images="../official/Cake_Gifts/chocolate.jpg"
-            old_price="599"
-            newPrice="500"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="blackpanter"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Frosty Chocolate Cake (Half Kg)"
-            images="../official/Cake_Gifts/flowerwithchocolate.jpg"
-            old_price="7999"
-            newPrice="7000"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="arthur"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Pineapple Cake with Cerry Topings (Half Kg)"
-            images="../official/Cake_Gifts/chocolate.jpg"
-            old_price="999"
-            newPrice="500"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="kashima"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Frosty Chocolate Cake (Half Kg)"
-            images="../official/Cake_Gifts/flowerwithchocolate.jpg"
-            old_price="9,999"
-            newPrice="9999"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="batman"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Pineapple Cake with Cerry Topings (Half Kg)"
-            images="../official/Cake_Gifts/chocolate.jpg"
-            old_price="599"
-            newPrice="500"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="blackpanter"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Frosty Chocolate Cake (Half Kg)"
-            images="../official/Cake_Gifts/flowerwithchocolate.jpg"
-            old_price="7999"
-            newPrice="7000"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="arthur"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Pineapple Cake with Cerry Topings (Half Kg)"
-            images="../official/Cake_Gifts/chocolate.jpg"
-            old_price="999"
-            newPrice="500"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="kashima"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Frosty Chocolate Cake (Half Kg)"
-            images="../official/Cake_Gifts/flowerwithchocolate.jpg"
-            old_price="9,999"
-            newPrice="9999"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="batman"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Pineapple Cake with Cerry Topings (Half Kg)"
-            images="../official/Cake_Gifts/chocolate.jpg"
-            old_price="599"
-            newPrice="500"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="blackpanter"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Frosty Chocolate Cake (Half Kg)"
-            images="../official/Cake_Gifts/flowerwithchocolate.jpg"
-            old_price="7999"
-            newPrice="7000"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="arthur"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Pineapple Cake with Cerry Topings (Half Kg)"
-            images="../official/Cake_Gifts/chocolate.jpg"
-            old_price="999"
-            newPrice="500"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="kashima"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Frosty Chocolate Cake (Half Kg)"
-            images="../official/Cake_Gifts/flowerwithchocolate.jpg"
-            old_price="9,999"
-            newPrice="9999"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="batman"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Pineapple Cake with Cerry Topings (Half Kg)"
-            images="../official/Cake_Gifts/chocolate.jpg"
-            old_price="599"
-            newPrice="500"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="blackpanter"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Frosty Chocolate Cake (Half Kg)"
-            images="../official/Cake_Gifts/flowerwithchocolate.jpg"
-            old_price="7999"
-            newPrice="7000"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="arthur"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
-          <Card
-            title="Pineapple Cake with Cerry Topings (Half Kg)"
-            images="../official/Cake_Gifts/chocolate.jpg"
-            old_price="999"
-            newPrice="500"
-            rupess="&#x20B9;"
-            discount="14% OFF"
-            alt="kashima"
-            rating="4.3"
-            star="&#9733;"
-            total_rating="(242)"
-            delivery="Same Day Delivery"
-          />
+        
+        {
+ product_lists ? product_lists.map(el =>{
+          return   <Card
+             title={el.carins}
+             images={"https://admin.thesoftwarecompany.in "+el.image}
+             old_price={el.regularprice}
+             newPrice={el.salesprice}
+             rupess="&#x20B9;"
+             discount="14% OFF"
+             alt="blackpanter"
+             rating="4.3"
+             star="&#9733;"
+             total_rating="(242)"
+             delivery={el.deliveryinfo}
+           />
+          })
+          : ''
+        }
+
+        
         </div>
         <div className="load-more my-5">
           <button>Show More Products (219)</button>
