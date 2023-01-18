@@ -58,7 +58,7 @@ const AppProvider = ({ children }) => {
         try {
             const res = await axios.get(url);
             const productlists = await res.data;
-            console.log(productlists, "ProductList11111111111")
+            console.log(productlists, "ProductList11111111111") 
             dispatch({ type: "SET_PRODUCT_LIST", payload:productlists })
         } catch (error) {
             dispatch({ type: "SET_SINGLE_ERROR" })

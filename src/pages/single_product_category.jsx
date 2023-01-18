@@ -34,7 +34,8 @@ const CardFirst = [
 const Product_category = () => {
 const { getProductListByCategory, product_lists } = useProductGlobal();
 const {product_list} = useParams();  
-const AllProductApi = 'https://admin.thesoftwarecompany.in/bestselling_lists';
+
+const AllProductApi = 'https://admin.thesoftwarecompany.in/product_list';
   const mySelection = {
     btn: {
       color: "black",
@@ -61,12 +62,12 @@ const AllProductApi = 'https://admin.thesoftwarecompany.in/bestselling_lists';
 
 
 useEffect(() => {
-  getProductListByCategory(`${AllProductApi}?category_id=${product_list}`);
+  getProductListByCategory(`${AllProductApi}?category_id=${product_list}`);              
 },[]);
 
-console.log({"Type":typeof product_lists, "product list": product_lists} , "fddddddddddddddddddddddffffffffff")
+console.log({"Type":typeof product_list, "product list": product_list} , "fddddddddddddddddddddddffffffffff------------------")
 
-  const settings = {
+  const settings = { 
     infinite: true,
     dots: true,
     slidesToShow: 3,
@@ -169,7 +170,7 @@ console.log({"Type":typeof product_lists, "product list": product_lists} , "fddd
  product_lists ? product_lists.map(el =>{
           return   <Card
              title={el.carins}
-             images={"https://admin.thesoftwarecompany.in "+el.image}
+             images={"https://admin.thesoftwarecompany.in/ "+el.image}
              old_price={el.regularprice}
              newPrice={el.salesprice}
              rupess="&#x20B9;"

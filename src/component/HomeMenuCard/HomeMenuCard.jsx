@@ -37,12 +37,12 @@ function HomeMenuCard({ menus,dataroute }) {
         
         <>
 
-          <Col className={"homemenu-main"} key={key} xs xm={4} xl={1}>
+          <Col className={"homemenu-main "}  key={key} xs xm={4} xl={1}>
             <Link to={`single_product_category/${el.slug}`}>
-            <div className="menu-upper-icon" >
+            <div className="menu-upper-icon menu" >
               <img src={"http://localhost:7600" + el.image} alt="" />
             </div>
-            <div className="menu-bottom-title">
+            <div className=" background-colour menu-bottom-title">
               <small>{el.name}</small>
             </div>
             </Link>
