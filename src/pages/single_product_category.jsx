@@ -39,15 +39,9 @@ let Data= useContext(AppContext)
 
 
 
-let singledata =Data.product_lists
-console.log(  singledata ,"56464654644",Data,"context_Data125356435")
-const [singleproductsss ,setSingleproducts] = useState('')
 
-useEffect(() => {
-  setSingleproducts(singledata)
-},[singledata]);
 
-console.log(singleproductsss ,"singleproductssssingleproductssssingleproductsss  ")
+
 
 const AllProductApi = 'https://admin.thesoftwarecompany.in/product_lists';
   const mySelection = {
@@ -81,7 +75,34 @@ useEffect(() => {
 
 },[]);
 
-console.log({"Type":typeof product_list, "product list": product_list} , "fddddddddddddddddddddddffffffffff------------------")
+let singledata =Data.product_lists
+console.log(  singledata ,"56464654644",Data,"context_Data125356435")
+const [singleproductsss ,setSingleproducts] = useState('')
+const [subcategorys ,setSubcategory] = useState('')
+
+
+useEffect(() => {
+  setSingleproducts(singledata)
+},[singledata]);
+
+console.log(singleproductsss ,"singleproductssssingleproductssssingleproductsss  ")
+
+let uniquesubcategorykey = [
+  ...new Map(singledata.map((item)=>[item["name"],item])).values()
+     ];
+     console.log(uniquesubcategorykey,"uniquesubcategorykey")
+    
+  const handleClick =(e)=>{
+       let filter_data = singledata.filter((el)=>{
+                return el.name==e
+               
+       })       
+    
+       setSingleproducts(filter_data)
+  }
+
+
+//console.log({"Type":typeof product_list, "product list": product_list} , "fddddddddddddddddddddddffffffffff------------------")
 
   const settings = { 
     infinite: true,
@@ -143,11 +164,11 @@ console.log({"Type":typeof product_list, "product list": product_list} , "fddddd
           <div className="sub-category-button"> 
         
            {
-            singleproductsss ?
-            singleproductsss.map(el =>{
+            uniquesubcategorykey ?
+            uniquesubcategorykey.map(el =>{
               
   
-                return <button className="sub-category-butt">{el.name}</button>
+                return <button onClick={()=>handleClick(el.name)} id="sub-category-butt">{el.name}</button>
              })
              : ''
            }
@@ -164,8 +185,8 @@ console.log({"Type":typeof product_list, "product list": product_list} , "fddddd
             <h5>Quick Filter</h5>
             <div className="filter-btn">
             {
-              product_lists ?
-             product_lists.map(el =>{
+              singleproductsss ?
+              singleproductsss.map(el =>{
                
    
                  return <Button variant="" style={mySelection.filterbtn}> {el.filtertype}</Button>
@@ -183,10 +204,10 @@ console.log({"Type":typeof product_list, "product list": product_list} , "fddddd
         <div className="row">
         
         {
- product_lists ? product_lists.map(el =>{
+          singleproductsss ? singleproductsss.map(el =>{
           return   <Card
              title={el.carins}
-             images={"https://admin.thesoftwarecompany.in/ "+el.image}
+             images={"https://admin.thesoftwarecompany.in "+el.image}
              old_price={el.regularprice}
              newPrice={el.salesprice}
              rupess="&#x20B9;"
