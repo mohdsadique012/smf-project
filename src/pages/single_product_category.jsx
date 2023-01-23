@@ -94,13 +94,26 @@ let uniquesubcategorykey = [
     
   const handleClick =(e)=>{
        let filter_data = singledata.filter((el)=>{
-                return el.name==e
+                return el.subcategory==e
                
        })       
     
        setSingleproducts(filter_data)
   }
-
+  let uniqueFilter = [
+    ...new Map(singledata.map((item)=>[item["filtertype"],item])).values()
+       ];
+       console.log(uniquesubcategorykey,"uniquesubcategorykey")
+      
+    const handleClickFilter =(e)=>{
+         let filter_data = singledata.filter((el)=>{
+                  return el.filtertype==e
+                 
+         })       
+      
+         setSingleproducts(filter_data)
+    }
+  
 
 //console.log({"Type":typeof product_list, "product list": product_list} , "fddddddddddddddddddddddffffffffff------------------")
 
@@ -185,11 +198,11 @@ let uniquesubcategorykey = [
             <h5>Quick Filter</h5>
             <div className="filter-btn">
             {
-              singleproductsss ?
-              singleproductsss.map(el =>{
+              uniqueFilter ?
+              uniqueFilter.map(el =>{
                
    
-                 return <Button variant="" style={mySelection.filterbtn}> {el.filtertype}</Button>
+                 return <Button onClick={()=>handleClickFilter(el.filtertype)} variant="" style={mySelection.filterbtn}> {el.filtertype}</Button>
               })
               : ''
             }
