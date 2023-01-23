@@ -182,7 +182,7 @@ let category_3 = [];
      console.log( toprated_data_catogaries," toprated77777777777777")
 
 let uniquecategorykey = [
-  ...new Map(toprated.map((item)=>[item["description"],item])).values()
+  ...new Map(toprated.map((item)=>[item["name"],item])).values()
      ];
       
      // category_2 part =>

@@ -46,9 +46,12 @@ const ProductReducer = (state, action) => {
 
             };
         case "SET_PRODUCT_LIST":
+            let sss= action.payload.product;
+            console.log(sss,"action.payload.product")
             return{
                 ...state,
-                product_lists: action.payload.bestSellingLists
+                product_lists: action.payload.product
+
 
             };
 

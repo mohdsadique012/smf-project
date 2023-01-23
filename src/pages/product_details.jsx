@@ -90,7 +90,7 @@ function Home(props) {
              <div className='flower-container'>
                   <div className='Product-detail-flower detail-flex-column'>
                        <div className='flower-img-box'>
-                            <img className='flower-img' src='https://www.fnp.com/images/pr/l/v20221202065954/luxe-love-10-orchids-bouquet_1.jpg'/>
+                            <img className='flower-img imge' src='https://www.fnp.com/images/pr/l/v20221202065954/luxe-love-10-orchids-bouquet_1.jpg'/>
                        </div>
                        <div className='small-img-container detail-flex-row'>
                             <div className='small-img-box'>

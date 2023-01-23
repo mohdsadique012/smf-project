@@ -1,4 +1,4 @@
-import React ,{useState,useEffect} from "react";
+import React ,{useState,useEffect,useContext} from "react";
 import SubFooter from "../layout/Sub_Footer";
 import Footer from "../layout/Footer";
 import Card from "../component/Card/Card";
@@ -16,6 +16,7 @@ import {
   Button,
   Col,
 } from "react-bootstrap";
+import { AppContext } from "../context/productcontext";
 import { useProductGlobal } from "../context/productcontext";
 
 const CardFirst = [
@@ -34,8 +35,21 @@ const CardFirst = [
 const Product_category = () => {
 const { getProductListByCategory, product_lists } = useProductGlobal();
 const {product_list} = useParams();  
+let Data= useContext(AppContext)
 
-const AllProductApi = 'https://admin.thesoftwarecompany.in/product_list';
+
+
+let singledata =Data.product_lists
+console.log(  singledata ,"56464654644",Data,"context_Data125356435")
+const [singleproductsss ,setSingleproducts] = useState('')
+
+useEffect(() => {
+  setSingleproducts(singledata)
+},[singledata]);
+
+console.log(singleproductsss ,"singleproductssssingleproductssssingleproductsss  ")
+
+const AllProductApi = 'https://admin.thesoftwarecompany.in/product_lists';
   const mySelection = {
     btn: {
       color: "black",
@@ -62,7 +76,9 @@ const AllProductApi = 'https://admin.thesoftwarecompany.in/product_list';
 
 
 useEffect(() => {
-  getProductListByCategory(`${AllProductApi}?category_id=${product_list}`);              
+  getProductListByCategory(`${AllProductApi}?categoryId=${product_list}`);   
+  // getProductListByCategory(AllProductApi);
+
 },[]);
 
 console.log({"Type":typeof product_list, "product list": product_list} , "fddddddddddddddddddddddffffffffff------------------")
@@ -127,11 +143,11 @@ console.log({"Type":typeof product_list, "product list": product_list} , "fddddd
           <div className="sub-category-button"> 
         
            {
-             product_lists ?
-            product_lists.map(el =>{
+            singleproductsss ?
+            singleproductsss.map(el =>{
               
   
-                return <button className="sub-category-butt">{el.subcategory}</button>
+                return <button className="sub-category-butt">{el.name}</button>
              })
              : ''
            }

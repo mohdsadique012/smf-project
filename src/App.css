@@ -352,3 +352,9 @@ html {
   top: -27px;
   right: -10px;
 }
+
+img:hover{
+  transition: 1s ease;
+  transform: scale(1.02) ;  /* zoom in the image upto 30% */
+  cursor: pointer; 
+}
