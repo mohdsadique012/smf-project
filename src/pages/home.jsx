@@ -141,7 +141,12 @@ let category_3 = [];
   var categoriess =[]
     
   category_3.forEach(el=>{
-            let variable=category_third.filter(item=>item.categorytype.toLowerCase()== el.name.toLowerCase())
+            console.log( el.name," el.name")
+            let variable=category_third.filter(item=> {
+              console.log( item.categorytype," item.categorytype")
+               return item.categorytype== el.name
+            })
+           
             categoriess =  categoriess.concat(variable);    
          })
         
@@ -296,6 +301,7 @@ let uniquecategory2key = [
                 lg={4}
                 xl={3}
               >
+              <Link to={`single_product_bysubcategory/${el.slug}`}>
                 <SimpleCardComponent
                   checker={key}
                   custContentImg={true}
@@ -304,7 +310,9 @@ let uniquecategory2key = [
                   cardContent={ el.name}
                   showContent={false}
                   value="200"
+                  slug = {el.slug}
                 />
+                </Link>
               </Col>
             ))  : <h1>Hello Rajat </h1>}
             <span className={"view_all_btn"}>View All</span>

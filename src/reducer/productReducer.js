@@ -45,6 +45,7 @@ const ProductReducer = (state, action) => {
                 single_product: action.payload.subcategory
 
             };
+
         case "SET_PRODUCT_LIST":
             let sss= action.payload.product;
             console.log(sss,"action.payload.product")
@@ -54,7 +55,15 @@ const ProductReducer = (state, action) => {
 
 
             };
+         case "SET_subcategory_PRODUCT_LIST":
+           
         
+            return{
+                ...state,
+                sub_product_lists: action.payload.product
+
+
+            };
      
 
         default:

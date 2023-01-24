@@ -43,7 +43,7 @@ let Data= useContext(AppContext)
 
 
 
-const AllProductApi = 'https://admin.thesoftwarecompany.in/product_lists';
+const AllProductApi = 'http://localhost:7600/product_lists';
   const mySelection = {
     btn: {
       color: "black",
@@ -77,7 +77,7 @@ useEffect(() => {
 
 let singledata =Data.product_lists
 console.log(  singledata ,"56464654644",Data,"context_Data125356435")
-const [singleproductsss ,setSingleproducts] = useState('')
+const [single_productss ,setSingleproducts] = useState('')
 const [subcategorys ,setSubcategory] = useState('')
 
 
@@ -85,7 +85,11 @@ useEffect(() => {
   setSingleproducts(singledata)
 },[singledata]);
 
-console.log(singleproductsss ,"singleproductssssingleproductssssingleproductsss  ")
+console.log(single_productss ,"single_productss  ")
+
+  let data11 = singledata.filter(el=>{
+      return 
+  })
 
 let uniquesubcategorykey = [
   ...new Map(singledata.map((item)=>[item["subcategory_name"],item])).values()
@@ -94,6 +98,7 @@ let uniquesubcategorykey = [
     
   const handleClick =(e)=>{
        let filter_data = singledata.filter((el)=>{
+          console.log(el.subcategory_name,"el.subcategory_name",e)
                 return el.subcategory_name==e
                
        })       
@@ -166,7 +171,12 @@ let uniquesubcategorykey = [
             className="category-title d-flex align-items-center"
             style={{ marginBottom: 14 }}
           >
-            <h3 style={{ marginRight: 16 }}>Birthday Cakes</h3>
+          {
+            single_productss ? single_productss.slice(0,1).map(el =>{
+            <h3 style={{ marginRight: 16 }}>{el.category}</h3>
+          })
+          : ''
+        }
             <span>(251 products)</span>
           </div>
         </Row>
@@ -182,7 +192,7 @@ let uniquesubcategorykey = [
             uniquesubcategorykey.map(el =>{
               
   
-                return <button onClick={()=>handleClick(el.name)} id="sub-category-butt">{el.name}</button>
+                return <button onClick={()=>handleClick(el.subcategory_name)} id="sub-category-butt">{el.subcategory_name}</button>
              })
              : ''
            }
@@ -218,7 +228,7 @@ let uniquesubcategorykey = [
         <div className="row">
         
         {
-          singleproductsss ? singleproductsss.map(el =>{
+          single_productss ? single_productss.map(el =>{
           return   <Card
              title={el.carins}
              images={"https://admin.thesoftwarecompany.in "+el.image}

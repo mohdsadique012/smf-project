@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./pages/home";
 import ProductDeatils from "./pages/product_details";
 import ProductCategory from "./pages/single_product_category";
+import SingleProductSubcategory from "./pages/single_one_product"
 import ProductCategories from "./pages/product_categories";
 import CheckoutDeatils from "./pages/checkout_details";
 import MainCategory from "./pages/Admin/Categories/main_category";
@@ -143,6 +144,11 @@ console.log(stateroute,'qwertyuiop')
           path="/single_product_category/:product_list"
           element={<ProductCategory />}
         ></Route>
+        <Route
+        exact
+        path="/single_product_bysubcategory/:product_listss"
+        element={<SingleProductSubcategory />}
+      ></Route>
         <Route
           exact
           path="/product_categories"
