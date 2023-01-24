@@ -10,6 +10,9 @@ import Slider from "react-slick";
 import Divider from "../component/Divider/Divider";
 import "./product_details.css";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { useParams } from 'react-router-dom';
+import { AppContext } from "../context/productcontext";
+import { useProductGlobal } from "../context/productcontext";
 
 const bestSelling = [
   { icon: "official/Best_Selling_Gifts/1.png", title: "Birthday Gift" },
@@ -57,6 +60,16 @@ const settingVertical = {
 };
 
 function Home(props) {
+  const { getSingleProductListByCategory, Singleproduct_lists } = useProductGlobal();
+
+  const AllProductApi = 'https://admin.thesoftwarecompany.in/product_lists';
+  const {singleproduct_list} = useParams(); 
+  useEffect(() => {
+    getSingleProductListByAllProduct(`${AllProductApi}?categoryId=${singleproduct_list}`);   
+    // getProductListByCategory(AllProductApi);
+  
+  },[]);
+
 
   useEffect(() => {
     // 👇️ scroll to top on page load

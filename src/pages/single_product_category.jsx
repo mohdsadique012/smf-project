@@ -88,13 +88,13 @@ useEffect(() => {
 console.log(singleproductsss ,"singleproductssssingleproductssssingleproductsss  ")
 
 let uniquesubcategorykey = [
-  ...new Map(singledata.map((item)=>[item["name"],item])).values()
+  ...new Map(singledata.map((item)=>[item["subcategory_name"],item])).values()
      ];
      console.log(uniquesubcategorykey,"uniquesubcategorykey")
     
   const handleClick =(e)=>{
        let filter_data = singledata.filter((el)=>{
-                return el.name==e
+                return subcategory_name==e
                
        })       
     

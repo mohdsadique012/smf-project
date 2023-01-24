@@ -54,7 +54,15 @@ const ProductReducer = (state, action) => {
 
 
             };
-
+            case "SET_SINGLEProduct_LOADING":
+               
+              
+                return{
+                    ...state,
+                    single_product_lists: action.payload.product
+    
+    
+                };
      
 
         default:
