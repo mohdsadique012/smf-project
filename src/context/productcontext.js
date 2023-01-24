@@ -64,18 +64,6 @@ const AppProvider = ({ children }) => {
             dispatch({ type: "SET_SINGLE_ERROR" })
         }
     };
-    const getSingleProductListByAllProduct = async (url) => {
-        
-        dispatch({ type: "SET_SINGLEProduct_LOADING" })
-        try {
-            const res = await axios.get(url);
-            const productlists = await res.data;
-            console.log(productlists, "ProductList222222") 
-            dispatch({ type: "SET_PRODUCT_LIST", payload:productlistss })
-        } catch (error) {
-            dispatch({ type: "SET_SINGLE_ERROR" })
-        }
-    };
 
     useEffect(() => {
         getProducts(ALLPRODUCTURL);
@@ -84,7 +72,7 @@ const AppProvider = ({ children }) => {
   console.log(state,"statemmmmmmm" )
 
     return (
-        <AppContext.Provider value={{ ...state, getSingleProduct, getProductListByCategory ,getSingleProductListByAllProduct }} >
+        <AppContext.Provider value={{ ...state, getSingleProduct, getProductListByCategory  }} >
             {children}
         </AppContext.Provider>
     );
