@@ -94,7 +94,7 @@ let uniquesubcategorykey = [
     
   const handleClick =(e)=>{
        let filter_data = singledata.filter((el)=>{
-                return subcategory_name==e
+                return el.subcategory_name==e
                
        })       
     
