@@ -60,7 +60,16 @@ const ProductReducer = (state, action) => {
         
             return{
                 ...state,
-                sub_product_lists: action.payload.product
+                subcategory_product_lists: action.payload.product
+
+
+            };
+            case "SET_PRODUCT":
+           
+        
+            return{
+                ...state,
+                one_product: action.payload
 
 
             };

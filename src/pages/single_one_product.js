@@ -20,8 +20,8 @@ import { AppContext } from "../context/productcontext";
 import { useProductGlobal } from "../context/productcontext";
 
 function Single_one_product() {
-    const { getProductListBysubCategory, product_lists } = useProductGlobal();
-    const {product_listss} = useParams();  
+    const { getProductListBysubCategory, subcategory_product_lists } = useProductGlobal();
+    const {product1} = useParams();  
     let Data= useContext(AppContext)
     
     
@@ -30,7 +30,7 @@ function Single_one_product() {
     
     
     
-    const AllProductApi = 'http://localhost:7600/product_details  ';
+    const AllProductApi = 'http://localhost:7600/product_details';
       const mySelection = {
         btn: {
           color: "black",
@@ -53,16 +53,16 @@ function Single_one_product() {
           marginLeft: "16px",
         },
       };
-      console.log(product_listss,"product_list5555555")
+      console.log(product1,"product_list5555555")
     
     
     useEffect(() => {
-      getProductListBysubCategory(`${AllProductApi}?categoryId=${product_listss}`);   
-      // getProductListByCategory(AllProductApi);
+       getProductListBysubCategory(`${AllProductApi}?subcategory_id=${product1}`);   
+      //getProductListBysubCategory(AllProductApi);
     
     },[]);
     
-    let singledata =Data.product_lists
+    let singledata =Data.subcategory_product_lists
     console.log(  singledata ,"56464654644",Data,"context_Data125356435")
     const [single_productss ,setSingleproducts] = useState('')
     const [subcategorys ,setSubcategory] = useState('')
@@ -107,7 +107,7 @@ function Single_one_product() {
         }
       
     
-    console.log({"Type":typeof product_listss, "product list": product_listss} , "fddddddddddddddddddddddffffffffff------------------")
+    console.log({"Type":typeof product1, "product list": product1} , "fddddddddddddddddddddddffffffffff------------------")
     
       const settings = { 
         infinite: true,

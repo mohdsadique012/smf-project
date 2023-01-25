@@ -15,8 +15,9 @@ const intialState = {
     is_single_loading: false,
     is_single_error: false,
     single_product: [],
-    product_lists: []
-
+    product_lists: [],
+    subcategory_product_lists: [],
+    one_product:[]
 };
 
 
@@ -79,6 +80,22 @@ const AppProvider = ({ children }) => {
         }
     };
 
+
+    
+    const getSingleProductListByproduct= async (url) => {
+        
+        dispatch({ type: "SET_SINGLE_LOADING" })
+        try {
+            const res = await axios.get(url);
+            const singleproduct = await res.data;
+            console.log(singleproduct, "Product12121212") 
+            dispatch({ type: "SET_PRODUCT", payload:singleproduct })
+        } catch (error) {
+            dispatch({ type: "SET_SINGLE_ERROR" })
+        }
+    };
+
+
     useEffect(() => {
         getProducts(ALLPRODUCTURL);
         getSingleProduct(SingleURL)
@@ -86,7 +103,7 @@ const AppProvider = ({ children }) => {
   console.log(state,"statemmmmmmm" )
 
     return (
-        <AppContext.Provider value={{ ...state, getSingleProduct, getProductListByCategory ,getProductListBysubCategory }} >
+        <AppContext.Provider value={{ ...state, getSingleProduct, getProductListByCategory ,getProductListBysubCategory ,getSingleProductListByproduct }} >
             {children}
         </AppContext.Provider>
     );

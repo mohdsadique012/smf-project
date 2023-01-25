@@ -7,6 +7,7 @@ import data from "./ProductCategoryData"
 export default function Card(props) {
   let newClassName = `color_bg ${props.alt}`;
   let bg_img = `url(${props.images})`;
+  console.log( bg_img," bg_img")
   let {
     title,
     old_price,
@@ -18,14 +19,18 @@ export default function Card(props) {
     star,
     total_rating,
     delivery,
+    slug,
   } = props;
 
   return (
+    
     <div className="product-card card col-lg-3">
       <Link to="/product_details">
         <div className="product-card-warpper">
           <div className={newClassName}></div>
+          <Link to={`product_details/${slug}`}>
           <div className="card_img" style={{ backgroundImage: bg_img }}></div>
+          </Link>
           <div className="heart">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
               <path d="M47 5c-6.5 0-12.9 4.2-15 10-2.1-5.8-8.5-10-15-10A15 15 0 0 0 2 20c0 13 11 26 30 39 19-13 30-26 30-39A15 15 0 0 0 47 5z"></path>
@@ -68,5 +73,6 @@ export default function Card(props) {
         </div>
       </Link>
     </div>
+
   );
 }

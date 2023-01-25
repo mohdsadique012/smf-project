@@ -1,4 +1,4 @@
-import React , {useState,useEffect} from "react";
+import React , {useState,useEffect,useContext} from "react";
 import ProductCarousel from "../component/Product/ProductCarousel";
 import ProductPricing from "../component/Product/ProductPricing";
 import ProducAddOn from "../component/Product/ProducAddOn";
@@ -10,6 +10,9 @@ import Slider from "react-slick";
 import Divider from "../component/Divider/Divider";
 import "./product_details.css";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { AppContext } from "../context/productcontext";
+import { useProductGlobal } from "../context/productcontext";
+import { useParams } from 'react-router-dom';
 
 
 const bestSelling = [
@@ -59,6 +62,18 @@ const settingVertical = {
 
 function Home(props) {
  
+  const { getSingleProductListByproduct, one_product } = useProductGlobal();
+    const {oneproduct} = useParams();  
+    let Data= useContext(AppContext)
+    const AllProductApi = 'http://localhost:7600/product_details  ';
+
+  useEffect(() => {
+    getSingleProductListByproduct(`${AllProductApi}?productId=${oneproduct}`);   
+    // getProductListByCategory(AllProductApi);
+  
+  },[]);
+
+  console.log(oneproduct,"oneproduct")
 
 
   useEffect(() => {

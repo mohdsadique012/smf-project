@@ -136,7 +136,7 @@ console.log(stateroute,'qwertyuiop')
         ></Route>
         <Route
           exact
-          path="/product_details"
+          path="/single_product_category/:product_list/product_details/:oneproduct"
           element={<ProductDeatils dataAdd={data} />}
         ></Route>
         <Route
@@ -146,7 +146,7 @@ console.log(stateroute,'qwertyuiop')
         ></Route>
         <Route
         exact
-        path="/single_product_bysubcategory/:product_listss"
+        path="/single_product_bysubcategory/:product1"
         element={<SingleProductSubcategory />}
       ></Route>
         <Route

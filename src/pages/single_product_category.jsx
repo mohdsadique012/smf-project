@@ -231,7 +231,7 @@ let uniquesubcategorykey = [
           single_productss ? single_productss.map(el =>{
           return   <Card
              title={el.carins}
-             images={"https://admin.thesoftwarecompany.in "+el.image}
+             images={"http://localhost:7600/"+el.image}
              old_price={el.regularprice}
              newPrice={el.salesprice}
              rupess="&#x20B9;"
@@ -241,6 +241,7 @@ let uniquesubcategorykey = [
              star="&#9733;"
              total_rating="(242)"
              delivery={el.deliveryinfo}
+             slug={el.slug}
            />
           })
           : ''
