@@ -155,13 +155,13 @@
 }
 .flower-img-box{
     width: 18rem;
-    height: 23rem; 
+    height: 20rem; 
     margin-left: 1rem;
   
 }
 .flower-img{
     width: 18rem;
-    height: 23rem;
+    height: 20rem;
     object-fit: contain;
 }
 .small-img{
