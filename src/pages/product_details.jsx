@@ -85,15 +85,8 @@ function Home(props) {
   // useEffect({
   //     document.querySelector();
   // }, [])
-  const [product,setProduct]= useState({
-    image: data.image,
-    rate: data.regularprice,
-    discount:""
-  })
 
- const  handleclickrate = (e) =>{
-  setProduct(...product,{rate:e})
- }
+
   
  useEffect(() => {
    setProduct(data)
@@ -183,7 +176,7 @@ function Home(props) {
                                   <img className='small-img1' src={"https://admin.thesoftwarecompany.in/"+data?.image}/>
                                  
                                 </div>
-                                <div onClick={ ()=>{ handleclickrate(el.price); handleclickimage(el.atributeimage) }} className='detail-space detail-flex-row'>
+                                <div  className='detail-space detail-flex-row'>
                                   <span className='detail-color-rate'>small  </span> 
                                   <span className='detail-color-rates'> Rs. 699</span> 
                                 </div>
@@ -193,7 +186,7 @@ function Home(props) {
                                  <img className='small-img1' src={"https://admin.thesoftwarecompany.in/"+data?.image}/>
                                 
                               </div>
-                              <div onClick={ ()=>{ handleclickrate(el.price); handleclickimage(el.atributeimage) }} className='detail-space detail-flex-row'>
+                              <div  className='detail-space detail-flex-row'>
                                   <span className='detail-color-rate'>medim  </span> 
                                   <span className='detail-color-rates'> Rs. 699</span> 
                                 </div>
@@ -202,7 +195,7 @@ function Home(props) {
                                <div className='small-img-box1'>
                                  <img className='small-img1' src={"https://admin.thesoftwarecompany.in/"+data?.image}/>
                                </div>
-                               <div onClick={ ()=>{ handleclickrate(el.price); handleclickimage(el.atributeimage) }}  className='detail-space detail-flex-row'>
+                               <div  className='detail-space detail-flex-row'>
                                   <span className='detail-color-rate'>large  </span> 
                                   <span className='detail-color-rates'> Rs. 699</span> 
                                 </div>
