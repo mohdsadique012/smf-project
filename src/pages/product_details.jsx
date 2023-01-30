@@ -88,9 +88,7 @@ function Home(props) {
 
 
   
- useEffect(() => {
-   setProduct(data)
-  }, [])
+//1111
 
   // console.log(props.data ,88888)
   const handleclickAdd = (e)=>{
