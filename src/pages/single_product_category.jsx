@@ -43,7 +43,7 @@ let Data= useContext(AppContext)
 
 
 
-const AllProductApi = 'http://localhost:7600/product_lists';
+const AllProductApi = 'https://admin.thesoftwarecompany.in/product_lists';
   const mySelection = {
     btn: {
       color: "black",
@@ -231,7 +231,7 @@ let uniquesubcategorykey = [
           single_productss ? single_productss.map(el =>{
           return   <Card
              title={el.carins}
-             images={"http://localhost:7600/"+el.image}
+             images={"https://admin.thesoftwarecompany.in/"+el.image}
              old_price={el.regularprice}
              newPrice={el.salesprice}
              rupess="&#x20B9;"

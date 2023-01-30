@@ -15,13 +15,13 @@ function SidebarCart({datapass}) {
         <Row id="Cart-Div">
             <Col xs sm={4} xl={4}>
                 <div className="cart-image">
-                    <img src={datapass.name} alt="" />
+                    <img src={"http://localhost:7600/"+ datapass.image} alt="" />
                 </div>
               
             </Col>
             <Col xs sm={8} xl={8}>
-                <h5>{datapass.detail}</h5>
-                <h6>Rs{datapass.rate}</h6>
+                <h5>{datapass.name}</h5>
+                <h6>Rs{datapass.regularprice}</h6>
             </Col>
         </Row>
     )

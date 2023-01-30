@@ -69,7 +69,7 @@ const ProductReducer = (state, action) => {
         
             return{
                 ...state,
-                one_product: action.payload
+                one_product: action.payload.product
 
 
             };

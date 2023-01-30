@@ -65,15 +65,16 @@ function Home(props) {
   const { getSingleProductListByproduct, one_product } = useProductGlobal();
     const {oneproduct} = useParams();  
     let Data= useContext(AppContext)
-    const AllProductApi = 'http://localhost:7600/product_details  ';
+    const AllProductApi = 'https://admin.thesoftwarecompany.in/product_data';
+    let data = one_product[0]
 
   useEffect(() => {
-    getSingleProductListByproduct(`${AllProductApi}?productId=${oneproduct}`);   
+    getSingleProductListByproduct(`${AllProductApi}?product_slug=${oneproduct}`);  
     // getProductListByCategory(AllProductApi);
   
   },[]);
 
-  console.log(oneproduct,"oneproduct")
+  console.log(one_product,"oneproduct")
 
 
   useEffect(() => {
@@ -84,14 +85,25 @@ function Home(props) {
   // useEffect({
   //     document.querySelector();
   // }, [])
-  const [product,setProduct]= useState({name:"https://www.fnp.com/images/pr/l/v20221202065954/luxe-love-10-orchids-bouquet_1.jpg",detail:"this one of the best product", rate:"633"})
+  const [product,setProduct]= useState({
+    image: data.image,
+    rate: data.regularprice,
+    discount:""
+  })
 
+ const  handleclickrate = (e) =>{
+  setProduct(...product,{rate:e})
+ }
+  
+ useEffect(() => {
+   setProduct(data)
+  }, [])
 
   // console.log(props.data ,88888)
   const handleclickAdd = (e)=>{
     alert("Your product has been added in cart")
     // setProduct(product);
-     props.dataAdd(product)
+     props.dataAdd(data)
   }
   return (
     <>
@@ -108,17 +120,17 @@ function Home(props) {
              <div className='flower-container'>
                   <div className='Product-detail-flower detail-flex-column'>
                        <div className='flower-img-box'>
-                            <img className='flower-img imge' src='https://www.fnp.com/images/pr/l/v20221202065954/luxe-love-10-orchids-bouquet_1.jpg'/>
+                            <img className='flower-img imge' src={"https://admin.thesoftwarecompany.in/"+data?.image}/>
                        </div>
                        <div className='small-img-container detail-flex-row'>
                             <div className='small-img-box'>
-                                  <img className='small-img' src='https://www.fnp.com/images/pr/l/v20221202065954/luxe-love-10-orchids-bouquet_1.jpg'/>
+                                  <img className='small-img' src={"https://admin.thesoftwarecompany.in/"+data?.image}/>
                             </div>
                             <div className='small-img-box'>
-                                 <img className='small-img' src='https://www.fnp.com/images/pr/l/v20221202065954/luxe-love-10-orchids-bouquet_1.jpg'/>
+                                 <img className='small-img' src={"https://admin.thesoftwarecompany.in/"+data?.image}/>
                             </div>
                             <div className='small-img-box'>
-                                 <img className='small-img' src='https://www.fnp.com/images/pr/l/v20221202065954/luxe-love-10-orchids-bouquet_1.jpg'/>
+                                 <img className='small-img' src={"https://admin.thesoftwarecompany.in/"+data?.image}/>
                             </div>
                        </div>
 
@@ -136,7 +148,7 @@ function Home(props) {
 
               <div className='product-detail-pricing-container'>
                   <div className='detail-pricing'>
-                      <p className='detail-redrose'>Red Rose Surprise</p><br/>
+                      <p className='detail-redrose'>{data?.name}</p><br/>
                       <p>
                        <span><i className="fa fa-star detail-star" aria-hidden="true"></i></span>
                        <span><i className="fa fa-star detail-star" aria-hidden="true"></i></span>
@@ -147,7 +159,7 @@ function Home(props) {
                      </p>
                      <p>
                        <span className='detail-rs'>Rs</span>
-                       <span className='detail-Rs'>499</span>
+                       <span className='detail-Rs'>{data?.regularprice}</span>
                        <p>
                        <span><i className="fa fa-arrow-down down-arrow" aria-hidden="true"></i></span>
                        <span className='detail-view'>View more details</span>
@@ -168,29 +180,29 @@ function Home(props) {
                   <div className='small-img-container detail-flex-row detail-margin'>
                             <div className='detail-lf'> 
                                 <div className='small-img-box1'>
-                                  <img className='small-img1' src='https://www.fnp.com/images/pr/l/v20221202065954/luxe-love-10-orchids-bouquet_1.jpg'/>
+                                  <img className='small-img1' src={"https://admin.thesoftwarecompany.in/"+data?.image}/>
                                  
                                 </div>
-                                <div  className='detail-space detail-flex-row'>
+                                <div onClick={ ()=>{ handleclickrate(el.price); handleclickimage(el.atributeimage) }} className='detail-space detail-flex-row'>
                                   <span className='detail-color-rate'>small  </span> 
                                   <span className='detail-color-rates'> Rs. 699</span> 
                                 </div>
                             </div>
                             <div className='detail-lf'>
                               <div className='small-img-box1'>
-                                 <img className='small-img1' src='https://www.fnp.com/images/pr/l/v20221202065954/luxe-love-10-orchids-bouquet_1.jpg'/>
+                                 <img className='small-img1' src={"https://admin.thesoftwarecompany.in/"+data?.image}/>
                                 
                               </div>
-                              <div  className='detail-space detail-flex-row'>
+                              <div onClick={ ()=>{ handleclickrate(el.price); handleclickimage(el.atributeimage) }} className='detail-space detail-flex-row'>
                                   <span className='detail-color-rate'>medim  </span> 
                                   <span className='detail-color-rates'> Rs. 699</span> 
                                 </div>
                             </div>
                             <div className='detail-lf'>
                                <div className='small-img-box1'>
-                                 <img className='small-img1' src='https://www.fnp.com/images/pr/l/v20221202065954/luxe-love-10-orchids-bouquet_1.jpg'/>
+                                 <img className='small-img1' src={"https://admin.thesoftwarecompany.in/"+data?.image}/>
                                </div>
-                               <div  className='detail-space detail-flex-row'>
+                               <div onClick={ ()=>{ handleclickrate(el.price); handleclickimage(el.atributeimage) }}  className='detail-space detail-flex-row'>
                                   <span className='detail-color-rate'>large  </span> 
                                   <span className='detail-color-rates'> Rs. 699</span> 
                                 </div>
@@ -207,7 +219,7 @@ function Home(props) {
                       <p>ADD ONS</p>
                    <div className='detail-grid'>
                       <div className='background-black'>
-                         <img  className='detail-small-igm' src= 'https://www.fnp.com/images/pr/l/v20221202065954/luxe-love-10-orchids-bouquet_1.jpg'/>
+                         <img  className='detail-small-igm' src= {"https://admin.thesoftwarecompany.in/"+data?.image}/>
                          <p className='detail-two'>2 layer bamboo plan</p>
                          <h className='detail-space'>
                               <span className='rs-p'>Rs 799</span>
@@ -215,7 +227,7 @@ function Home(props) {
                          </h>
                      </div>
                      <div className='background-black'>
-                         <img  className='detail-small-igm' src= 'https://www.fnp.com/images/pr/l/v20221202065954/luxe-love-10-orchids-bouquet_1.jpg'/>
+                         <img  className='detail-small-igm' src= {"https://admin.thesoftwarecompany.in/"+data?.image}/>
                          <p className='detail-two'>2 layer bamboo plan</p>
                          <h className='detail-space'>
                               <span className='rs-p'>Rs 799</span>
@@ -223,7 +235,7 @@ function Home(props) {
                          </h>
                      </div>
                       <div className='background-black'>
-                         <img  className='detail-small-igm' src= 'https://www.fnp.com/images/pr/l/v20221202065954/luxe-love-10-orchids-bouquet_1.jpg'/>
+                         <img  className='detail-small-igm' src= {"https://admin.thesoftwarecompany.in/"+data?.image}/>
                          <p className='detail-two'>2 layer bamboo plan</p>
                          <h className='detail-space'>
                               <span className='rs-p'>Rs 799</span>
@@ -231,7 +243,7 @@ function Home(props) {
                          </h>
                      </div>
                      <div className='background-black'>
-                         <img  className='detail-small-igm' src= 'https://www.fnp.com/images/pr/l/v20221202065954/luxe-love-10-orchids-bouquet_1.jpg'/>
+                         <img  className='detail-small-igm' src= {"https://admin.thesoftwarecompany.in/"+data?.image}/>
                          <p className='detail-two'>2 layer bamboo plan</p>
                          <h className='detail-space'>
                               <span className='rs-p'>Rs 799</span>

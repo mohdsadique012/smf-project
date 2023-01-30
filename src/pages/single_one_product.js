@@ -30,7 +30,7 @@ function Single_one_product() {
     
     
     
-    const AllProductApi = 'http://localhost:7600/product_details';
+    const AllProductApi = 'https://admin.thesoftwarecompany.in/product_details';
       const mySelection = {
         btn: {
           color: "black",
@@ -82,6 +82,8 @@ function Single_one_product() {
       ...new Map(singledata.map((item)=>[item["subcategory_name"],item])).values()
          ];
          console.log(uniquesubcategorykey,"uniquesubcategorykey")
+         let subcategoryshow = uniquesubcategorykey[0]
+         console.log(subcategoryshow,"subcategoryshow")
         
       const handleClick =(e)=>{
            let filter_data = singledata.filter((el)=>{
@@ -157,31 +159,20 @@ function Single_one_product() {
                 className="category-title d-flex align-items-center"
                 style={{ marginBottom: 14 }}
               >
-              {
-                single_productss ? single_productss.slice(0,1).map(el =>{
-                <h3 style={{ marginRight: 16 }}>{el.category}</h3>
-              })
-              : ''
-            }
+          
+                <h3 style={{ marginRight: 16 }}>{subcategoryshow?.category_name}</h3>
+             
                 <span>(251 products)</span>
               </div>
             </Row>
             <div className="flex-11">
     
              <div className="subcategory">
-               <p className="bold">subcategory</p>
+               <p className="bold">{subcategoryshow?.subcategory_name}</p>
              </div>
               <div className="sub-category-button"> 
             
-               {
-                uniquesubcategorykey ?
-                uniquesubcategorykey.map(el =>{
-                  
-      
-                    return <button onClick={()=>handleClick(el.name)} id="sub-category-butt">{el.name}</button>
-                 })
-                 : ''
-               }
+            
                
               
               </div>
@@ -227,6 +218,7 @@ function Single_one_product() {
                  star="&#9733;"
                  total_rating="(242)"
                  delivery={el.deliveryinfo}
+                 slug={el.slug}
                />
               })
               : ''

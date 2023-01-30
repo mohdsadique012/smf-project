@@ -21,14 +21,14 @@ export default function Card(props) {
     delivery,
     slug,
   } = props;
-
+    
   return (
     
     <div className="product-card card col-lg-3">
-      <Link to="/product_details">
+   
         <div className="product-card-warpper">
           <div className={newClassName}></div>
-          <Link to={`product_details/${slug}`}>
+          <Link to={`/product_details/${slug}`}>
           <div className="card_img" style={{ backgroundImage: bg_img }}></div>
           </Link>
           <div className="heart">
@@ -71,7 +71,7 @@ export default function Card(props) {
             </div>
           </div>
         </div>
-      </Link>
+    
     </div>
 
   );
