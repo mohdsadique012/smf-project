@@ -92,14 +92,14 @@ console.log(single_productss ,"single_productss  ")
   })
 
 let uniquesubcategorykey = [
-  ...new Map(singledata.map((item)=>[item["subcategory_name"],item])).values()
+  ...new Map(singledata.map((item)=>[item["product_subcategory"],item])).values()
      ];
      console.log(uniquesubcategorykey,"uniquesubcategorykey")
     
   const handleClick =(e)=>{
        let filter_data = singledata.filter((el)=>{
-          console.log(el.subcategory_name,"el.subcategory_name",e)
-                return el.subcategory_name==e
+          console.log(el.subcategory_name,"el.product_subcategory",e)
+                return el.product_subcategory==e
                
        })       
     
@@ -107,13 +107,13 @@ let uniquesubcategorykey = [
   }
   //hhhhhhhh
   let uniqueFilter = [
-    ...new Map(singledata.map((item)=>[item["filtertype"],item])).values()
+    ...new Map(singledata.map((item)=>[item["product_filtertype"],item])).values()
        ];
        console.log(uniquesubcategorykey,"uniquesubcategorykey")
       
     const handleClickFilter =(e)=>{
          let filter_data = singledata.filter((el)=>{
-                  return el.filtertype==e
+                  return el.product_filtertype==e
                  
          })       
       
@@ -160,6 +160,7 @@ let uniquesubcategorykey = [
           <a href="">
             Cakes <i class="fa-solid fa-chevron-right"></i>
           </a>
+          {}
           <a href="">
             Birthday Cakes <i class="fa-solid fa-chevron-right"></i>
           </a>
@@ -172,8 +173,9 @@ let uniquesubcategorykey = [
             style={{ marginBottom: 14 }}
           >
           {
-            single_productss ? single_productss.slice(0,1).map(el =>{
-            <h3 style={{ marginRight: 16 }}>{el.category}</h3>
+            uniquesubcategorykey ? uniquesubcategorykey.slice(0,1).map(el =>{
+              return  <h3 style={{ marginRight: 16 }}>{el.product_category}</h3>
+           
           })
           : ''
         }
@@ -192,7 +194,7 @@ let uniquesubcategorykey = [
             uniquesubcategorykey.map(el =>{
               
   
-                return <button onClick={()=>handleClick(el.subcategory_name)} id="sub-category-butt">{el.subcategory_name}</button>
+                return <button onClick={()=>handleClick(el.product_subcategory)} id="sub-category-butt">{el.product_subcategory}</button>
              })
              : ''
            }
@@ -213,7 +215,7 @@ let uniquesubcategorykey = [
               uniqueFilter.map(el =>{
                
    
-                 return <Button onClick={()=>handleClickFilter(el.filtertype)} variant="" style={mySelection.filterbtn}> {el.filtertype}</Button>
+                 return <Button onClick={()=>handleClickFilter(el.product_filtertype)} variant="" style={mySelection.filterbtn}> {el.product_filtertype}</Button>
               })
               : ''
             }
@@ -230,12 +232,12 @@ let uniquesubcategorykey = [
         {
           single_productss ? single_productss.map(el =>{
           return   <Card
-             title={el.carins}
-             images={"https://admin.thesoftwarecompany.in/"+el.image}
-             old_price={el.regularprice}
-             newPrice={el.salesprice}
+             title={el.product_name}
+             images={"https://admin.thesoftwarecompany.in/"+el.product_image }
+             old_price={el.product_discount_price}
+             newPrice={el.product_price}
              rupess="&#x20B9;"
-             discount="14% OFF"
+             discount={el.discount_percentage}
              alt="blackpanter"
              rating="4.3"
              star="&#9733;"
@@ -271,7 +273,7 @@ let uniquesubcategorykey = [
                     <AiOutlineStar />
                   </div>
                   <div className="left-card-img">
-                    <img src="official/Combos/1.png" alt="" />
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThsyVVdxkz5zyuE-yRKpdwtre_R234HkS2gQ&usqp=CAU" alt="" />
                   </div>
                 </div>
                 <div className="right-card">
@@ -296,7 +298,7 @@ let uniquesubcategorykey = [
                     <AiOutlineStar />
                   </div>
                   <div className="left-card-img">
-                    <img src="official/Combos/1.png" alt="" />
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxrfvii_BfKyaxXwS7zy8WFZwnru9ZLL0MEg&usqp=CAU" alt="" />
                   </div>
                 </div>
                 <div className="right-card">
@@ -305,7 +307,7 @@ let uniquesubcategorykey = [
                       Please Update your tracking system, otherwise happy with
                       the service.
                     </p>
-                    <p className="personName">Priya a</p>
+                    <p className="personName">sana</p>
                   </div>
                 </div>
               </div>
@@ -321,7 +323,7 @@ let uniquesubcategorykey = [
                     <AiOutlineStar />
                   </div>
                   <div className="left-card-img">
-                    <img src="official/Combos/1.png" alt="" />
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOuxrvcNMfGLh73uKP1QqYpKoCB0JLXiBMvA&usqp=CAU" alt="" />
                   </div>
                 </div>
                 <div className="right-card">
@@ -330,7 +332,7 @@ let uniquesubcategorykey = [
                       Please Update your tracking system, otherwise happy with
                       the service.
                     </p>
-                    <p className="personName">Priya a</p>
+                    <p className="personName"> Mariaa</p>
                   </div>
                 </div>
               </div>

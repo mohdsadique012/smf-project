@@ -92,7 +92,7 @@ function MainNavbar({ cartOpen }) {
               <Nav.Link className="phoneNumber">
                 <Link to="#!">
                   <BiPhone />
-                  7424012345
+                  7484012345
                 </Link>
               </Nav.Link>
             </div>

@@ -1,16 +1,30 @@
-import React from 'react'
+import React, {useContext,useState } from "react";
 import './Jumbotron.css';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
-
+import {AppContext} from "../../context/productcontext"
 
 function Jumbotron({ back_img }) {
+    let context_Data= useContext(AppContext);
+   const cities=context_Data.city
+   console.log(cities,"ciuytrewq")
     // const styles = {
     //     background: back_img
     // }
+    const [selectedValue, setSelectedValue] = useState(cities);
+    const handlechange = (event) => {
+        console.log(event,"kkkkk")
+        const value = event.target?.value;
+        let filterdata = cities.filter(el=>{
+           return    el.city==value
+        })
+        setSelectedValue(filterdata);
+       
+      }
+      console.log(selectedValue,"selectedValue")
     return (
         <div className='jumbotron'>
             <div className="overlay"></div>
@@ -28,11 +42,12 @@ function Jumbotron({ back_img }) {
                                 <h5>DELIVERY <br /> CITY</h5>
                             </div>
                             <div className="col-sm-3">
-                                <select name="" id="" className="form-control">
-                                    <option>Select City</option>
-                                    <option value="1">DELHI</option>
-                                    <option value="2">BENGAL</option>
-                                    <option value="3">COMIBATORE</option></select>
+                                <select name="" id="" className="form-control" onChange={handlechange}>
+                                <option value='all'>select by cities</option>
+                                {cities.map(city => (
+                                    <option key={city.city_id} value={city.city}>{city?.city}</option>
+                                  ))}  
+                                </select>
                             </div>
                             <div className="col-1"></div>
                             <div className="col-sm-1">
@@ -42,10 +57,11 @@ function Jumbotron({ back_img }) {
                             </div>
                             <div className="col-sm-3">
                                 <select name="" id="" className="form-control">
-                                    <option>Select Pincode</option>
-                                    <option value="1">147852</option>
-                                    <option value="2">123654</option>
-                                    <option value="3">963258</option>
+                                <option value='all'>select by pincode</option>
+                                {selectedValue.map(city => (
+                                    
+                                    <option key={city.pincode_id} value="select pincode">{city?.pincode}</option>
+                                  ))}
                                 </select>
                             </div>
                             <div className="col-1"></div>

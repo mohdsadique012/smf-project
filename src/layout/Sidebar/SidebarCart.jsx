@@ -15,7 +15,7 @@ function SidebarCart({datapass}) {
         <Row id="Cart-Div">
             <Col xs sm={4} xl={4}>
                 <div className="cart-image">
-                    <img src={"http://localhost:7600/"+ datapass.image} alt="" />
+                    <img src={"https://admin.thesoftwarecompany.in/"+ datapass.image} alt="" />
                 </div>
               
             </Col>

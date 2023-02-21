@@ -16,10 +16,10 @@ import { useParams } from 'react-router-dom';
 
 
 const bestSelling = [
-  { icon: "official/Best_Selling_Gifts/1.png", title: "Birthday Gift" },
-  { icon: "official/Best_Selling_Gifts/2.png", title: "Annivesary Gift" },
-  { icon: "official/Best_Selling_Gifts/3.png", title: "Flowers Gift" },
-  { icon: "official/Best_Selling_Gifts/4.png", title: "Cakes Gift" },
+  { icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSb5uvRreE7v-ZYFrtjdYEnnJB9iLbW1GBnA&usqp=CAU", title: "Birthday Gift" },
+  { icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSntJFPnQdD-EBn7Kfo7fiUWsA3PtjLKlg9CA&usqp=CAU", title: "Annivesary Gift" },
+  { icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr_PcZs4PJ6rYTheMRqITuwkU8cmw28HF3ow&usqp=CAU", title: "Flowers Gift" },
+  { icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQycKZHTxTVQwqBv0H4xf_Gl8F2kGlyolGw_A&usqp=CAU", title: "Cakes Gift" },
   { icon: "official/Best_Selling_Gifts/1.png", title: "Birthday Gift" },
   { icon: "official/Best_Selling_Gifts/2.png", title: "Annivesary Gift" },
   { icon: "official/Best_Selling_Gifts/3.png", title: "Flowers Gift" },
@@ -358,7 +358,7 @@ function Home(props) {
                     <AiOutlineStar />
                   </div>
                   <div className="left-card-img">
-                    <img src="official/Combos/1.png" alt="" />
+                    <img src="https://i.pinimg.com/736x/de/59/4e/de594ec09881da3fa66d98384a3c72ff.jpg" alt="" />
                   </div>
                 </div>
                 <div className="right-card">
@@ -367,7 +367,7 @@ function Home(props) {
                       Please Update your tracking system, otherwise happy with
                       the service.
                     </p>
-                    <p className="personName">Priya a</p>
+                    <p className="personName">Priya </p>
                   </div>
                 </div>
               </div>
@@ -383,7 +383,7 @@ function Home(props) {
                     <AiOutlineStar />
                   </div>
                   <div className="left-card-img">
-                    <img src="official/Combos/1.png" alt="" />
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8A2wOvDj7sAobit1mD4lCc6ilEaBm_CF3AQ&usqp=CAU" alt="" />
                   </div>
                 </div>
                 <div className="right-card">
@@ -392,7 +392,7 @@ function Home(props) {
                       Please Update your tracking system, otherwise happy with
                       the service.
                     </p>
-                    <p className="personName">Priya a</p>
+                    <p className="personName">Adil</p>
                   </div>
                 </div>
               </div>
@@ -408,7 +408,7 @@ function Home(props) {
                     <AiOutlineStar />
                   </div>
                   <div className="left-card-img">
-                    <img src="official/Combos/1.png" alt="" />
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThsyVVdxkz5zyuE-yRKpdwtre_R234HkS2gQ&usqp=CAU" alt="" />
                   </div>
                 </div>
                 <div className="right-card">
@@ -417,7 +417,7 @@ function Home(props) {
                       Please Update your tracking system, otherwise happy with
                       the service.
                     </p>
-                    <p className="personName">Priya a</p>
+                    <p className="personName">Sumit</p>
                   </div>
                 </div>
               </div>

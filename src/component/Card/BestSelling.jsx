@@ -4,14 +4,16 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import './CardComponent.css';
 import { AiOutlineHeart } from "react-icons/ai";
 import { Link } from 'react-router-dom';
-export default function BestSelling({ cardClass, source, showContent, value, cardContent, custContentImg, custContent, checker }) {
+export default function BestSelling({ cardClass, element,source, showContent, value, cardContent, custContentImg, custContent, checker }) {
+   console.log(element,"fdfdfdf@@@")
+   
     return (
         <Card id={cardClass}>
             <Link to="/product_details">
 
                 <>
                     <Card.Img variant="top" src={source} style={{borderRadius: "20px"}} />
-                    {custContentImg && checker == 0 ? <div className="customCenterContent"><h2>{custContent}</h2></div> : ''}
+                    {custContentImg && checker != checker ? <div className="customCenterContent"><h2>{custContent}</h2></div> : ''}
                     <span className="wishList">
                         <AiOutlineHeart />
                     </span>
@@ -20,7 +22,7 @@ export default function BestSelling({ cardClass, source, showContent, value, car
                 {
                     showContent ?
                         <>
-                            {checker != 0 ? <Card.Body>
+                            {checker == checker ? <Card.Body>
                                 <Card.Title>{cardContent}</Card.Title>
                                 <Card.Text className='card-content-best-sel'><span>{value} ₹</span>
                                     <span className='best-sel-star-rate'>

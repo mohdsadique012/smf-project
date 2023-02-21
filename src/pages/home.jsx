@@ -114,15 +114,16 @@ const Home = ({ cartCount, datarroute,addCart }) => {
   };
 
      let context_Data= useContext(AppContext)
-     console.log(context_Data,"context_Data125356435")
+
      let toprated_data_catogaries =context_Data.products
      var category_third = context_Data.single_product
-    console.log(category_third,'category_third')
+     let bestselling_dataaa = context_Data.bestselling_product
+
+ 
+    
 
 
-
-
-      
+    console.log(bestselling_dataaa,'bestselling_databestselling_data')  
  // setProduct(product);
   /* Best Selling API */
   /* useState => Initilize To variable , array or object for the first time
@@ -136,7 +137,7 @@ let category_3 = [];
   category_3=toprated_data_catogaries.filter((el)=>
             el.categorytype=='Category-3'
   );
-  console.log(category_3,'category_33333333333')
+ 
 
   var categoriess =[]
     
@@ -150,7 +151,7 @@ let category_3 = [];
             categoriess =  categoriess.concat(variable);    
          })
         
-         console.log(categoriess,"888888888888")
+    
          const category_grouping = categoriess.reduce((category_grouping, item) => {
           const group = (category_grouping[item.categorytype] || []);
           group.push(item);
@@ -159,7 +160,7 @@ let category_3 = [];
         }, {});
          
         let a=[]
-        console.log(categoriess,"categoriessggggg11111g");
+ 
         let   categoriesss = Object.keys(category_grouping)
         console.log(categoriess,'total key')
         categoriesss.forEach((gender) => {
@@ -168,13 +169,13 @@ let category_3 = [];
               
           })
  })
-      console.log(a,"ajabhai")
+   
 
  let uniquecategorykey_3= [
   ...new Map(a.map((item)=>[item["name"],item])).values()
  ];
   
- console.log(uniquecategorykey_3,'uniquecategorykey_3ajajajaja')
+
 
   
       // toprated category part
@@ -184,7 +185,7 @@ let category_3 = [];
     el.categorytype=='Top rated Category'
      );
 
-     console.log( toprated_data_catogaries," toprated77777777777777")
+
 
 let uniquecategorykey = [
   ...new Map(toprated.map((item)=>[item["name"],item])).values()
@@ -202,8 +203,7 @@ let categoryy=[];
 let uniquecategory2key = [
     ...new Map(categoryy.map((item)=>[item["name"],item])).values()
      ];
-     console.log(uniquecategory2key ,"uniquecategory2key111111222222222")
-  
+
     //  setCategories21(categoryy)
  //'http://admin.thesoftwarecompany.in/   
   return (
@@ -238,9 +238,11 @@ let uniquecategory2key = [
       <Divider content="Best Selling Gift" />
       <Row style={{ marginBottom: "2.8%" }}>
         <Slider {...settingsBestSelling}>
-          {Plants_Gifts ? Plants_Gifts.map((el, key) => (
+        {trendingCards ?trendingCards.map((el,key) => (
+          console.log(el,"||||||||||||")||
+          
             <Col
-              key={key}
+            
               className="home-card-layout"
               xs={12}
               sm={6}
@@ -248,12 +250,12 @@ let uniquecategory2key = [
               xl={3}
             >
               <BestSelling
-                source={el.icon}
-                cardContent={"Product details here........"}
-                cardClass="auto-height-cust"
+              checker={el.product_id}
+                source={ el.icon}
+                cardContent={el.title}
                 showContent={true}
-                value={el.value}
-                slug ={el.slug}
+                value="200"
+                slug =''
               />
             </Col>
           )) : ''}
@@ -264,27 +266,7 @@ let uniquecategory2key = [
         {/* {
                     trendingCards.map((el, key) => <Col key={key} className='home-card-layout' xs={12} sm={6} lg={4} xl={2}><TrendingCards source={el.icon} cardContent={"Timeless Love Red Roses Bouquet"} cardClass="auto-height-cust" showContent={true} value="200" /></Col>)
                 } */}
-        <Slider {...settingsBestSelling}>
-          {bestSelling ? bestSelling.map((el, key) => (
        
-            <Col
-              key={key}
-              className="home-card-layout"
-              xs={12}
-              sm={6}
-              lg={4}
-              xl={3}
-            >
-              <BestSelling
-                source={el.icon}
-                cardContent={"Product details here........"}
-                cardClass="auto-height-cust"
-                showContent={true}
-                value={el.value}
-              />
-            </Col>
-          )) : ''}
-        </Slider>
       </Row>
 
       <div className="container-fluid" style={{ marginTop: "2%" }}>
@@ -495,7 +477,7 @@ let uniquecategory2key = [
                   <AiOutlineStar />
                 </div>
                 <div className="left-card-img">
-                  <img src="official/Combos/1.png" alt="" />
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOuxrvcNMfGLh73uKP1QqYpKoCB0JLXiBMvA&usqp=CAU" alt="" />
                 </div>
               </div>
               <div className="right-card">
@@ -520,7 +502,7 @@ let uniquecategory2key = [
                   <AiOutlineStar />
                 </div>
                 <div className="left-card-img">
-                  <img src="official/Combos/1.png" alt="" />
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0e-9L-OuQW5Dqfbaqlpl84ptS0VWZbY1K_A&usqp=CAU" alt="" />
                 </div>
               </div>
               <div className="right-card">
@@ -545,7 +527,7 @@ let uniquecategory2key = [
                   <AiOutlineStar />
                 </div>
                 <div className="left-card-img">
-                  <img src="official/Combos/1.png" alt="" />
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThsyVVdxkz5zyuE-yRKpdwtre_R234HkS2gQ&usqp=CAU" alt="" />
                 </div>
               </div>
               <div className="right-card">

@@ -57,7 +57,7 @@ function Single_one_product() {
     
     
     useEffect(() => {
-       getProductListBysubCategory(`${AllProductApi}?subcategory_id=${product1}`);   
+       getProductListBysubCategory(`${AllProductApi}?categoryId=$=${product1}`);   
       //getProductListBysubCategory(AllProductApi);
     
     },[]);
