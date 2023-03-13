@@ -1,13 +1,14 @@
-import React, {useContext,useState } from "react";
+import React, {useContext,useState ,useEffect} from "react";
 import './Jumbotron.css';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
-import {AppContext} from "../../context/productcontext"
+import {AppContext,useProductGlobal} from "../../context/productcontext"
 
 function Jumbotron({ back_img }) {
+    const { productBypincodeCity } = useProductGlobal();
     let context_Data= useContext(AppContext);
    const cities=context_Data.city
    console.log(cities,"ciuytrewq")
@@ -15,8 +16,11 @@ function Jumbotron({ back_img }) {
     //     background: back_img
     // }
     const [selectedValue, setSelectedValue] = useState(cities);
-    const handlechange = (event) => {
+    const [slect ,setSlect]= useState("")
+    const [value ,setValuee]=useState("jaipur")
+    const HandleSelects = (event) => {
         console.log(event,"kkkkk")
+        setSlect( event.target.value )
         const value = event.target?.value;
         let filterdata = cities.filter(el=>{
            return    el.city==value
@@ -24,7 +28,25 @@ function Jumbotron({ back_img }) {
         setSelectedValue(filterdata);
        
       }
-      console.log(selectedValue,"selectedValue")
+    
+
+   
+ 
+
+    
+    const HandleButtonClicks=()=>{
+     
+            setValuee(slect)
+        }
+      useEffect(() => {
+        productBypincodeCity(value)   
+       //getProductListBysubCategory(AllProductApi);
+     
+     },[value]);
+
+
+     console.log(slect,"cityyyyctyyyy")
+     console.log(value,"valuevalue")
     return (
         <div className='jumbotron'>
             <div className="overlay"></div>
@@ -37,12 +59,12 @@ function Jumbotron({ back_img }) {
                         <Row className={['jumbo-row']}>
                             <div className="jumbo-form">
 
-                            </div>
+                            </div>  
                             <div className="col-sm-1">
                                 <h5>DELIVERY <br /> CITY</h5>
                             </div>
                             <div className="col-sm-3">
-                                <select name="" id="" className="form-control" onChange={handlechange}>
+                                <select name="" id="" className="form-control" onChange={(el)=>HandleSelects(el)}>
                                 <option value='all'>select by cities</option>
                                 {cities.map(city => (
                                     <option key={city.city_id} value={city.city}>{city?.city}</option>
@@ -67,7 +89,7 @@ function Jumbotron({ back_img }) {
                             <div className="col-1"></div>
 
                             <Col id="submit-btn" xs xm={2}>
-                                <Button variant="danger" className={"jumbotronBtn"}>FIND GIFTS</Button>
+                                <Button onClick={()=>HandleButtonClicks()} variant="danger" className={"jumbotronBtn"}>FIND GIFTS</Button>
                             </Col>
                         </Row>
                     </Form>

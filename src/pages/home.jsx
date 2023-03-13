@@ -273,8 +273,8 @@ let uniquecategory2key = [
         
     
             <div className="borderDesign">
-          <Row className={["position-relative"]}>
-            {uniquecategorykey_3 ?uniquecategorykey_3.slice(0, 4).map((el, key) => (
+           <Row className={["position-relative"]}>
+           {uniquecategorykey_3 ?uniquecategorykey_3.slice(0, 4).map((el, key) => (
               <Col
                 key={key}
                 className="Green-card home-card-layout"

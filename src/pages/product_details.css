@@ -386,3 +386,53 @@ margin-right:0.625rem ;
     width: 380px;
     height: 380px;
 }
+.modalspan{
+    background-color: rgb(52, 85, 19);
+    color: white;
+    font-weight: bolder;
+    cursor: pointer;
+    padding: 10px;
+ 
+  
+}
+.modal-p{
+    height: 2.5rem;
+    color: rgb(52, 85, 19) ;
+    font-weight: bolder;
+    cursor: pointer;
+}
+.modall{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   align-content: center;
+ 
+}
+.div-modl{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.checkbox-modal{
+    margin-right: 10px;
+}
+.ssss{
+    margin: -10px;
+}
+.modalll{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center ;
+    align-content: center;
+}
+.slottime1{
+    font-size: large;
+    font-weight: bolder;
+    color: rgb(52, 85, 19) ;
+}
+.slotboder{
+    border: 5px solid #272626;
+    padding: 10px;
+    cursor: pointer;
+}

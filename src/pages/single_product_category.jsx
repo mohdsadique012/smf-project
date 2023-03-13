@@ -243,7 +243,7 @@ let uniquesubcategorykey = [
              star="&#9733;"
              total_rating="(242)"
              delivery={el.deliveryinfo}
-             slug={el.slug}
+             slug={el.product_slug}
            />
           })
           : ''

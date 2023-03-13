@@ -19,8 +19,9 @@ export default function Card(props) {
     star,
     total_rating,
     delivery,
-    slug,
+    slug, 
   } = props;
+  console.log(slug,"dddddddddddslug")
     
   return (
     

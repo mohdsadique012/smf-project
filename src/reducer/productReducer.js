@@ -67,7 +67,9 @@ const ProductReducer = (state, action) => {
             case "SET_PRODUCT":
             return{
                 ...state,
-                one_product: action.payload.product
+                one_product: action.payload.productData,
+                time_slot : action.payload.timeSlot
+
             };
             case "SET_Bestselling_PRODUCT":
                 return{
@@ -85,6 +87,11 @@ const ProductReducer = (state, action) => {
                                 ...state,
                                 city: action.payload
                             };
+                            case "citySlect":
+                                return{
+                                        ...state,
+                                        slug: action.payload
+                                    };
 
         default:
             return state;

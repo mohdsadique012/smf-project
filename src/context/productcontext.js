@@ -1,6 +1,7 @@
-import { useContext, createContext, useEffect, useReducer } from "react";
+import { useContext, createContext, useEffect,useState, useReducer } from "react";
 import AllProducts from "../reducer/productReducer";
 import  axios  from 'axios';
+import Cookies from 'js-cookie';
 /* API URL */
 const ALLPRODUCTURL = 'https://admin.thesoftwarecompany.in/category_lists/';
 const SingleURL = "https://admin.thesoftwarecompany.in/subcategory_lists/";
@@ -24,14 +25,35 @@ const intialState = {
     one_product:[],
     trending_product:[],
     bestselling_product:[],
-    city:[]
+    city:[],
+    slug:"",
+    time_slot:[]
 };
+
 
 
 const AppProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AllProducts, intialState);
+    const [city , setCity]=useState("jaipur")
+   const cokie=  Cookies.get('citypincode');
+   console.log(cokie,"cokie")
+    const  productBypincodeCity= (e)=>{
+        dispatch({ type: "citySlect", payload:e })
+        console.log(e,"data coming from city")
+       var value = e
+      
+        Cookies.remove("citypincode");
+        Cookies.set('citypincode', e);
+        const cookieValue = Cookies.get('citypincode');
+        console.log(cookieValue,"productBypincodeCity")
+        setCity(cookieValue)
+       
+    }
+    console.log(city , "gyjg")
+
+    console.log(city,"ciytyt")
     const getProducts = async (url) => {
-        console.log(url,"url")
+        console.log(url,"url123")
         dispatch({ type: "IS_LOADING" });
         try {
             const res = await axios.get(url);
@@ -70,19 +92,19 @@ const AppProvider = ({ children }) => {
     };
 
      /* Fetch Single Product */
-     const getProductListByCategory = async (url) => {
-        console.log(url)
-        dispatch({ type: "SET_SINGLE_LOADING" })
-        try {
-            const res = await axios.get(url);
-            const productlists = await res.data;
-            console.log(productlists, "ProductList1222221111111111") 
-            dispatch({ type: "SET_PRODUCT_LIST", payload:productlists })
-        } catch (error) {
-            dispatch({ type: "SET_SINGLE_ERROR" })
-        }
-    };
-
+  /* Fetch Single Product */
+  const getProductListByCategory = async (url) => {
+    console.log(`${url}&type=${city}`,"ggsgdgdgdgdgdgdgd")
+    dispatch({ type: "SET_SINGLE_LOADING" })
+    try {
+        const res = await axios.get(`${url}&type=${city}`);
+        const productlists = await res.data;
+        console.log(productlists, "ProductList1222221111111111") 
+        dispatch({ type: "SET_PRODUCT_LIST", payload:productlists })
+    } catch (error) {
+        dispatch({ type: "SET_SINGLE_ERROR" })
+    }
+};
     
     const getProductListBysubCategory = async (url) => {
         console.log(url)
@@ -100,7 +122,7 @@ const AppProvider = ({ children }) => {
 
     
     const getSingleProductListByproduct= async (url) => {
-        console.log(url)
+        console.log(url,"123456987")
         
         dispatch({ type: "SET_SINGLE_LOADING" })
         try {
@@ -150,21 +172,40 @@ const AppProvider = ({ children }) => {
             dispatch({ type: "SET_SINGLE_ERROR" })
         }
     };
-
-
-
+  
     useEffect(() => {
-        getProducts(ALLPRODUCTURL);
-        getSingleProduct(SingleURL);
-        getBestsellingproduct(bestselling);
-        getTrendingproduct(trending);
-        getlistbycities(Cities)
-        console.log(Cities,'4444444444')
-    }, []);
+        const cookiees = Cookies.get('citypincode');
+        console.log(cookiees,"2a2a2a2")
+        if(cookiees){
+            getProducts(`${ALLPRODUCTURL}?cityId=${cookiees}`);
+            getSingleProduct(`${SingleURL}?cityId=${cookiees}`);
+            getBestsellingproduct(`${bestselling}?cityId=${cookiees}`);
+            getTrendingproduct(`${trending}?cityId=${cookiees}`);
+            getlistbycities(Cities)
+        }else{
+            getProducts(`${ALLPRODUCTURL}?cityId=${city}`);
+            getSingleProduct(`${SingleURL}?cityId=${city}`);
+            getBestsellingproduct(`${bestselling}?cityId=${city}`);
+            getTrendingproduct(`${trending}?cityId=${city}`);
+            getlistbycities(Cities)
+        }
+             
+            
+       
+    }, [city]);
+
+    // useEffect(() => {
+    //     getProducts(ALLPRODUCTURL);
+    //     getSingleProduct(SingleURL);
+    //     getBestsellingproduct(bestselling);
+    //     getTrendingproduct(trending);
+    //     getlistbycities(Cities)
+    //     console.log(Cities,'4444444444')
+    // }, []);
   console.log(state,"statemmmmmmm" )
 
     return (
-        <AppContext.Provider value={{ ...state, getSingleProduct,getlistbycities, getProductListByCategory ,getProductListBysubCategory ,getSingleProductListByproduct ,getTrendingproduct,getBestsellingproduct }} >
+        <AppContext.Provider value={{ ...state, getSingleProduct,getlistbycities,productBypincodeCity, getProductListByCategory ,getProductListBysubCategory ,getSingleProductListByproduct ,getTrendingproduct,getBestsellingproduct }} >
             {children}
         </AppContext.Provider>
     );
