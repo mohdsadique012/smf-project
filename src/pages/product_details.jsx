@@ -171,6 +171,18 @@ setShow(false)
   const styles = {
     marginTop: "150px",
   };
+
+
+
+  const [selectedValue, setSelectedValue] = useState([]);
+  const [cities,setCities]=useState("jaipur")
+    //  setCities( Cookies.get('citypincode')) ;
+useEffect(()=>{
+  let filterdata = cities.filter(el=>{
+    return    el.city==cities
+ })
+ setSelectedValue(filterdata);
+},[cities])
   return (
     <>
       {/* <Row>
@@ -285,11 +297,13 @@ setShow(false)
           </div>
           <div>
           <div className="displaydte">
-            <input
-              className="detail-input"
-              type="number"
-              placeholder=" Enter pincode or locaton   "
-            />
+          <select name="" id="" className="form-control">
+          <option value='all'>select by pincode</option>
+          {selectedValue.map(city => (
+              
+              <option key={city.pincode_id} value="select pincode">{city?.pincode}</option>
+            ))}
+          </select>
             <DatePicker
              className="datepicker"
               selected={startDate}

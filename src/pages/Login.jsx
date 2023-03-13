@@ -1,35 +1,76 @@
-import React from "react";
+import React,{useState} from "react";
 import { Row, Col } from "react-bootstrap";
 import "./Login.css";
 import { Link } from "react-router-dom";
 function Login() {
+  const [boxx, setBoxx]=useState(false)
+
+console.log(boxx,"boxx")
   return (
     // <div className="loginPage">
     <>
       <div className="bg-image"></div>
       <Row id="inner-page">
         <Col sm={6}>
-          <div className="center-div">
+          {boxx?<div className="center-div">
+          <div className="col gr-back position-relative">
+            
+            <h4 style={{ fontWeight: 700 }}> <span onClick={()=>{setBoxx(false)}}style={{ fontWeight: 700 }}>LOGIN/</span><span style={{ fontWeight: 700 }}>REGISTER</span></h4>
+            <input
+              type="text"
+              placeholder="ENTER YOUR EMAIL-ID "
+              className="control-form"
+               />
+              <input
+              type="text"
+              placeholder="ENTER MOBILE NUMBER"
+              className="control-form"
+               />
+              <input
+              type="text"
+              placeholder="ENTER PASSWORD"
+              className="control-form"
+              />
+              <input
+              type="text"
+              placeholder="RE-ENTER PASSWORD"
+              className="control-form"
+               />
+        
+            <button className="btn btn-danger"> REGISTER</button>
+        
+          </div>
+          
+         
+           
+
+
+        
+        
+        </div> 
+              
+            :( <div className="center-div">
             <div className="col gr-back position-relative">
               <span className="cusBtn">1</span>
-              <h4 style={{ fontWeight: 700 }}>LOGIN/REGISTER</h4>
+              <h4 style={{ fontWeight: 700 }}> <span style={{ fontWeight: 700 }}>LOGIN/</span><span onClick={()=>{setBoxx(true)}} style={{ fontWeight: 700 }}>REGISTER</span></h4>
               <input
                 type="text"
                 placeholder="EMAIL ID OR MOBILE NUMBER"
                 className="control-form"
               />
+              <input
+              type="text"
+              placeholder="ENTER PASSWORD"
+              className="control-form"
+            />
              <Link to="/Admin/Layout/user_profile">
               <button className="btn btn-danger"> Continue</button>
              </Link>
             </div>
-            <div className="col">Or Login Using</div>
+            
+           
+             
 
-            <div className="col">
-              <div className="btn btn-info fb">
-                <i class="fa-brands fa-facebook-f"></i>Facebook
-              </div>
-              <div className="btn btn-info google">+ Google</div>
-            </div>
 
             <div className="col position-relative">
               <span className="cusBtn">2</span>
@@ -45,7 +86,7 @@ function Login() {
                 Payment Options
               </a>
             </div>
-          </div>
+          </div> ) }
         </Col>
         <Col sm={6} className="rightPage position-relative">
           <div className="imgBox">
