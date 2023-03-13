@@ -366,6 +366,10 @@ margin-right:0.625rem ;
     font-size: x-large;
     color: gray;
 }
+.displaydte{
+    display: flex;
+    flex-direction: row;
+}
 .detail-specification-list{
     color: gray;
     font-weight: bolder;
@@ -435,4 +439,39 @@ margin-right:0.625rem ;
     border: 5px solid #272626;
     padding: 10px;
     cursor: pointer;
+}
+.finaldisplaybox{
+    border: 3px solid #272626;
+    padding: 5px;
+    padding-top: 5px;
+    padding-bottom: -30px;
+    width: 50%;
+    height: 53px;
+    margin-top: 20px;
+}
+.Finaldisplayname{
+    font-size: larger;
+    font-weight: bold;
+   
+    color: rgb(52, 85, 19) ;
+}
+.finlpricemargin{
+    margin-left: 10px;
+    color: red;
+}
+.slottime11{
+font-size: smaller;
+    font-weight: bolder;
+    color: rgb(52, 85, 19) ;
+}
+.finalmargin{
+    margin-top: -10px;
+    padding-bottom: -10px;
+}
+.datepicker{
+    margin-left: 20px;
+    height: 50px;
+    padding: 10px;
+   width: 150px;
+   padding-left: 20px;
 }

@@ -117,7 +117,7 @@ console.log(data2,"earlytimeslot")
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () =>{setShow(true); setBoxx(false)} 
-
+//time-slot part
     let timeslot=[]
    const datetimeslot= data2.map(el=>{
           if(el.delivery_management_id==1){
@@ -143,10 +143,7 @@ console.log(data2,"earlytimeslot")
           }
 
    })
-   console.log(timeslot," timeslot timeslot timeslot")
-
-
-
+  
   let uniquedelivery = [
     ...new Map(timeslot.map((item) => [item["management_name"], item])).values(),
   ];
@@ -161,6 +158,15 @@ const functionopen = (e)=>{
   })
   setDateslot(datetime)
   setBoxx(true)
+}
+
+const [finaltimedispaly , setFinaltimedisplay]=useState([])
+const handleclicktime=(e)=>{
+  var  finaldisplaydate=  timeslot.filter((item) =>{
+    return item.start_time==e
+})
+setFinaltimedisplay(finaldisplaydate)
+setShow(false)
 }
   const styles = {
     marginTop: "150px",
@@ -278,12 +284,14 @@ const functionopen = (e)=>{
             </p>
           </div>
           <div>
+          <div className="displaydte">
             <input
               className="detail-input"
               type="number"
               placeholder=" Enter pincode or locaton   "
             />
             <DatePicker
+             className="datepicker"
               selected={startDate}
               onChange={(date) => {
                 setStartDate(date);
@@ -292,6 +300,14 @@ const functionopen = (e)=>{
               minDate={minDate} // set minimum date
               maxDate={maxDate} // set maximum date
             />
+            </div>
+            {finaltimedispaly?finaltimedispaly.map(el=>{
+              return <div className="finaldisplaybox"> 
+              <p className="finalmargin"><span className="Finaldisplayname">{el.management_name}</span><span className="Finaldisplayname finlpricemargin">Rs{el.price}</span></p>
+              <p className="finalmargin"><span className="slottime11">Slot-time -</span>  <span ><span className="slottime11">{el.start_time}</span >-<span className="slottime11">{el.end_time}</span></span></p>
+              </div>
+            }):""}
+           
           </div>
           <div className="detail-flex-row detail-button-box">
             <button
@@ -759,7 +775,7 @@ const functionopen = (e)=>{
                 dateslot.map((el, key) => (
                
                   <div className="modalll" >
-                    <p className="slotboder"><span className="slottime1">{el.start_time}</span>-<span className="slottime1">{el.end_time}</span></p>
+                    <p className="slotboder" onClick={()=>handleclicktime(el.start_time)}><span className="slottime1">{el.start_time}</span>-<span className="slottime1">{el.end_time}</span></p>
                 </div>
                 ))
                 ) : (
