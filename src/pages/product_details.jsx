@@ -259,7 +259,7 @@ setShow(false)
 
         <div className="product-detail-pricing-container">
           <div className="detail-pricing">
-            <p className="detail-redrose">{data?.name}</p>
+            <p className="detail-redrose">{data?.product_name}</p>
             <br />
             <p>
               <span>
