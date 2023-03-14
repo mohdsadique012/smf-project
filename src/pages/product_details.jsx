@@ -118,27 +118,29 @@ console.log(data2,"earlytimeslot")
   const handleClose = () => setShow(false);
   const handleShow = () =>{setShow(true); setBoxx(false)} 
 //time-slot part
+
+
     let timeslot=[]
    const datetimeslot= data2.map(el=>{
           if(el.delivery_management_id==1){
-            let { start_time, end_time,standred_delivery_price,management_name } = el;
-             let newObject = { start_time, end_time,management_name,price: standred_delivery_price };
+            let { delivery_management_id,start_time, end_time,standred_delivery_price,management_name } = el;
+             let newObject = { id:delivery_management_id,start_time, end_time,management_name,price: standred_delivery_price };
              timeslot.push(newObject)
           }else if(el.delivery_management_id==2){
-            let { start_time, end_time,fix_delivery_price,management_name } = el;
-            let newObject = { start_time, end_time,management_name, price:fix_delivery_price };
+            let { delivery_management_id,start_time, end_time,fix_delivery_price,management_name } = el;
+            let newObject = {id:delivery_management_id, start_time, end_time,management_name, price:fix_delivery_price };
             timeslot.push(newObject)
           }else if(el.delivery_management_id==3){
-            let { start_time, end_time,midnight_delivery_price,management_name } = el;
-            let newObject = { start_time, end_time,management_name, price:midnight_delivery_price };
+            let {delivery_management_id, start_time, end_time,midnight_delivery_price,management_name } = el;
+            let newObject = {id:delivery_management_id, start_time, end_time,management_name, price:midnight_delivery_price };
             timeslot.push(newObject)
           }else if(el.delivery_management_id==4){
-            let { start_time, end_time,early_morning_delivery_price,management_name } = el;
-            let newObject = { start_time, end_time,management_name, price:early_morning_delivery_price };
+            let {delivery_management_id, start_time, end_time,early_morning_delivery_price,management_name } = el;
+            let newObject = {id:delivery_management_id, start_time, end_time,management_name, price:early_morning_delivery_price };
             timeslot.push(newObject)
           }else if(el.delivery_management_id==5){
-            let { start_time, end_time,courier_delivery_price,management_name } = el;
-            let newObject = { start_time, end_time,management_name, price:courier_delivery_price };
+            let { delivery_management_id,start_time, end_time,courier_delivery_price,management_name } = el;
+            let newObject = {id:delivery_management_id, start_time, end_time,management_name, price:courier_delivery_price };
             timeslot.push(newObject)
           }
 
@@ -153,7 +155,7 @@ console.log(data2,"earlytimeslot")
 const [boxx, setBoxx]=useState(false)
 const functionopen = (e)=>{
   var  datetime=  timeslot.filter((item) =>{
-          return item.management_name==e
+          return item.id==e
          
   })
   setDateslot(datetime)
@@ -175,14 +177,14 @@ setShow(false)
 
 
   const [selectedValue, setSelectedValue] = useState([]);
-  const [cities,setCities]=useState("jaipur")
-    //  setCities( Cookies.get('citypincode')) ;
-useEffect(()=>{
-  let filterdata = cities.filter(el=>{
-    return    el.city==cities
- })
- setSelectedValue(filterdata);
-},[cities])
+//   const [cities,setCities]=useState("jaipur")
+//     //  setCities( Cookies.get('citypincode')) ;
+// useEffect(()=>{
+//   let filterdata = cities.filter(el=>{
+//     return    el.city==cities
+//  })
+//  setSelectedValue(filterdata);
+// },[cities])
   return (
     <>
       {/* <Row>
@@ -801,12 +803,12 @@ useEffect(()=>{
                  
                     <div className="modall">
                     <div className="div-modl" >
-                      <p onClick={()=>{functionopen(el.management_name)}}  className="modal-p">
+                      <p onClick={()=>{functionopen(el.id)}}  className="modal-p">
                         {" "}
                         <input className="checkbox-modal" type="checkbox" />
                         {el.management_name}
                       </p>{" "}
-                      <p onClick={()=>{functionopen(el.management_name)}} className="modalspan">Rs {el.price}</p>
+                      <p onClick={()=>{functionopen(el.id)}} className="modalspan">Rs {el.price}</p>
                     </div>
                   </div>
                   ))

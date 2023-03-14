@@ -87,9 +87,9 @@ useEffect(() => {
 
 console.log(single_productss ,"single_productss  ")
 
-  let data11 = singledata.filter(el=>{
-      return 
-  })
+  // let data11 = singledata.filter(el=>{
+  //     return 
+  // })
 
 let uniquesubcategorykey = [
   ...new Map(singledata.map((item)=>[item["product_subcategory"],item])).values()

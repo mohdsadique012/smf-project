@@ -445,8 +445,8 @@ margin-right:0.625rem ;
     padding: 5px;
     padding-top: 5px;
     padding-bottom: -30px;
-    width: 50%;
-    height: 53px;
+    width:18.5rem;
+    height: 70px;
     margin-top: 20px;
 }
 .Finaldisplayname{
@@ -467,6 +467,7 @@ font-size: smaller;
 .finalmargin{
   
     padding-bottom: -10px;
+    margin-top: -5px;
 }
 .datepicker{
     margin-left: 20px;
