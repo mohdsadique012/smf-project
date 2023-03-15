@@ -186,6 +186,7 @@ setShow(false)
 //  })
 //  setSelectedValue(filterdata);
 // },[cities])
+
 const [city , setCity]=useState("jaipur")
    const cokie=  Cookies.get('citypincode');
    console.log(cokie,"cokie")

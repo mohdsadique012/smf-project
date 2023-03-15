@@ -482,8 +482,7 @@ margin-right:0.625rem ;
 }
 .finalmargin{
   
-    padding-bottom: -10px;
-    margin-top: -5px;
+   margin-left: 6px;
 }
 .datepicker{
     margin-left: 20px;
@@ -509,6 +508,7 @@ margin-right:0.625rem ;
 }
 .midllecenter{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
