@@ -23,8 +23,10 @@
 .subcategory{
   width: 11%;
   padding: 1.5rem;
+  margin-right: 2rem;
 }
 .bold{
   font-size: x-large;
   color: black;
+  margin-right: 2rem;
 }

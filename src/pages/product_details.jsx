@@ -153,6 +153,11 @@ console.log(data2,"earlytimeslot")
 
   const [dateslot , setDateslot]=useState([])
 
+  const handleclick1=(e)=>{
+    e.preventDefault();
+    setBoxx(false)
+    console.log("done")
+  }
 const [boxx, setBoxx]=useState(false)
 const functionopen = (e)=>{
   var  datetime=  timeslot.filter((item) =>{
@@ -473,21 +478,53 @@ const [city , setCity]=useState("jaipur")
               <p className="boldee">EARLY MORNING DELIVERY</p>
             </div>
             <div className="detail-mini-box">
+            <i className="fa fa-motorcycle ic-color" aria-hidden="true"></i>
               <p className="boldee">FIXED TIME DELIVERY</p>
-              <i class="fa fa-motorcycle ic-color" aria-hidden="true"></i>
+              
             </div>
             <div className="detail-mini-box">
-              <i class="fa fa-motorcycle ic-color" aria-hidden="true"></i>
+              <i className="fa fa-motorcycle ic-color" aria-hidden="true"></i>
               <p className="boldee">MID NIGHT DELIVERY</p>
             </div>
             <div className="detail-mini-box">
+              <i className="fa fa-motorcycle ic-color" aria-hidden="true"></i>
               <p className="boldee">THREE OUR DELIVERY</p>
-              <i class="fa fa-motorcycle ic-color" aria-hidden="true"></i>
+             
             </div>
           </div>
         </div>
       </div>
+      <div className="detail-specification">
+      <p className="detail-specification-main">PRODUCT SPECIFICATION</p>
+      <ul>
+     
+        <li className="detail-specification-list">
+        {data?.delivery_information}
+        </li>
+       
+        <li className="detail-specification-list">{data?.suk}</li>
+      </ul>
 
+      <p className="detail-specification-main">
+        THIS MAKE A PERFECT GIFT FOR
+      </p>
+      <ul>
+        <li className="detail-specification-list">
+          Your Daughter, Sister or Friend Gift on Baby shower
+        </li>
+        <li className="detail-specification-list">
+          Your Son or Brother to wish them best for the new beginning on
+          their wedding
+        </li>
+      </ul>
+      <p className="detail-specification-main">CARE INFO</p>
+      <ul>
+        <li className="detail-specification-list">
+          {data?.care_info}
+        </li>
+        
+      </ul>
+    </div>
       <Container fluid style={{ padding: "20px 20px" }}>
         <Row>
           <button className="product_pricing_button_heading">
@@ -514,37 +551,7 @@ const [city , setCity]=useState("jaipur")
             ))}
           </Slider>
         </Row>
-        <div className="detail-specification">
-          <p className="detail-specification-main">PRODUCT SPECIFICATION</p>
-          <ul>
-         
-            <li className="detail-specification-list">
-            {data?.delivery_information}
-            </li>
-           
-            <li className="detail-specification-list">{data?.suk}</li>
-          </ul>
-
-          <p className="detail-specification-main">
-            THIS MAKE A PERFECT GIFT FOR
-          </p>
-          <ul>
-            <li className="detail-specification-list">
-              Your Daughter, Sister or Friend Gift on Baby shower
-            </li>
-            <li className="detail-specification-list">
-              Your Son or Brother to wish them best for the new beginning on
-              their wedding
-            </li>
-          </ul>
-          <p className="detail-specification-main">CARE INFO</p>
-          <ul>
-            <li className="detail-specification-list">
-              {data?.care_info}
-            </li>
-            
-          </ul>
-        </div>
+     
         <Row>
           <button className="product_pricing_button_heading">
             RECOMMENDED PRODUCTS
@@ -789,7 +796,7 @@ const [city , setCity]=useState("jaipur")
 
       <Modal show={show} onHide={handleClose} animation={false} style={styles}>
         <Modal.Header closeButton>
-          <Modal.Title>Select Time  Slot</Modal.Title>
+          <Modal.Title> <span className="bakbtt" onClick={(e)=>handleclick1(e)}>Back</span> Select Time  Slot</Modal.Title>
         </Modal.Header>
         
             <div className="ssss" >
