@@ -18,7 +18,7 @@ import { useParams } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-
+import Cookies from 'js-cookie';
 const bestSelling = [
   {
     icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSb5uvRreE7v-ZYFrtjdYEnnJB9iLbW1GBnA&usqp=CAU",
@@ -80,6 +80,7 @@ function Home(props) {
   const { getSingleProductListByproduct, one_product ,time_slot } = useProductGlobal();
   const { oneproduct } = useParams();
   let Data = useContext(AppContext);
+  const cities=Data.city
   const AllProductApi = "https://admin.thesoftwarecompany.in/product_data";
   let data = one_product[0];
   let data2=Data.time_slot
@@ -185,6 +186,21 @@ setShow(false)
 //  })
 //  setSelectedValue(filterdata);
 // },[cities])
+const [city , setCity]=useState("jaipur")
+   const cokie=  Cookies.get('citypincode');
+   console.log(cokie,"cokie")
+  const [pincodee ,setPincode]=useState([])
+  useEffect(()=>{
+
+        let pincode=cities.filter(el=>{
+          return el.city==city
+        })
+        setPincode(pincode)
+      
+  },[city])
+
+ console.log(cities,"22222")
+ console.log(pincodee,"/2222222")
   return (
     <>
       {/* <Row>
@@ -301,7 +317,7 @@ setShow(false)
           <div className="displaydte">
           <select name="" id="" className="form-control">
           <option value='all'>select by pincode</option>
-          {selectedValue.map(city => (
+          {pincodee.map(city => (
               
               <option key={city.pincode_id} value="select pincode">{city?.pincode}</option>
             ))}
