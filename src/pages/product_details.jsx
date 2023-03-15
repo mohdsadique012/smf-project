@@ -787,17 +787,25 @@ setShow(false)
 
 
             { boxx ?  <Modal.Body >
+              <div>
+              <h4 className="psp">{dateslot[0]?.management_name} Rs{dateslot[0]?.price}</h4>
+              <div className="modalll" >
+
               {dateslot ? (
+                
                 dateslot.map((el, key) => (
                
-                  <div className="modalll" >
-                    <p className="slotboder" onClick={()=>handleclicktime(el.start_time)}><span className="slottime1">{el.start_time}</span>-<span className="slottime1">{el.end_time}</span></p>
-                </div>
+                    <p className="slotboder" onClick={()=>handleclicktime(el.start_time)}>
+                    <input className="checkbox-modal" type="checkbox" /><span className="slottime1">{el.start_time}</span>-<span className="slottime1">{el.end_time}</span></p>
+                
                 ))
+              
                 ) : (
                   <h1>Hello Rajat </h1>
-                )}
+                )}  </div>
+                </div>
               </Modal.Body>:( <Modal.Body>
+                <div className="midllecenter">
                 {uniquedelivery ? (
                   uniquedelivery.map((el, key) => (
                  
@@ -815,6 +823,7 @@ setShow(false)
                   ) : (
                     <h1>Hello Rajat </h1>
                   )}
+                  </div>
                 </Modal.Body>) }
              
             </div>

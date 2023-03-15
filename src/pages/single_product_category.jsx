@@ -233,7 +233,7 @@ let uniquesubcategorykey = [
           single_productss ? single_productss.map(el =>{
           return   <Card
              title={el.product_name}
-             images={"https://admin.thesoftwarecompany.in/"+el.product_image }
+             images={"https://admin.thesoftwarecompany.in"+el.product_image }
              old_price={el.product_discount_price}
              newPrice={el.product_price}
              rupess="&#x20B9;"

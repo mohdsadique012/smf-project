@@ -393,16 +393,25 @@ margin-right:0.625rem ;
 .modalspan{
     background-color: rgb(52, 85, 19);
     color: white;
-    font-weight: bolder;
+    width: 72px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
     cursor: pointer;
-    padding: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
  
   
 }
 .modal-p{
+    padding-top: 15px;
+    padding-left:10px ;
     height: 2.5rem;
     color: rgb(52, 85, 19) ;
     font-weight: bolder;
+    font-size: larger;
     cursor: pointer;
 }
 .modall{
@@ -416,6 +425,9 @@ margin-right:0.625rem ;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    width: 410px;
+    border: 1px solid #a5a4a4;
+ 
 }
 .checkbox-modal{
     margin-right: 10px;
@@ -425,10 +437,13 @@ margin-right:0.625rem ;
 }
 .modalll{
     display: flex;
+    /* justify-content: space-around;
+    flex-wrap: wrap; */
     flex-direction: column;
     justify-content: center;
-    align-items:center ;
-    align-content: center;
+    align-items: center;
+ 
+   
 }
 .slottime1{
     font-size: large;
@@ -436,14 +451,15 @@ margin-right:0.625rem ;
     color: rgb(52, 85, 19) ;
 }
 .slotboder{
-    border: 5px solid #272626;
+    border: 1px solid #272626;
     padding: 10px;
     cursor: pointer;
+    width: 210px;
 }
 .finaldisplaybox{
     border: 3px solid #272626;
-    padding: 5px;
-    padding-top: 5px;
+    padding-left: 10px;
+    padding-top: 10px;
     padding-bottom: -30px;
     width:18.5rem;
     height: 70px;
@@ -460,7 +476,7 @@ margin-right:0.625rem ;
     color: red;
 }
 .slottime11{
-font-size: smaller;
+     font-size: smaller;
     font-weight: bolder;
     color: rgb(52, 85, 19) ;
 }
@@ -475,4 +491,24 @@ font-size: smaller;
     padding: 10px;
    width: 150px;
    padding-left: 20px;
+}
+.cirlespan{
+    border-radius: 100%;
+    border: 5px solid #272626;
+   width:50rem !important;
+   height: 50rem;
+
+}
+.psp{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+
+    margin-bottom: 25px;
+  
+}
+.midllecenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
