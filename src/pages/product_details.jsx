@@ -500,14 +500,12 @@ setShow(false)
         <div className="detail-specification">
           <p className="detail-specification-main">PRODUCT SPECIFICATION</p>
           <ul>
-            <li className="detail-specification-list">SKU: HD13587</li>
+         
             <li className="detail-specification-list">
-              Colour of flower: Assorted
+            {data?.delivery_information}
             </li>
-            <li className="detail-specification-list">
-              Type of flower: Mixed Flower
-            </li>
-            <li className="detail-specification-list">No. of items: 8</li>
+           
+            <li className="detail-specification-list">{data?.suk}</li>
           </ul>
 
           <p className="detail-specification-main">
@@ -522,18 +520,12 @@ setShow(false)
               their wedding
             </li>
           </ul>
-          <p className="detail-specification-main">DISCLAMER</p>
+          <p className="detail-specification-main">CARE INFO</p>
           <ul>
             <li className="detail-specification-list">
-              Delivery product might be slightly from the image shown.
+              {data?.care_info}
             </li>
-            <li className="detail-specification-list">
-              this product is perishable therefore dilevery will be attemply
-              once
-            </li>
-            <li className="detail-specification-list">
-              The delivery cannot be redirected to another address
-            </li>
+            
           </ul>
         </div>
         <Row>
