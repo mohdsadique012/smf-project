@@ -18,7 +18,7 @@ useEffect(()=>{
 },[addCart]);
 
 // close cart
- 
+ console.log(addcart,"addcartaddcartaddcartaddcartaddcart")
 const handleclick =(e)=>{
    flipcart(false);
 }
@@ -40,8 +40,8 @@ const handleclick =(e)=>{
       </div>
 
       
-        { addcart.map((element)=>{
-          console.log(element)
+        { addcart?.map((element)=>{
+          console.log(element,"sidebarjumbroton")
      
           return(
          <Link to="/checkout_details">    
