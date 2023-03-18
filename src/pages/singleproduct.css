@@ -12,6 +12,7 @@
  height: 55px;
  font-weight: bold;
   padding: 10px;
+  border-radius: 5px;
   
   box-shadow: grey 4px 4px 14px;
 }

@@ -30,7 +30,7 @@ function Single_one_product() {
     
     
     
-    const AllProductApi = 'https://admin.thesoftwarecompany.in/product_details';
+    const AllProductApi = 'https://admin.thesoftwarecompany.in/sub_category_data';
       const mySelection = {
         btn: {
           color: "black",
@@ -57,7 +57,7 @@ function Single_one_product() {
     
     
     useEffect(() => {
-       getProductListBysubCategory(`${AllProductApi}?categoryId=$=${product1}`);   
+       getProductListBysubCategory(`${AllProductApi}?categoryId=${product1}`);   
       //getProductListBysubCategory(AllProductApi);
     
     },[]);

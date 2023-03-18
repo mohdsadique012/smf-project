@@ -84,6 +84,9 @@ function Home(props) {
   const AllProductApi = "https://admin.thesoftwarecompany.in/product_data";
   let data = one_product[0];
   let data2=Data.time_slot
+  let product_pincode=Data.product_pincode
+  let product_atrribute=Data.product_atrribute
+  let recommended =Data.product_lists
 console.log(data2,"earlytimeslot")
   useEffect(() => {
     getSingleProductListByproduct(
@@ -156,6 +159,7 @@ console.log(data2,"earlytimeslot")
   const handleclick1=(e)=>{
     e.preventDefault();
     setBoxx(false)
+  
     console.log("done")
   }
 const [boxx, setBoxx]=useState(false)
@@ -323,7 +327,7 @@ const [city , setCity]=useState("jaipur")
           <div className="displaydte">
           <select name="" id="" className="form-control">
           <option value='all'>select by pincode</option>
-          {pincodee.map(city => (
+          {product_pincode?.map(city => (
               
               <option key={city.pincode_id} value="select pincode">{city?.pincode}</option>
             ))}
@@ -373,42 +377,23 @@ const [city , setCity]=useState("jaipur")
             </button>
           </div>
           <div className="small-img-container detail-flex-row detail-margin">
-            <div className="detail-lf">
-              <div className="small-img-box1">
-                <img
-                  className="small-img1"
-                  src={"https://admin.thesoftwarecompany.in/" + data?.image}
-                />
+          {product_atrribute?product_atrribute.slice(0, 3).map(el=>{
+              return  <div className="detail-lf">
+                <div className="small-img-box1">
+                  <img
+                    className="small-img1"
+                    src={"https://admin.thesoftwarecompany.in/" + el.attribute_image }
+                  />
+                </div>
+                <div className="detail-space detail-flex-row">
+                  <span className="detail-color-rate">{el.product_attribute_title }:{el.attribute_terms}</span>
+                  <span className="detail-color-rates"> Rs.{el.price + data?.product_price }</span>
+                </div>
               </div>
-              <div className="detail-space detail-flex-row">
-                <span className="detail-color-rate">small </span>
-                <span className="detail-color-rates"> Rs. 699</span>
-              </div>
-            </div>
-            <div className="detail-lf">
-              <div className="small-img-box1">
-                <img
-                  className="small-img1"
-                  src={"https://admin.thesoftwarecompany.in/" + data?.image}
-                />
-              </div>
-              <div className="detail-space detail-flex-row">
-                <span className="detail-color-rate">medim </span>
-                <span className="detail-color-rates"> Rs. 699</span>
-              </div>
-            </div>
-            <div className="detail-lf">
-              <div className="small-img-box1">
-                <img
-                  className="small-img1"
-                  src={"https://admin.thesoftwarecompany.in/" + data?.image}
-                />
-              </div>
-              <div className="detail-space detail-flex-row">
-                <span className="detail-color-rate">large </span>
-                <span className="detail-color-rates"> Rs. 699</span>
-              </div>
-            </div>
+
+          }):""}
+    
+           
           </div>
         </div>
 
@@ -488,7 +473,7 @@ const [city , setCity]=useState("jaipur")
             </div>
             <div className="detail-mini-box">
               <i className="fa fa-motorcycle ic-color" aria-hidden="true"></i>
-              <p className="boldee">THREE OUR DELIVERY</p>
+              <p className="boldee">STANDARD DELIVERY</p>
              
             </div>
           </div>
@@ -557,7 +542,7 @@ const [city , setCity]=useState("jaipur")
             RECOMMENDED PRODUCTS
           </button>
           <Slider {...settingsBestSelling}>
-            {bestSelling.map((el, key) => (
+            {recommended?.map((el, key) => (
               <Col
                 key={key}
                 className="home-card-layout"
@@ -568,10 +553,10 @@ const [city , setCity]=useState("jaipur")
               >
                 <BestSelling
                   source={el.icon}
-                  cardContent={"Product details here........"}
+                  cardContent={el.product_name}
                   cardClass="auto-height-cust"
                   showContent={true}
-                  value="200"
+                  value={el.product_price}
                 />
               </Col>
             ))}
@@ -795,9 +780,12 @@ const [city , setCity]=useState("jaipur")
       <Footer />
 
       <Modal show={show} onHide={handleClose} animation={false} style={styles}>
-        <Modal.Header closeButton>
-          <Modal.Title> <span className="bakbtt" onClick={(e)=>handleclick1(e)}>Back</span> Select Time  Slot</Modal.Title>
-        </Modal.Header>
+      {boxx? <Modal.Header closeButton>
+        <Modal.Title>{boxx ?<span className="bakbtt" onClick={(e)=>handleclick1(e)}>Back</span>:<p></p>}  Select Time  Slot</Modal.Title>
+      </Modal.Header> :<Modal.Header closeButton>
+      <Modal.Title>Select Shipping Method</Modal.Title>
+    </Modal.Header>}
+      
         
             <div className="ssss" >
 

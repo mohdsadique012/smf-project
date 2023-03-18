@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./pages/home";
 import ProductDeatils from "./pages/product_details";
 import ProductCategory from "./pages/single_product_category";
+import Preloader from "./pages/Preloader";
 import SingleProductSubcategory from "./pages/single_one_product"
 import ProductCategories from "./pages/product_categories";
 import CheckoutDeatils from "./pages/checkout_details";
@@ -29,11 +30,15 @@ import Axios from "axios"
 
 function App() {
 
-  useEffect(() => {
-    // 👇️ scroll to top on page load
-    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-  }, [])
+ 
+  const [isLoading, setIsLoading] = useState(true);
 
+  useEffect(() => {
+    // simulate a delay in loading your application
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 10);
+  }, []);
   const [addcart ,setAddcart]= useState([])
   let a = addcart;
   const data = (passdata)=>{
@@ -107,7 +112,8 @@ console.log(stateroute,'qwertyuiop')
   // }
   return (
     <>
-      <MainNavbar cartOpen={drawerToggleClickHandler} />
+    <MainNavbar cartOpen={drawerToggleClickHandler} />
+     
       <Sidebar addCart={addcart} cartCount={cartCount} show={toggle} flipcart={flipcart}  />
       {backdrop}
       {/* <Container fluid direction="horizontal" gap={3}> */}
@@ -187,6 +193,7 @@ console.log(stateroute,'qwertyuiop')
         ></Route>
         {/* <Redirect to="/" /> */}
       </Routes>
+ 
     </>
   );
 }

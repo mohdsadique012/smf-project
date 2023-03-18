@@ -34,7 +34,7 @@ const data = {
 
 const handleclickregister=(e)=>{
   e.preventDefault();
-  Axios.post('https://admin.thesoftwarecompany.in/register')
+  Axios.post('http://localhost:7600/register')
   .then(response => {
     console.log(response.data);
   })

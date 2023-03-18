@@ -1,4 +1,4 @@
-import React, { useEffect, useState , useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import CardComponent from "../component/Card/CardComponent";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -15,11 +15,15 @@ import SubFooter from "../layout/Sub_Footer";
 import Footer from "../layout/Footer";
 import BestSelling from "../component/Card/BestSelling";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import Card from 'react-bootstrap/Card';
+
+
+import { AiOutlineHeart } from "react-icons/ai";
 
 import TrendingCards from "../component/Card/TrendingCards";
 import SimpleCardComponent from "../component/Card/SimpleCardComponent";
 import axios from "axios";
-import {AppContext} from "../context/productcontext"
+import { AppContext } from "../context/productcontext";
 import { GiConsoleController } from "react-icons/gi";
 
 const arrCount = [1, 2, 3, 4, 5, 6];
@@ -43,7 +47,6 @@ const menuTitle = [
   { icon: "official/Icons/Pant_Gifts.webp", title: "Plants Gift" },
   { icon: "official/Icons/International_Gifts.jpeg", title: "International" },
 ];
-
 
 const trendingCards = [
   { icon: "official/Best_Selling_Gifts/1.png", title: "Birthday Gift" },
@@ -81,7 +84,7 @@ const Plants_Gifts = [
   { icon: "official/Plants_Gifts/3.png", title: "Lucky Plant" },
 ];
 
-const Home = ({ cartCount, datarroute,addCart }) => {
+const Home = ({ cartCount, datarroute, addCart }) => {
   const settings = {
     infinite: true,
     dots: true,
@@ -113,103 +116,98 @@ const Home = ({ cartCount, datarroute,addCart }) => {
     arrows: true,
   };
 
-     let context_Data= useContext(AppContext)
+  let context_Data = useContext(AppContext);
 
-     let toprated_data_catogaries =context_Data.products
-     var category_third = context_Data.single_product
-     let bestselling_dataaa = context_Data.bestselling_product
+  let toprated_data_catogaries = context_Data.products;
+  var category_third = context_Data.single_product;
+  let bestselling_product = context_Data.bestselling_product;
+  let trending = context_Data.trending_product;
 
- 
-    
-
-
-    console.log(bestselling_dataaa,'bestselling_databestselling_data')  
- // setProduct(product);
+  console.log(bestselling_product, "bestselling_databestselling_data");
+  // setProduct(product);
   /* Best Selling API */
   /* useState => Initilize To variable , array or object for the first time
   Syntax useState(variable, updateFunction)
   */
   const [bestSelling, updateBestSelling] = useState([]);
 
-// category--3 part =>
+  // category--3 part =>
+  let Allcategory = [
+    ...new Map(toprated_data_catogaries.map((item) => [item["name"], item])).values(),
+  ];
 
-let category_3 = [];
-  category_3=toprated_data_catogaries.filter((el)=>
-            el.categorytype=='Category-3'
+  let category_3 = [];
+  category_3 = toprated_data_catogaries.filter(
+    (el) => el.categorytype == "Category-3"
   );
- 
 
-  var categoriess =[]
-    
-  category_3.forEach(el=>{
-            console.log( el.name," el.name")
-            let variable=category_third.filter(item=> {
-              console.log( item.categorytype," item.categorytype")
-               return item.categorytype== el.name
-            })
-           
-            categoriess =  categoriess.concat(variable);    
-         })
-        
-    
-         const category_grouping = categoriess.reduce((category_grouping, item) => {
-          const group = (category_grouping[item.categorytype] || []);
-          group.push(item);
-          category_grouping[item.categorytype] = group;
-          return category_grouping;
-        }, {});
-         
-        let a=[]
- 
-        let   categoriesss = Object.keys(category_grouping)
-        console.log(categoriess,'total key')
-        categoriesss.forEach((gender) => {
-          category_grouping[gender].slice(0,4).map(el=>{
-            a.push(el)
-              
-          })
- })
-   
+  var categoriess = [];
 
- let uniquecategorykey_3= [
-  ...new Map(a.map((item)=>[item["name"],item])).values()
- ];
-  
+  category_3.forEach((el) => {
+    console.log(el.name, " el.name");
+    let variable = category_third.filter((item) => {
+      console.log(item.categorytype, " item.categorytype");
+      return item.categorytype == el.name;
+    });
 
+    categoriess = categoriess.concat(variable);
+  });
 
-  
-      // toprated category part
-       
-  let toprated=[];
-   toprated= toprated_data_catogaries.filter((el)=>
-    el.categorytype=='Top rated Category'
-     );
+  const category_grouping = categoriess.reduce((category_grouping, item) => {
+    const group = category_grouping[item.categorytype] || [];
+    group.push(item);
+    category_grouping[item.categorytype] = group;
+    return category_grouping;
+  }, {});
 
+  let a = [];
 
+  let categoriesss = Object.keys(category_grouping);
+  console.log(categoriess, "total key");
+  categoriesss.forEach((gender) => {
+    category_grouping[gender].slice(0, 4).map((el) => {
+      a.push(el);
+    });
+  });
 
-let uniquecategorykey = [
-  ...new Map(toprated.map((item)=>[item["name"],item])).values()
-     ];
-      
-     // category_2 part =>
+  let uniquecategorykey_3 = [
+    ...new Map(a.map((item) => [item["name"], item])).values(),
+  ];
 
-let categoryy=[];
-  categoryy= toprated_data_catogaries.filter((el)=>
-     el.categorytype=='Category-2'
-     );
- 
-  
-    
-let uniquecategory2key = [
-    ...new Map(categoryy.map((item)=>[item["name"],item])).values()
-     ];
+  // toprated category part
 
-    //  setCategories21(categoryy)
- //'http://admin.thesoftwarecompany.in/   
+  let toprated = [];
+  toprated = toprated_data_catogaries.filter(
+    (el) => el.categorytype == "Top rated Category"
+  );
+
+  let uniquecategorykey = [
+    ...new Map(toprated.map((item) => [item["name"], item])).values(),
+  ];
+
+  // category_2 part =>
+
+  let categoryy = [];
+  categoryy = toprated_data_catogaries.filter(
+    (el) => el.categorytype == "Category-2"
+  );
+
+  let uniquecategory2key = [
+    ...new Map(categoryy.map((item) => [item["name"], item])).values(),
+  ];
+
+  //  setCategories21(categoryy)
+  //'http://admin.thesoftwarecompany.in/
+  console.log( uniquecategorykey_3,"Allcategory")
+  let subcategoryslug1= uniquecategorykey_3[2]?.category_slug;
+  let subcategoryslug2= uniquecategorykey_3[6]?.category_slug;
+  let subcategoryslug3= uniquecategorykey_3[10]?.category_slug;
+  let subcategoryslug4= uniquecategorykey_3[14]?.category_slug;
+  let subcategoryslug5= uniquecategorykey_3[18]?.category_slug;
   return (
     <>
       <Row>
-        <HomeMenuCard   menus={uniquecategorykey} />
+        <HomeMenuCard menus={uniquecategorykey} />
       </Row>
       <Jumbotron back_img={"official/Slider.png"} />
       <Row className={["second-section-images"]} style={{ marginBottom: "4%" }}>
@@ -222,247 +220,314 @@ let uniquecategory2key = [
             lg={4}
             xl={4}
           >
-
             <CardComponent
               addCart={addCart}
-              source={'http://admin.thesoftwarecompany.in/' +el.image}
+              source={"http://admin.thesoftwarecompany.in/" + el.image}
               cardContent={el.name}
               showContent={false}
               value={el.value}
               slug={el.slug}
             />
-
           </Col>
         ))}
       </Row>
       <Divider content="Best Selling Gift" />
       <Row style={{ marginBottom: "2.8%" }}>
         <Slider {...settingsBestSelling}>
-        {trendingCards ?trendingCards.map((el,key) => (
-          console.log(el,"||||||||||||")||
-          
-            <Col
-            
-              className="home-card-layout"
-              xs={12}
-              sm={6}
-              lg={4}
-              xl={3}
-            >
-              <BestSelling
-              checker={el.product_id}
-                source={ el.icon}
-                cardContent={el.title}
-                showContent={true}
-                value="200"
-                slug =''
-              />
-            </Col>
-          )) : ''}
+          {bestselling_product
+            ? bestselling_product.map(
+                (el, key) =>
+                  console.log(el, "||||||||||||") || (
+                    <Card >
+                    <Link to="/product_details">
+        
+                        <>
+                        <Link to={`/product_details/${el.product_slug}`}>
+                            <Card.Img variant="top"  src={"http://admin.thesoftwarecompany.in/"+el.product_image}
+                            alt=""  style={{borderRadius: "20px"}} />
+                         
+                            <span className="wishList">
+                                <AiOutlineHeart />
+                            </span>
+                            <div className="ribbon">Customizable</div>
+                            <Card.Body>
+                            <Card.Title>{el.product_name}</Card.Title>
+                            <Card.Text className='card-content-best-sel'><span> ₹{el.product_price }</span>
+                                <span className='best-sel-star-rate'>
+                                    <span className="star-box">
+                                        4.2
+                                        <AiFillStar />
+                                    </span>
+                                    <small>10 Reviews</small>
+                                </span>
+                            </Card.Text>
+                            {/* */}
+                            <Card.Text className={['best_sell_card_highlighter']}>Earliest Delivery: Today</Card.Text>
+                        </Card.Body> 
+                        </Link>
+                        </>
+                    
+                                <>
+                                   
+                                </>
+                               
+                      
+                    </Link>
+                    {/* <button className='btn btn-danger' onClick={addCart}>+</button> */}
+                </Card>
+                  )
+              )
+            : ""}
         </Slider>
       </Row>
       <Divider content="Trending Now" />
       <Row>
-        {/* {
-                    trendingCards.map((el, key) => <Col key={key} className='home-card-layout' xs={12} sm={6} lg={4} xl={2}><TrendingCards source={el.icon} cardContent={"Timeless Love Red Roses Bouquet"} cardClass="auto-height-cust" showContent={true} value="200" /></Col>)
-                } */}
-       
+      <Slider {...settingsBestSelling}>
+      {bestselling_product
+        ? bestselling_product.map(
+            (el, key) =>
+              console.log(el, "||||||||||||") || (
+                <Card >
+                <Link to="/product_details">
+    
+                    <>
+                    <Link to={`/product_details/${el.product_slug}`}>
+                        <Card.Img variant="top" src={"http://admin.thesoftwarecompany.in/"+el.product_image}
+                        alt=""  style={{borderRadius: "20px"}} />
+                     
+                        <span className="wishList">
+                            <AiOutlineHeart />
+                        </span>
+                        <div className="ribbon">Customizable</div>
+                        <Card.Body>
+                        <Card.Title>{el.product_name}</Card.Title>
+                        <Card.Text className='card-content-best-sel'><span>₹{el.product_price } </span>
+                            <span className='best-sel-star-rate'>
+                                <span className="star-box">
+                                    4.2
+                                    <AiFillStar />
+                                </span>
+                                <small>10 Reviews</small>
+                            </span>
+                        </Card.Text>
+                        {/* */}
+                        <Card.Text className={['best_sell_card_highlighter']}>Earliest Delivery: Today</Card.Text>
+                    </Card.Body> 
+                    </Link>
+                    </>
+                
+                            <>
+                               
+                            </>
+                           
+                  
+                </Link>
+                {/* <button className='btn btn-danger' onClick={addCart}>+</button> */}
+            </Card>
+              )
+          )
+        : ""}
+    </Slider>
       </Row>
 
       <div className="container-fluid" style={{ marginTop: "2%" }}>
-        
-    
-            <div className="borderDesign">
-           <Row className={["position-relative"]}>
-           {uniquecategorykey_3 ?uniquecategorykey_3.slice(0, 4).map((el, key) => (
-              <Col
-                key={key}
-                className="Green-card home-card-layout"
-                xs={12}
-                sm={6}
-                lg={4}
-                xl={3}
-              >
-              <Link to={`single_product_bysubcategory/${el.slug}`}>
-                <SimpleCardComponent
-                  checker={key}
-                  custContentImg={true}
-                  custContent={el.categorytype}
-                  source={ 'http://admin.thesoftwarecompany.in'+ el.image}
-                  cardContent={ el.name}
-                  showContent={false}
-                  value="200"
-                  slug = {el.slug}
-                />
-                </Link>
-              </Col>
-            ))  : <h1>Hello Rajat </h1>}
-            <span className={"view_all_btn"}>View All</span>
-          </Row>
-        </div>
-
-           <div className="borderDesign">
+        <div className="borderDesign">
           <Row className={["position-relative"]}>
-            {uniquecategorykey_3 ?uniquecategorykey_3.slice(4, 8).map((el, key) => (
-              <Col
-                key={key}
-                className="Green-card home-card-layout"
-                xs={12}
-                sm={6}
-                lg={4}
-                xl={3}
-              >
-                <SimpleCardComponent
-                  checker={key}
-                  custContentImg={true}
-                  custContent={el.categorytype}
-                  source={'http://admin.thesoftwarecompany.in' + el.image}
-                  cardContent={el.name}
-                  showContent={false}
-                  value="200"
-                />
-              </Col>
-            ))  : <h1>Hello Rajat </h1>}
+            {uniquecategorykey_3 ? (
+              uniquecategorykey_3.slice(0, 4).map((el, key) => (
+                <Col
+                  key={key}
+                  className="Green-card home-card-layout"
+                  xs={12}
+                  sm={6}
+                  lg={4}
+                  xl={3}
+                >
+                  <Link to={`single_product_bysubcategory/${el.slug}`}>
+                    <SimpleCardComponent
+                      checker={key}
+                      custContentImg={true}
+                      custContent={el.categorytype}
+                      source={"http://admin.thesoftwarecompany.in" + el.image}
+                      cardContent={el.name}
+                      showContent={false}
+                      value="200"
+                      slug={el.slug}
+                      slug2={el.category_slug}
+                    />
+                  </Link>
+                </Col>
+              ))
+            ) : (
+              <h1>Hello Rajat </h1>
+            )}
+            <Link to={`single_product_category/${subcategoryslug1}`}>
             <span className={"view_all_btn"}>View All</span>
+            </Link>
           </Row>
         </div>
 
         <div className="borderDesign">
           <Row className={["position-relative"]}>
-            {uniquecategorykey_3 ? uniquecategorykey_3.slice(8,12).map((el, key) => (
-              <Col
-                key={key}
-                className="Green-card home-card-layout"
-                xs={12}
-                sm={6}
-                lg={4}
-                xl={3}
-              >
-                <SimpleCardComponent
-                  checker={key}
-                  custContentImg={true}
-                  custContent={el.categorytype}
-                  source={'http://admin.thesoftwarecompany.in'+ el.image}
-                  cardContent={el.name}
-                  showContent={false}
-                  value={el.regularprice}
-                />
-              </Col>
-            ))  : <h1>Hello Rajat </h1>}
-            <span className={"view_all_btn"}>View All</span>
-          </Row>
-        </div>
-
-        <div className="borderDesign">
-          <Row className={["position-relative"]}>
-            {uniquecategorykey_3 ?uniquecategorykey_3.slice(12, 16).map((el, key) => (
-              <Col
-                key={key}
-                className="Green-card home-card-layout"
-                xs={12}
-                sm={6}
-                lg={4}
-                xl={3}
-              >
-                <SimpleCardComponent
-                  checker={key}
-                  custContentImg={true}
-                  custContent={el.categorytype}
-                  source={ 'http://admin.thesoftwarecompany.in'+el.image}
-                  cardContent={el.name}
-                  showContent={false}
-                  value="200"
-                />
-              </Col>
-            ))  : <h1>Hello Rajat </h1>}
-            <span className={"view_all_btn"}>View All</span>
-          </Row>
-        </div>
-
-        <div className="borderDesign">
-          <Row className={["position-relative"]}>
-            {uniquecategorykey_3 ?uniquecategorykey_3.slice(16,20).map((el, key) => (
-                     
-              <Col
-                key={key}
-                className="Green-card home-card-layout"
-                xs={12}
-                sm={6}
-                lg={4}
-                xl={3}
-              >
-                <SimpleCardComponent
+            {uniquecategorykey_3 ? (
+              uniquecategorykey_3.slice(4, 8).map((el, key) => (
+                <Col
+                  key={key}
+                  className="Green-card home-card-layout"
+                  xs={12}
+                  sm={6}
+                  lg={4}
+                  xl={3}
+                >
+                  <SimpleCardComponent
                     checker={key}
                     custContentImg={true}
                     custContent={el.categorytype}
-                    source={'http://admin.thesoftwarecompany.in'+ el.image}
+                    source={"http://admin.thesoftwarecompany.in" + el.image}
                     cardContent={el.name}
                     showContent={false}
                     value="200"
-                />
-              </Col>
-            )) : <h1>Hello Rajat </h1>}
+                    slug={el.slug}
+                      slug2={el.category_slug}
+                  />
+                </Col>
+              ))
+            ) : (
+              <h1>Hello Rajat </h1>
+            )}
+            <Link to={`single_product_category/${subcategoryslug2}`}>
             <span className={"view_all_btn"}>View All</span>
+            </Link>
+          </Row>
+        </div>
+
+        <div className="borderDesign">
+          <Row className={["position-relative"]}>
+            {uniquecategorykey_3 ? (
+              uniquecategorykey_3.slice(8, 12).map((el, key) => (
+                <Col
+                  key={key}
+                  className="Green-card home-card-layout"
+                  xs={12}
+                  sm={6}
+                  lg={4}
+                  xl={3}
+                >
+                  <SimpleCardComponent
+                    checker={key}
+                    custContentImg={true}
+                    custContent={el.categorytype}
+                    source={"http://admin.thesoftwarecompany.in" + el.image}
+                    cardContent={el.name}
+                    showContent={false}
+                    value={el.regularprice}
+                    slug={el.slug}
+                    slug2={el.category_slug}
+                  />
+                </Col>
+              ))
+            ) : (
+              <h1>Hello Rajat </h1>
+            )}
+            <Link to={`single_product_category/${subcategoryslug3}`}>
+            <span className={"view_all_btn"}>View All</span>
+            </Link>
+          </Row>
+        </div>
+
+        <div className="borderDesign">
+          <Row className={["position-relative"]}>
+            {uniquecategorykey_3 ? (
+              uniquecategorykey_3.slice(12, 16).map((el, key) => (
+                <Col
+                  key={key}
+                  className="Green-card home-card-layout"
+                  xs={12}
+                  sm={6}
+                  lg={4}
+                  xl={3}
+                >
+                  <SimpleCardComponent
+                    checker={key}
+                    custContentImg={true}
+                    custContent={el.categorytype}
+                    source={"http://admin.thesoftwarecompany.in" + el.image}
+                    cardContent={el.name}
+                    showContent={false}
+                    value="200"
+                    slug={el.slug}
+                    slug2={el.category_slug}
+                  />
+                </Col>
+              ))
+            ) : (
+              <h1>Hello Rajat </h1>
+            )}
+            <Link to={`single_product_category/${subcategoryslug4}`}>
+            <span className={"view_all_btn"}>View All</span>
+            </Link>
+          </Row>
+        </div>
+
+        <div className="borderDesign">
+          <Row className={["position-relative"]}>
+            {uniquecategorykey_3 ? (
+              uniquecategorykey_3.slice(16, 20).map((el, key) => (
+                <Col
+                  key={key}
+                  className="Green-card home-card-layout"
+                  xs={12}
+                  sm={6}
+                  lg={4}
+                  xl={3}
+                >
+                  <SimpleCardComponent
+                    checker={key}
+                    custContentImg={true}
+                    custContent={el.categorytype}
+                    source={"http://admin.thesoftwarecompany.in" + el.image}
+                    cardContent={el.name}
+                    showContent={false}
+                    value="200"
+                    slug={el.slug}
+                    slug2={el.category_slug}
+                    
+                  />
+                 
+                </Col>
+              ))
+            ) : (
+              <h1>Hello Rajat </h1>
+            )}
+            <Link to={`single_product_category/${subcategoryslug5}`}>
+            <span className={"view_all_btn"}>View All</span>
+            </Link>
           </Row>
         </div>
       </div>
 
       <Divider content="Browse By Categories" />
-      <div className="container-fluid">
-        <div className="homeSmallCard">
-          {/* <div className="smallCardHeader">
-                        <h5>Occasions</h5>
-                    </div> */}
-          <div className="row occasionCard align-items-center justify-content-center my-3">
-            <div className="col-md-10">
-              <div className="row check">
-                <div className="col-4 d-flex flex-column one">
-                  <div className="custom-design border-secondary justify-content-center my-2 align-content-end flex-wrap">
+     
+      <Slider {...settingsBestSelling}>
+        {Allcategory
+          ? Allcategory.map(
+              (el, key) =>
+                console.log(el, "||||||||||||") || (
+                  <Link to={`single_product_category/${el.slug}`}>
+                  <div className="custom-design border-secondary  flex-wrap order-2 man">
+                    <img
+                      className="Allcategory-imge"
+                      src={"http://admin.thesoftwarecompany.in/"+ el.image}
+                    />
                     <button className="btn bg-white outline-0 btn-outline-success border-0 w-100">
-                      Birthday
+                     {el.name}
                     </button>
                   </div>
-                  <div className="custom-design border-secondary justify-content-center my-2 align-content-end flex-wrap">
-                    <button className="btn bg-white outline-0 btn-outline-success border-0 w-100">
-                      Baby Shower
-                    </button>
-                  </div>
-                </div>
-                <div className="col-4 d-flex flex-column two">
-                  <div className="custom-design border-secondary justify-content-center my-2 align-content-end flex-wrap order-2">
-                    <button className="btn bg-white outline-0 btn-outline-success border-0 w-100">
-                      Wedding
-                    </button>
-                  </div>
-                  <div className="custom-design border-secondary justify-content-center my-2 align-content-end flex-wrap order-1">
-                    <button className="btn bg-white outline-0 btn-outline-success border-0 w-100">
-                      House Warming
-                    </button>
-                  </div>
-                </div>
-                <div className="col-4 d-flex flex-column three">
-                  <div className="custom-design border-secondary justify-content-center my-2 align-content-end flex-wrap">
-                    <button className="btn bg-white outline-0 btn-outline-success border-0 w-100">
-                      Anniversary
-                    </button>
-                  </div>
-                  <div className="custom-design border-secondary justify-content-center my-2 align-content-end flex-wrap">
-                    <button className="btn bg-white outline-0 btn-outline-success border-0 w-100">
-                      Best Wishes
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-2 explore_more_categories">
-              <button className="btn btn-lg border border-secondary border-top-0">
-                Explore More
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
+                  </Link>
+                )
+            )
+          : ""}
+      </Slider>
       <Divider content="Customer Stories and Reviews" />
       <div className="row customer-cards">
         <Slider {...settings}>
@@ -477,7 +542,10 @@ let uniquecategory2key = [
                   <AiOutlineStar />
                 </div>
                 <div className="left-card-img">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOuxrvcNMfGLh73uKP1QqYpKoCB0JLXiBMvA&usqp=CAU" alt="" />
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOuxrvcNMfGLh73uKP1QqYpKoCB0JLXiBMvA&usqp=CAU"
+                    alt=""
+                  />
                 </div>
               </div>
               <div className="right-card">
@@ -502,7 +570,10 @@ let uniquecategory2key = [
                   <AiOutlineStar />
                 </div>
                 <div className="left-card-img">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0e-9L-OuQW5Dqfbaqlpl84ptS0VWZbY1K_A&usqp=CAU" alt="" />
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0e-9L-OuQW5Dqfbaqlpl84ptS0VWZbY1K_A&usqp=CAU"
+                    alt=""
+                  />
                 </div>
               </div>
               <div className="right-card">
@@ -527,7 +598,10 @@ let uniquecategory2key = [
                   <AiOutlineStar />
                 </div>
                 <div className="left-card-img">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThsyVVdxkz5zyuE-yRKpdwtre_R234HkS2gQ&usqp=CAU" alt="" />
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThsyVVdxkz5zyuE-yRKpdwtre_R234HkS2gQ&usqp=CAU"
+                    alt=""
+                  />
                 </div>
               </div>
               <div className="right-card">
@@ -719,24 +793,26 @@ let uniquecategory2key = [
             </Container> */}
       <div style={{ marginBottom: "3%" }}>
         <Slider {...settingsBestSelling}>
-          {bestSelling ? bestSelling.map((el, key) => (
-            <Col
-              key={key}
-              className="home-card-layout"
-              xs={12}
-              sm={6}
-              lg={4}
-              xl={3}
-            >
-              <BestSelling
-                source={el.icon}
-                cardContent={"Product details here........"}
-                cardClass="auto-height-cust"
-                showContent={true}
-                value="200"
-              />
-            </Col>
-          )) : ''}
+          {bestSelling
+            ? bestSelling.map((el, key) => (
+                <Col
+                  key={key}
+                  className="home-card-layout"
+                  xs={12}
+                  sm={6}
+                  lg={4}
+                  xl={3}
+                >
+                  <BestSelling
+                    source={el.icon}
+                    cardContent={"Product details here........"}
+                    cardClass="auto-height-cust"
+                    showContent={true}
+                    value="200"
+                  />
+                </Col>
+              ))
+            : ""}
         </Slider>
       </div>
 

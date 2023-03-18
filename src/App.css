@@ -358,3 +358,15 @@ img:hover{
   transform: scale(1.02) ;  /* zoom in the image upto 30% */
   cursor: pointer; 
 }
+
+.Allcategory-imge{
+
+   width: 100%;
+  height: 18.2rem;
+}
+.man{
+  display: flex;
+}
+.boderrr{
+  border-radius: 16px;
+}

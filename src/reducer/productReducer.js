@@ -60,7 +60,7 @@ const ProductReducer = (state, action) => {
         
             return{
                 ...state,
-                subcategory_product_lists: action.payload.product
+                subcategory_product_lists: action.payload.result
 
 
             };
@@ -68,7 +68,9 @@ const ProductReducer = (state, action) => {
             return{
                 ...state,
                 one_product: action.payload.productData,
-                time_slot : action.payload.timeSlot
+                time_slot : action.payload.timeSlot,
+                product_pincode:action.payload.pincode,
+                product_atrribute:action.payload.attribute
 
             };
             case "SET_Bestselling_PRODUCT":
@@ -80,7 +82,9 @@ const ProductReducer = (state, action) => {
             case "SET_Trending_PRODUCT":
                 return{
                         ...state,
-                        trending_product: action.payload.result
+                        trending_product: action.payload.trending,
+                        
+                        bestselling_product:action.payload.best_selling,
                     };
                     case "SET_cities":
                         return{

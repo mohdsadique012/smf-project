@@ -7,7 +7,8 @@ const ALLPRODUCTURL = 'https://admin.thesoftwarecompany.in/category_lists/';
 const SingleURL = "https://admin.thesoftwarecompany.in/subcategory_lists/";
 const bestselling = "https://admin.thesoftwarecompany.in/product_lists?categoryId=birthday_gift";
 const Cities = "https://admin.thesoftwarecompany.in/geoCoding/"
-const trending = "https://admin.thesoftwarecompany.in/product_list/trending/"
+const trending= "https://admin.thesoftwarecompany.in/featureData/"
+
 
 const AppContext = createContext();
 
@@ -27,7 +28,9 @@ const intialState = {
     bestselling_product:[],
     city:[],
     slug:"",
-    time_slot:[]
+    time_slot:[],
+    product_pincode:[],
+    product_atrribute:[]
 };
 
 
@@ -78,7 +81,7 @@ const AppProvider = ({ children }) => {
       }
      /* Fetch Single Product */
      const getSingleProduct = async (url) => {
-        console.log(url)
+        // console.log(url)
         dispatch({ type: "SET_SINGLE_LOADING" })
         try {
             const res = await axios.get(url);
@@ -94,12 +97,12 @@ const AppProvider = ({ children }) => {
      /* Fetch Single Product */
   /* Fetch Single Product */
   const getProductListByCategory = async (url) => {
-    console.log(`${url}&type=${city}`,"ggsgdgdgdgdgdgdgd")
+    // console.log(`${url}&type=${city}`,"ggsgdgdgdgdgdgdgd")
     dispatch({ type: "SET_SINGLE_LOADING" })
     try {
         const res = await axios.get(`${url}&type=${city}`);
         const productlists = await res.data;
-        console.log(productlists, "ProductList1222221111111111") 
+        // console.log(productlists, "ProductList1222221111111111") 
         dispatch({ type: "SET_PRODUCT_LIST", payload:productlists })
     } catch (error) {
         dispatch({ type: "SET_SINGLE_ERROR" })
@@ -112,7 +115,7 @@ const AppProvider = ({ children }) => {
         try {
             const res = await axios.get(url);
             const productlistssubCategory = await res.data;
-            console.log(productlistssubCategory, "Product12121212") 
+            // console.log(productlistssubCategory, "jaajajajajajajajajaajajajajajajajajajajajaj") 
             dispatch({ type: "SET_subcategory_PRODUCT_LIST", payload:productlistssubCategory })
         } catch (error) {
             dispatch({ type: "SET_SINGLE_ERROR" })
@@ -122,7 +125,7 @@ const AppProvider = ({ children }) => {
 
     
     const getSingleProductListByproduct= async (url) => {
-        console.log(url,"123456987")
+        // console.log(url,"123456987")
         
         dispatch({ type: "SET_SINGLE_LOADING" })
         try {
@@ -148,7 +151,7 @@ const AppProvider = ({ children }) => {
         }
     };
     const getTrendingproduct= async (url) => {
-        console.log(url)
+        console.log(url,"tttt000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
         dispatch({ type: "SET_SINGLE_LOADING" })
         try {
             const res = await axios.get(url);
@@ -180,13 +183,13 @@ const AppProvider = ({ children }) => {
             getProducts(`${ALLPRODUCTURL}?cityId=${cookiees}`);
             getSingleProduct(`${SingleURL}?cityId=${cookiees}`);
             getBestsellingproduct(`${bestselling}?cityId=${cookiees}`);
-            getTrendingproduct(`${trending}?cityId=${cookiees}`);
+            getTrendingproduct(trending);
             getlistbycities(Cities)
         }else{
             getProducts(`${ALLPRODUCTURL}?cityId=${city}`);
             getSingleProduct(`${SingleURL}?cityId=${city}`);
             getBestsellingproduct(`${bestselling}?cityId=${city}`);
-            getTrendingproduct(`${trending}?cityId=${city}`);
+            getTrendingproduct(trending);
             getlistbycities(Cities)
         }
              
