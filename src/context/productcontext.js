@@ -79,6 +79,18 @@ const AppProvider = ({ children }) => {
           console.error(error);
         }
       }
+      const getTrendingproduct= async (url) => {
+        console.log(url,"tttt000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
+        dispatch({ type: "SET_SINGLE_LOADING" })
+        try {
+            const res = await axios.get(url);
+            const singleproduct = await res.data;
+            console.log(singleproduct, "trending_data") 
+            dispatch({ type: "SET_Trending_PRODUCT", payload:singleproduct })
+        } catch (error) {
+            dispatch({ type: "SET_SINGLE_ERROR" })
+        }
+    };
      /* Fetch Single Product */
      const getSingleProduct = async (url) => {
         // console.log(url)
@@ -150,18 +162,7 @@ const AppProvider = ({ children }) => {
             dispatch({ type: "SET_SINGLE_ERROR" })
         }
     };
-    const getTrendingproduct= async (url) => {
-        console.log(url,"tttt000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
-        dispatch({ type: "SET_SINGLE_LOADING" })
-        try {
-            const res = await axios.get(url);
-            const singleproduct = await res.data;
-            console.log(singleproduct, "trending_data") 
-            dispatch({ type: "SET_Trending_PRODUCT", payload:singleproduct })
-        } catch (error) {
-            dispatch({ type: "SET_SINGLE_ERROR" })
-        }
-    };
+    
     const getBestsellingproduct= async (url) => {
         console.log(url)
         dispatch({ type: "SET_SINGLE_LOADING" })
