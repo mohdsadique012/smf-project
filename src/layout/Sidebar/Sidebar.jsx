@@ -37,7 +37,7 @@ const handleclick =(e)=>{
   
     useEffect(()=>{
       if(auth){
-      fetch(`http://localhost:7600/add_cart?${data}`)
+      fetch(`https://thesoftwarecompany.in//add_cart?${data}`)
       .then(response=>{response.json()})
       .then(data=>{
         console.log(data,"...mmm.....")
