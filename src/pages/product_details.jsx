@@ -109,11 +109,7 @@ console.log(data2,"earlytimeslot")
   //1111
 
   // console.log(props.data ,88888)
-  const handleclickAdd = (e) => {
-    alert("Your product has been added in cart");
-    // setProduct(product);
-    props.dataAdd(data);
-  };
+
   const [startDate, setStartDate] = useState(new Date());
   const minDate = new Date();
   const maxDate = new Date();
@@ -211,6 +207,43 @@ const [city , setCity]=useState("jaipur")
 
  console.log(cities,"22222")
  console.log(pincodee,"/2222222")
+ var product_data=[];
+ const handleclickAdd = (e) => {
+  console.log("ffffff")
+    // setProduct(product);
+    e.preventDefault();
+    
+    if(finaltimedispaly[0]){
+      var product_data=[];
+      let product_get = JSON.parse(localStorage.getItem('product_data'));
+      product_get?.map(el=>{
+        return  product_data.push(el)
+      });
+      localStorage.removeItem('product_data')
+  
+  
+     
+     
+      const params = {
+        product_id:data?.product_id,
+        time_slot_id:finaltimedispaly[0].id,
+        pincode:"12345",
+        product:data
+      }  
+      product_data.push(params)             ;
+      console.log(params)
+      localStorage.setItem("product_data",JSON.stringify(product_data))
+      
+      alert("your product is successfully add in cart")
+    }else{
+      alert("add delivery method and pincode")
+    }
+ 
+    
+  };
+  let product_get = JSON.parse(localStorage.getItem('product_data'));
+  console.log(product_get,"444444")
+console.log()
   return (
     <>
       {/* <Row>

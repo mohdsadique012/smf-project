@@ -27,7 +27,29 @@ const handleclick =(e)=>{
   if (show) {
     drawerClasses = "side-drawer open";
   }
-   
+  let product_get = JSON.parse(localStorage.getItem('product_data'));
+  const [cart , setCart]= useState([])
+  let auth = JSON.parse(localStorage.getItem('userdetail'));
+  let data=JSON.stringify({
+    product_detail:product_get,
+    authantication:auth
+  })
+  
+    useEffect(()=>{
+      if(auth){
+      fetch(`http://localhost:7600/add_cart?${data}`)
+      .then(response=>{response.json()})
+      .then(data=>{
+        console.log(data,"...mmm.....")
+  
+      })
+      .catch(error=>{
+        console.log(error)
+      })
+    }
+  },[])
+
+
   return (
     
     <div  className={drawerClasses} >
@@ -40,14 +62,17 @@ const handleclick =(e)=>{
       </div>
 
       
-        { addcart?.map((element)=>{
+        {  product_get?.map((element)=>{
           console.log(element,"sidebarjumbroton")
      
           return(
          <Link to="/checkout_details">    
     <SidebarCart 
-         datapass={element}
-         value ={element} />
+   
+         datapass={element.product}
+         value ={element.product}
+         />
+         
          </Link>
       
           )

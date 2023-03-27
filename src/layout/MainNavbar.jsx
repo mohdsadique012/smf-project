@@ -34,7 +34,16 @@ function MainNavbar({ cartOpen }) {
     animation: "outAnimation 270ms ease-out",
     animationFillMode: "forwards",
   };
-
+  let auth = JSON.parse(localStorage.getItem('userdetail'));
+  console.log(auth,"bvbvbv")
+    
+  let username
+  if(auth){
+     username=auth[0]?.name
+  }
+  
+  
+  console.log(username,"user")
   return (
     <>
       <Navbar className={styles.Navbar} expand="lg">
@@ -82,13 +91,22 @@ function MainNavbar({ cartOpen }) {
                   <FaShoppingCart />
                   <p>Cart</p>
                 </Nav.Link>
-                <Nav.Link>
-                  <Link to="/Login">
+                {auth?<Nav.Link>
+                  <Link to="/Admin/Layout/user_profile">
                     <FaUserAlt />
                   </Link>
-                  <p>Sign-in</p>
-                </Nav.Link>
+                  <p>{username}</p>
+                </Nav.Link>: <Nav.Link>
+                <Link to="/Login">
+                  <FaUserAlt />
+                </Link>
+                <p>Sign-in</p>
+              </Nav.Link>}
+               
+                
               </Nav>
+              
+              
               <Nav.Link className="phoneNumber">
                 <Link to="#!">
                   <BiPhone />

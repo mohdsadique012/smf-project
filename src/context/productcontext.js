@@ -80,7 +80,7 @@ const AppProvider = ({ children }) => {
         }
       }
       const getTrendingproduct= async (url) => {
-        console.log(url,"tttt000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
+        console.log(url,"tt0")
         dispatch({ type: "SET_SINGLE_LOADING" })
         try {
             const res = await axios.get(url);

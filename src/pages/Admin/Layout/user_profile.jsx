@@ -98,6 +98,11 @@ const [changevalue, setChangevalue]= useState()
 const handleclick = ()=>{
 setChangevalue(input)
 }
+let auth = JSON.parse(localStorage.getItem('userdetail'));
+console.log(auth,"ddddd")
+  
+let username= auth[0]
+  let namee=auth[0].name.charAt(0)
   return (
     <>
     
@@ -105,12 +110,12 @@ setChangevalue(input)
         <img className='profile-img' src='https://t4.ftcdn.net/jpg/03/90/00/43/360_F_390004324_7eTC29X2BExl0242yFOiY7RdWJqVWyaT.jpg' alt=''/>
         <div className='profile-flex position '>
             <div className='profile-firstletter'>
-                 <p className='profileletter' >J</p>
+                 <p className='profileletter' >{namee}</p>
             </div>
             <div className='profile-info profile-flex'>
                  <div className=''>
-                     <span className='profile-color'>{profileid.name}</span><br/>
-                     <span className='profile-color'>{profileid.email}</span>
+                     <span className='profile-color'>{username.name}</span><br/>
+                     <span className='profile-color'>{username.username}</span>
                   </div>
                  <div>
                     <i className="fa fa-pencil profile-color profile-icon-size" aria-hidden="true"></i>  

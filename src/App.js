@@ -26,6 +26,7 @@ import Cart from "./component/Cart/Cart";
 import AdminHeader from "./pages/Admin/Layout/admin_header";
 import UserProfile from "./pages/Admin/Layout/user_profile";
 import Axios from "axios"
+import PrivateComponent from "./PrivateComponent";
 // import { event } from "jquery";
 
 function App() {
@@ -123,18 +124,14 @@ console.log(stateroute,'qwertyuiop')
           path="/"
           element={<Home  datarroute={datarroute} cartCount={cartCount} flipcart={addCart} />}
         ></Route>
-        <Route exact path="/login" element={<Login />}></Route>
+      
         <Route exact path="/categories" element={<Category />}></Route>
         <Route
           exact
           path="/Admin/Layout/user_profile"
           element={<UserProfile />}
         ></Route>
-        <Route
-          exact
-          path="/cart"
-          element={<Cart cartCount={cartCount} />}
-        ></Route>
+       
         <Route
           exact
           path="/product_listing"
@@ -166,11 +163,7 @@ console.log(stateroute,'qwertyuiop')
           path="/product_categories"
           element={<ProductCategories />}
         ></Route>
-        <Route
-          exact
-          path="/checkout_details"
-          element={<CheckoutDeatils />}
-        ></Route>
+      
         <Route
           exact
           path="/Admin/Layout/admin_header"
@@ -191,6 +184,23 @@ console.log(stateroute,'qwertyuiop')
           path="/Admin/Categories/sub_category"
           element={<SubCategory />}
         ></Route>
+        <Route exact path="/login" element={<Login />}></Route>
+        
+        <Route
+        
+        element={<PrivateComponent />}
+      >
+        <Route
+        exact
+        path="/checkout_details"
+        element={<CheckoutDeatils />}
+      ></Route>
+      <Route
+      exact
+      path="/cart"
+      element={<Cart cartCount={cartCount} />} 
+    ></Route>
+    </Route>
         {/* <Redirect to="/" /> */}
       </Routes>
  
